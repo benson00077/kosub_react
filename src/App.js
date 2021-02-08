@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Nav from './components/Nav';
 import About from './components/About'
 import Home from './components/Home'
@@ -17,6 +17,7 @@ function App() {
   const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
   const [queryLanguage, setQueryLanguage] = useState("ko")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState('')
 
 
   return (
@@ -51,7 +52,7 @@ function App() {
               <Route path="/search" 
                      render={() => 
                       ifRerenderSearchPage 
-                        ? (<SearchController ko={result.ko} zh={result.zh} en={result.en} id={result.id}/>) 
+                        ? (<SearchController ko={result.ko} zh={result.zh} en={result.en} id={result.id} user={user}/>) 
                         : (<h3>How to Use ?????</h3>)
                       }/>
 
@@ -68,7 +69,7 @@ function App() {
                       render={() => 
                       isLoggedIn 
                         ? (<h3>Logged In Successfully</h3>) 
-                        : (<Login setIsLoggedIn={setIsLoggedIn}/>)
+                        : (<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>)
                       }/>   
               <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
                 <MySentenceController/>

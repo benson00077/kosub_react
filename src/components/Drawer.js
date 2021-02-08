@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './contentWrapperSearch.module.css'
 
 
-function Drawer({isOpen, drawerKo, drawerZh, drawerEn, drawerId}) {
+function Drawer({drawerKo, drawerZh, drawerEn, drawerId}) {
     
     return (
         <div className={styles.DrawerContainer}>

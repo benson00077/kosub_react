@@ -1,22 +1,58 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Drawer from './Drawer'
 import styles from './contentWrapperSearch.module.css'
 import ShowHideHandler from './ShowHideHandler'
+import ApiButton from './ApiButton'
 
 function ContentWrapperSearch({isSearchController, isAboutController, isHomeController, ...rest}) {
 
+
+  // sentences in appCards UI section 
+  let responseLength = 0
+  if (rest.id) {
+      responseLength = rest.id.length
+  }
+  const [SentenceIsSelected, setSentenceIsSelected] = useState([])
+  
+
+  useEffect(() => {
+    // Initialize Array: [... , true, true]: include {responseLength}  of true  
+    if (rest.id) {
+      let SentenceSelectionSwitcher = Array.from(Array(responseLength), ele => false) // 主控台上面還是 [] ，可以變數名稱先改      
+      setSentenceIsSelected([...SentenceSelectionSwitcher])
+    }
+  }, [rest.id])
+  
+  
+  // sentences in appCards UI section 
+  const SentenceBooleanList_ClickHandler  = (beforeSwitch, i) => {
+    const afterSwitch = [...beforeSwitch]
+    afterSwitch[i] = !beforeSwitch[i]
+    return afterSwitch
+  }
+
+
+  
+  
+  // App Card content state
   const [koShow, setKoShow] = useState(true)
   const [zhShow, setZhShow] = useState(true)
   const [enShow, setEnShow] = useState(true)
-  
+
+
+  // appCard section
   const appCardRenderer = (koList, zhList, enList) => {
     return (
       <React.Fragment>
       {koList && koList.map(
           (each, i) =>  
           <div 
-          className={styles.appCardOneSubtextRow}
-          onClick={() => rest.toggleDrawer(rest.id[i])} 
+          className={`${styles.appCardOneSubtextRow} ${SentenceIsSelected[i] ? styles.appCardOneSubtextRow_isSelected : ''}`}
+          onClick={() => { 
+            rest.sentenceID_ClickHandler(rest.id[i])
+            let afterSwitch = SentenceBooleanList_ClickHandler(SentenceIsSelected ,i)
+            setSentenceIsSelected([...afterSwitch])
+          }} 
           key={rest.id[i]}>
               {koShow? <p>{koList[i]}</p> : ''}
               {zhShow? <p>{zhList[i]}</p> : ''}
@@ -40,12 +76,11 @@ function ContentWrapperSearch({isSearchController, isAboutController, isHomeCont
           </div>
           
           <div className="app-card-buttons">
-          <button className="content-button status-button">{rest.appCardButton}</button>
+          <button className="content-button status-button">^</button>
           </div>
       </div>
       </React.Fragment>
     )}
-  
   
   
   return (
@@ -78,7 +113,12 @@ function ContentWrapperSearch({isSearchController, isAboutController, isHomeCont
             setKoShow={setKoShow} 
             setZhShow={setZhShow} 
             setEnShow={setEnShow}/>
+            
+          <ApiButton 
+            sentencesID_SelectedList={rest.sentencesID_SelectedList}
+            toggleDrawer={rest.toggleDrawer}/>
         </div>
+
 
     
       <div className="content-section">

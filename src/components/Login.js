@@ -16,7 +16,7 @@ function PrivateRoute({ children, ...rest }) {
 }
 
 
-function Login( {setIsLoggedIn} ) {
+function Login( {setIsLoggedIn, setUser} ) {
     const [redirectToReferer, setRedirectToReferer] = useState(false)
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
@@ -33,6 +33,7 @@ function Login( {setIsLoggedIn} ) {
                 if (res.data.isLoggedIn) {
                   setRedirectToReferer(true)
                   setIsLoggedIn(true)
+                  setUser(res.data.userID)
                 } else {
                   setLoginDescription("Invalid username and/or password")
                 }

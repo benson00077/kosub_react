@@ -2,13 +2,44 @@ import React, { useState }from 'react'
 import axios from 'axios'
 import ContentWrapperSearch from './ContentWrapperSearch'
 
-function SearchController(props) {
+function SearchController({ko, zh, en, id, user}) {
 
-    const {ko, zh, en, id} = props
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [drawResponse, setDrawResponse] = useState({})
+    const [sentencesID_SelectedList, setSentencesID_SelectedList] = useState([])
+
+    
+    // SentencebookPush Handler
+    const sentenceID_ClickHandler = (id) => {
+        let tempList = []
+        // cancel selection or push selection to list
+        if (sentencesID_SelectedList.includes(id)) {
+            tempList = sentencesID_SelectedList.filter(ele => ele !== id)
+        } else {
+            tempList = [...sentencesID_SelectedList, id]
+        }
+        // setSentencesID_SelectedList([...new Set(tempList)])
+        setSentencesID_SelectedList([...tempList])
+
+    } 
+
+    const SentencebookPush = (myList) => {
+        console.log('SentencebookPush')
+        console.log(myList)
+        console.log(user)
+        // let pushData = {"id":user, "sentence_id":myList, "query":"uncle"}
+        // axios
+        //     .post(`http://127.0.0.1:5000/sub/sentencebook`, pushData )
 
 
+        // 按照上面的方式修改 api
+        
+    }
+
+
+
+
+    // Drawer Handler
     const toggleDrawer = (id) => {
         setIsDrawerOpen(!isDrawerOpen)
         if (Object.keys(drawResponse).length === 0){
@@ -35,24 +66,27 @@ function SearchController(props) {
     
     return (
         <React.Fragment>
-
-          <ContentWrapperSearch 
-            isSearchController={true} 
-            ko={ko} zh={zh} en={en} id={id} 
-            toggleDrawer={toggleDrawer}
-            headerTitle="Context" 
-            sectionTitle="Query Result"
             
-            isDrawerOpen={isDrawerOpen}   
-            drawerResponseKo={drawResponse.ko} 
-            drawerResponseZh={drawResponse.zh} 
-            drawerResponseEn={drawResponse.en} 
-            drawerResponseId={drawResponse.id}
-            headerButton={'close'}
-            headerButtonHandler={headerButtonHandler}
+            <ContentWrapperSearch 
+                isSearchController={true} 
+                ko={ko} zh={zh} en={en} id={id}
+                sentenceID_ClickHandler={sentenceID_ClickHandler}
+                headerTitle="Context" 
+                sectionTitle="Query Result"
 
-            />
-         
+                sentencesID_SelectedList={sentencesID_SelectedList}
+                toggleDrawer={toggleDrawer}
+
+                
+                isDrawerOpen={isDrawerOpen}     
+                drawerResponseKo={drawResponse.ko} 
+                drawerResponseZh={drawResponse.zh} 
+                drawerResponseEn={drawResponse.en} 
+                drawerResponseId={drawResponse.id}
+                headerButton={'close'}
+                headerButtonHandler={headerButtonHandler}
+                />
+
         </React.Fragment>
     )
 

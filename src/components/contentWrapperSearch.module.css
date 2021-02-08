@@ -1,3 +1,6 @@
+
+/* Drawer */
+
 .contentWrapperHeaderSearchpage {
     display: flex;
     align-items: center;
@@ -53,6 +56,8 @@
 }
 
 
+/* Cards (search result) */
+
 .appCardOne {
     display: flex;
     flex-direction: column;
@@ -87,6 +92,10 @@
 
 .appCardOneSubtextRow:hover {
   opacity: 0.6;
+}
+
+.appCardOneSubtextRow_isSelected {
+  background-color: rgba(14, 151, 179, 0.4);
 }
 
 .appCardOneSubtextRow p {

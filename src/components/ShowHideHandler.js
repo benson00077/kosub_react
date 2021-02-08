@@ -14,9 +14,13 @@ function ShowHideHandler( {koShow, zhShow, enShow, setKoShow, setZhShow, setEnSh
     
     return (
         <React.Fragment>
-        <div onClick={() => showHideHandler(koShow, setKoShow)}><h4>Hide Korean</h4></div>
+        {/* <div onClick={() => showHideHandler(koShow, setKoShow)}><h4>Hide Korean</h4></div>
         <div onClick={() => showHideHandler(zhShow, setZhShow)}><h4>Hide Chinese</h4></div>
-        <div onClick={() => showHideHandler(enShow, setEnShow)}><h4>Hide English</h4></div>
+        <div onClick={() => showHideHandler(enShow, setEnShow)}><h4>Hide English</h4></div> */}
+
+        <button onClick={() => showHideHandler(koShow, setKoShow)}>Hide Korean</button>
+        <button onClick={() => showHideHandler(zhShow, setZhShow)}>Hide Chinese</button>
+        <button onClick={() => showHideHandler(enShow, setEnShow)}>Hide English</button>
         </React.Fragment>
     )
 }

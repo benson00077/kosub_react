@@ -29,19 +29,25 @@ function Nav({ isLoggedIn }) {
           <div className="side-wrapper">
             <div className="side-title">Personalization</div>
             <div className="side-menu">
-              <Link style={navStyle} to="/mysentences">
-                <h4>My Setences</h4>
-              </Link>
+              
+              { isLoggedIn 
+                  ? (<Link style={navStyle} to="/mysentences">
+                      <h4>My Setences</h4>
+                    </Link>)
+                  : ''}
               
               { isLoggedIn 
                 ? ''
                 : <Link style={navStyle} to="/login">
                     <h4>Log in</h4>
                   </Link> }
- 
-              <Link style={navStyle} to="/register">
-                <h4>Register</h4>
-              </Link>
+
+              { isLoggedIn 
+                ? ''
+                : <Link style={navStyle} to="/register">
+                    <h4>Register</h4>
+                  </Link> }    
+
             </div>  
           </div>
 
@@ -59,14 +65,6 @@ function Nav({ isLoggedIn }) {
               </Link>
             </div>  
           </div>  */}
-
-          <div className="side-wrapper">
-            <div className="side-title">Components</div>
-            <div className="side-menu">
-              <a><h4>Show/Hide</h4></a>
-              <a><h4>Back to Top</h4></a>
-            </div>  
-          </div>  
 
         </React.Fragment> 
     )
