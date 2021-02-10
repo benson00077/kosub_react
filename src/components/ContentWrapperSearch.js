@@ -5,7 +5,7 @@ import ShowHideHandler from './ShowHideHandler'
 import ApiButton from './ApiButton'
 import AppCards from './AppCards'
 
-function ContentWrapperSearch({isSearchController, isAboutController, isHomeController, ...rest}) {
+function ContentWrapperSearch({...rest}) {
 
   // state for Sentence content button
   const [koShow, setKoShow] = useState(true)

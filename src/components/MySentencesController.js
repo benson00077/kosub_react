@@ -1,11 +1,26 @@
 import React, { useState, useEffect }from 'react'
 import axios from 'axios'
+import ContentWrapperMySentence from './ContentWrapperMySentence'
 
 
-function MySentencesController({isLoggedIn, user, ifUpdateMySentencePage}) {
+function MySentencesController({isLoggedIn, user, ifUpdateMySentencePage, ...rest}) {
     
-    const [match, setMatch] = useState({})
+    const [match, setMatch] = useState({}) // Match result from api
+    const [sentencesID_SelectedList, setSentencesID_SelectedList] = useState([])
     
+    // Sentencebook select Handler
+    const sentenceID_ClickHandler = (id) => {
+        let tempList = []
+        // cancel selection or push selection to list
+        if (sentencesID_SelectedList.includes(id)) {
+            tempList = sentencesID_SelectedList.filter(ele => ele !== id)
+        } else {
+            tempList = [...sentencesID_SelectedList, id]
+        }
+        // setSentencesID_SelectedList([...new Set(tempList)])
+        setSentencesID_SelectedList([...tempList])
+    }     
+
     useEffect(() => {
         axios
             .get(`http://localhost:5000/sub/sentencebook?id=${user}`)
@@ -16,18 +31,13 @@ function MySentencesController({isLoggedIn, user, ifUpdateMySentencePage}) {
             .catch((err) => {
                 console.log(err)
             })
-        
     }, [ifUpdateMySentencePage])
     
     return (
-        <div className="main-container">
-          <div className="content-wrapper">
-            {match.id ? match.id : ''}
-            {match.ko ? match.ko : ''}
-            {match.zh ? match.zh : ''}
-            {match.en ? match.en : ''}
-          </div>  
-        </div>
+        <React.Fragment>
+            <ContentWrapperMySentence koList={match.ko} zhList={match.zh} enList={match.en} idList={match.id} 
+                                      sentenceID_ClickHandler={sentenceID_ClickHandler} sentencesID_SelectedList={sentencesID_SelectedList}/>
+        </React.Fragment>
     )
 }
 

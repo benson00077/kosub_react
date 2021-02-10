@@ -9,7 +9,7 @@ function SearchController({ko, zh, en, id, user, mainQuery, seteIfUpdateMySenten
     const [sentencesID_SelectedList, setSentencesID_SelectedList] = useState([])
 
     
-    // Sentencebook Push Handler
+    // Sentencebook select Handler
     const sentenceID_ClickHandler = (id) => {
         let tempList = []
         // cancel selection or push selection to list
@@ -20,7 +20,6 @@ function SearchController({ko, zh, en, id, user, mainQuery, seteIfUpdateMySenten
         }
         // setSentencesID_SelectedList([...new Set(tempList)])
         setSentencesID_SelectedList([...tempList])
-
     } 
 
     const SentencebookPush = (myList) => {
