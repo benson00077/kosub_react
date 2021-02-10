@@ -3,85 +3,14 @@ import Drawer from './Drawer'
 import styles from './contentWrapperSearch.module.css'
 import ShowHideHandler from './ShowHideHandler'
 import ApiButton from './ApiButton'
+import AppCards from './AppCards'
 
 function ContentWrapperSearch({isSearchController, isAboutController, isHomeController, ...rest}) {
 
-
-  // sentences in appCards UI section 
-  let responseLength = 0
-  if (rest.id) {
-      responseLength = rest.id.length
-  }
-  const [SentenceIsSelected, setSentenceIsSelected] = useState([])
-  
-
-  useEffect(() => {
-    // Initialize Array: [... , true, true]: include {responseLength}  of true  
-    if (rest.id) {
-      let SentenceSelectionSwitcher = Array.from(Array(responseLength), ele => false) 
-      setSentenceIsSelected([...SentenceSelectionSwitcher])
-    }
-  }, [rest.id])
-  
-  
-  // sentences in appCards UI section 
-  const SentenceBooleanList_ClickHandler  = (beforeSwitch, i) => {
-    const afterSwitch = [...beforeSwitch]
-    afterSwitch[i] = !beforeSwitch[i]
-    return afterSwitch
-  }
-
-
-  
-  
-  // App Card content state
+  // state for Sentence content button
   const [koShow, setKoShow] = useState(true)
   const [zhShow, setZhShow] = useState(true)
   const [enShow, setEnShow] = useState(true)
-
-
-  // appCard section
-  const appCardRenderer = (koList, zhList, enList) => {
-    return (
-      <React.Fragment>
-      {koList && koList.map(
-          (each, i) =>  
-          <div 
-          className={`${styles.appCardOneSubtextRow} ${SentenceIsSelected[i] ? styles.appCardOneSubtextRow_isSelected : ''}`}
-          onClick={() => { 
-            rest.sentenceID_ClickHandler(rest.id[i])
-            let afterSwitch = SentenceBooleanList_ClickHandler(SentenceIsSelected ,i)
-            setSentenceIsSelected([...afterSwitch])
-          }} 
-          key={rest.id[i]}>
-              {koShow? <p>{koList[i]}</p> : ''}
-              {zhShow? <p>{zhList[i]}</p> : ''}
-              {enShow? <p>{enList[i]}</p> : ''}
-          </div>
-      )}
-      </React.Fragment> 
-    )}
-  
-  const appCardsRenderer = (koList, zhList, enList) => {
-    return (
-      <React.Fragment>
-      <div className={styles.appCardOne}>
-          <span>
-          {rest.appCardImg}
-          {rest.appCardTitle}
-          </span>
-
-          <div className={styles.appCardOneSubtext}> 
-              { appCardRenderer(koList, zhList, enList) } 
-          </div>
-          
-          <div className="app-card-buttons">
-          <button className="content-button status-button">^</button>
-          </div>
-      </div>
-      </React.Fragment>
-    )}
-  
   
   return (
     <div className="content-wrapper">
@@ -126,8 +55,11 @@ function ContentWrapperSearch({isSearchController, isAboutController, isHomeCont
         <div className="content-section-title">{rest.sectionTitle}</div>
         <div className="apps-card">
 
-        {appCardsRenderer(rest.ko, rest.zh, rest.en)}
-        
+        {/* {appCardsRenderer(rest.ko, rest.zh, rest.en)} */}
+        <AppCards koList={rest.ko} zhList={rest.zh} enList={rest.en} idList={rest.id} 
+                  koShow={koShow} zhShow={zhShow} enShow={enShow}
+                  sentenceID_ClickHandler={rest.sentenceID_ClickHandler}/>
+
         </div>
       </div>
  

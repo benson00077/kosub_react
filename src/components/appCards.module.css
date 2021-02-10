@@ -1,0 +1,43 @@
+.appCardOne {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 16px;
+    background-color: rgba(14, 151, 179, 0.13);
+    border-radius: 14px;
+    border: 1px solid rgba(16, 18, 27, 0.4);
+    padding: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    /* margin-left: 20px; */
+  }
+  
+
+.appCardOne:hover {
+  transform: translateY(-10px);
+  background-color: rgba(16, 18, 27, 0.4);
+}
+
+.appCardOneSubtext {
+  font-size: 18px;
+}
+
+.appCardOneSubtextRow {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: space-around;
+}
+
+.appCardOneSubtextRow:hover {
+  opacity: 0.6;
+}
+
+.appCardOneSubtextRow_isSelected {
+  background-color: rgba(14, 151, 179, 0.4);
+}
+
+.appCardOneSubtextRow p {
+  width: 30%;
+}
