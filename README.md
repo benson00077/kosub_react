@@ -32,12 +32,12 @@ Following helper buttons included in Searching page:
 
 ## Learn More: `Conjugatoin Form` in Korean
 
-Predicate(Verb/Adjective) have 2 forms.
-Basic Form looks like: `하다`.
-Conjugation Form looks like: `해요` or `합니다` etc.
+Predicate(Verb/Adjective) have 2 forms. <br />
+Basic Form looks like: `하다`. <br />
+Conjugation Form looks like: `해요` or `합니다` etc. <br />
 
-Notice that `하` transform into `해` or `합` here.
-It's hard to search a single word and get all it's variatio on the internet.
+Notice that `하` transform into `해` or `합` here. <br />
+It's hard to search a single word and get all it's variatio on the same time.
 
 
 ## Learn More: Morpheme segmentation
