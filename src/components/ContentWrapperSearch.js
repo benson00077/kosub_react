@@ -18,7 +18,7 @@ function ContentWrapperSearch({isSearchController, isAboutController, isHomeCont
   useEffect(() => {
     // Initialize Array: [... , true, true]: include {responseLength}  of true  
     if (rest.id) {
-      let SentenceSelectionSwitcher = Array.from(Array(responseLength), ele => false) // 主控台上面還是 [] ，可以變數名稱先改      
+      let SentenceSelectionSwitcher = Array.from(Array(responseLength), ele => false) 
       setSentenceIsSelected([...SentenceSelectionSwitcher])
     }
   }, [rest.id])
@@ -116,7 +116,8 @@ function ContentWrapperSearch({isSearchController, isAboutController, isHomeCont
             
           <ApiButton 
             sentencesID_SelectedList={rest.sentencesID_SelectedList}
-            toggleDrawer={rest.toggleDrawer}/>
+            toggleDrawer={rest.toggleDrawer}
+            SentencebookPush={rest.SentencebookPush}/>
         </div>
 
 

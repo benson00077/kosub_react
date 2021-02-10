@@ -30,7 +30,6 @@ function Login( {setIsLoggedIn, setUser} ) {
         axios
             .post('http://127.0.0.1:5000/sub/login', {user: userName, pass: password})
             .then((res) => { 
-                console.log(res.data) 
                 if (res.data.isLoggedIn) {
                   setRedirectToReferer(true)
                   setIsLoggedIn(true)

@@ -13,8 +13,10 @@ import SearchBar from './components/SearchBar';
 
 function App() {
   
+  const [mainQuery, setMainQuery] = useState("")
   const [result, setResult] = useState({})
   const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
+  const [ifUpdateMySentencePage, seteIfUpdateMySentencePage] = useState(false)
   const [queryLanguage, setQueryLanguage] = useState("ko")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState('')
@@ -34,6 +36,8 @@ function App() {
           <div className="search-bar">
             <SearchBar 
               queryLanguage={queryLanguage} 
+              mainQuery={mainQuery}
+              setMainQuery={setMainQuery}
               setResult={setResult} 
               seteIfRerenderSearchPage={seteIfRerenderSearchPage}/>
           </div>  
@@ -41,7 +45,7 @@ function App() {
         
         <div className="wrapper">
           <div className="left-side">
-            <Nav isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+            <Nav isLoggedIn={isLoggedIn} seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}/>
           </div>
 
           <div className="main-container">
@@ -52,7 +56,8 @@ function App() {
               <Route path="/search" 
                      render={() => 
                       ifRerenderSearchPage 
-                        ? (<SearchController ko={result.ko} zh={result.zh} en={result.en} id={result.id} user={user}/>) 
+                        ? (<SearchController ko={result.ko} zh={result.zh} en={result.en} id={result.id} user={user} mainQuery={mainQuery} 
+                                             seteIfUpdateMySentencePage={seteIfUpdateMySentencePage} ifUpdateMySentencePage={ifUpdateMySentencePage}/>) 
                         : (<h3>How to Use ?????</h3>)
                       }/>
 
@@ -72,7 +77,7 @@ function App() {
                         : (<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>)
                       }/>   
               <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
-                <MySentenceController/>
+                <MySentenceController isLoggedIn={isLoggedIn} user={user} ifUpdateMySentencePage={ifUpdateMySentencePage}/>
               </PrivateRoute>
 
             </Switch>

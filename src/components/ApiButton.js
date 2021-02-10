@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import styles from './apiButton.module.css'
 
 
-function ApiButton({sentencesID_SelectedList, toggleDrawer}) {
+function ApiButton({sentencesID_SelectedList, toggleDrawer, SentencebookPush}) {
 
     
   const buttonRef_mySentenceBook = useRef(null)
@@ -37,7 +37,8 @@ function ApiButton({sentencesID_SelectedList, toggleDrawer}) {
 
             <button 
               className={styles.apiButton} 
-              ref={buttonRef_mySentenceBook}>
+              ref={buttonRef_mySentenceBook}
+              onClick={() => SentencebookPush(sentencesID_SelectedList)}>
                 Add to my Sentence Book 
             </button>
 

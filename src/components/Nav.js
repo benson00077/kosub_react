@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import ShowHideHandler from './ShowHideHandler'
 
-function Nav({ isLoggedIn }) {
+function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
     
     const navStyle = {
         color:'white'
@@ -31,7 +31,7 @@ function Nav({ isLoggedIn }) {
             <div className="side-menu">
               
               { isLoggedIn 
-                  ? (<Link style={navStyle} to="/mysentences">
+                  ? (<Link style={navStyle} to="/mysentences" onClick={seteIfUpdateMySentencePage(true)}>
                       <h4>My Setences</h4>
                     </Link>)
                   : ''}

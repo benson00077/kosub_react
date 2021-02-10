@@ -3,9 +3,8 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
 
-function SearchBar({queryLanguage, setResult, seteIfRerenderSearchPage}) {
+function SearchBar({queryLanguage, mainQuery, setMainQuery, setResult, seteIfRerenderSearchPage}) {
 
-    const [query, setQuery] = useState("")
     const inputRef = useRef(null)
     let history = useHistory()
 
@@ -14,9 +13,8 @@ function SearchBar({queryLanguage, setResult, seteIfRerenderSearchPage}) {
         seteIfRerenderSearchPage(true)
 
         axios
-            .get(`http://127.0.0.1:5000/sub/query/${queryLanguage}?word=${query}`)
+            .get(`http://127.0.0.1:5000/sub/query/${queryLanguage}?word=${mainQuery}`)
             .then(res => {
-                console.log(res)
                 setResult({})
                 setResult(res.data)
                 inputRef.current.value = ''
@@ -38,9 +36,9 @@ function SearchBar({queryLanguage, setResult, seteIfRerenderSearchPage}) {
             <input 
                 type="text" 
                 placeholder="Search"ㄨ
-                value={query} 
+                value={mainQuery} 
                 onChange={ e => {
-                setQuery(e.target.value)
+                setMainQuery(e.target.value)
                 }}
                 ref={inputRef}>
             </input>

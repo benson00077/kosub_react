@@ -11,7 +11,7 @@ Following main contnets included:
 - Searching page
 - My Favorite Sentence page
 
-Following helper buttons included in searching page:
+Following helper buttons included in Searching page:
 
 - Show/Hide English, Chinese or Korean line in Search Page.
 - Add-to-SentneceBook: Add the selected sentences as favorite.
@@ -25,7 +25,8 @@ Following helper buttons included in searching page:
 
 ## Back-end
 
- - Python Flask RESTful api & SQLite
+ - Python Flask RESTful api
+ - SQLite.
  - Subtiles pre-processed by Python module [KoNLPy](https://konlpy.org/en/v0.4.4/).
 
 

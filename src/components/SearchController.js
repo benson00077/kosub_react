@@ -2,14 +2,14 @@ import React, { useState }from 'react'
 import axios from 'axios'
 import ContentWrapperSearch from './ContentWrapperSearch'
 
-function SearchController({ko, zh, en, id, user}) {
+function SearchController({ko, zh, en, id, user, mainQuery, seteIfUpdateMySentencePage, ifUpdateMySentencePage}) {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [drawResponse, setDrawResponse] = useState({})
     const [sentencesID_SelectedList, setSentencesID_SelectedList] = useState([])
 
     
-    // SentencebookPush Handler
+    // Sentencebook Push Handler
     const sentenceID_ClickHandler = (id) => {
         let tempList = []
         // cancel selection or push selection to list
@@ -24,18 +24,28 @@ function SearchController({ko, zh, en, id, user}) {
     } 
 
     const SentencebookPush = (myList) => {
-        console.log('SentencebookPush')
-        console.log(myList)
-        console.log(user)
-        // let pushData = {"id":user, "sentence_id":myList, "query":"uncle"}
-        // axios
-        //     .post(`http://127.0.0.1:5000/sub/sentencebook`, pushData )
-
-
-        // 按照上面的方式修改 api
-        
+        if (user) {
+            let pushData = myList.map((eachSentenceID) => (
+                {id: user, sentence_id: eachSentenceID, query: mainQuery}
+            ))
+            axios
+                .post("http://127.0.0.1:5000/sub/sentencebook", pushData)
+                .then((res) => {
+                    if (res.data.isAddedToSentencebook) {
+                        window.alert("Added to Sentence Book!")
+                        seteIfUpdateMySentencePage(!ifUpdateMySentencePage)
+                    } else {
+                        window.alert("Oops! some error occur.") // BackEnd error
+                    }
+                })        
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+        if(!user) {
+            window.alert("Please Log in !")
+        }
     }
-
 
 
 
@@ -76,6 +86,7 @@ function SearchController({ko, zh, en, id, user}) {
 
                 sentencesID_SelectedList={sentencesID_SelectedList}
                 toggleDrawer={toggleDrawer}
+                SentencebookPush={SentencebookPush}
 
                 
                 isDrawerOpen={isDrawerOpen}     
