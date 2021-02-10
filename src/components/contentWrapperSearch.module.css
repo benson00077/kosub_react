@@ -53,3 +53,11 @@
   flex-direction: column; 
   overflow-x: scroll;
 }
+
+.DrawerContainer_SubtextRow {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: space-around;
+}

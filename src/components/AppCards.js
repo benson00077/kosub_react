@@ -69,7 +69,7 @@ function AppCards({koList, zhList, enList, idList, ...rest}) {
           </div>
           
           <div className="app-card-buttons">
-          <button className="content-button status-button">^</button>
+          <button className="content-button status-button"> ^ </button>
           </div>
       </div>
       </React.Fragment>

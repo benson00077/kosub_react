@@ -11,7 +11,7 @@ function ContentWrapperMySentence({koList, zhList, enList, idList, ...rest}) {
     const [enShow, setEnShow] = useState(true)
 
     return (
-    <div className="content-wrapper">  
+    <div className="content-wrapper" id="content-wrapper">  
 
         <div>
             <ShowHideHandler
