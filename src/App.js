@@ -45,7 +45,7 @@ function App() {
         
         <div className="wrapper">
           <div className="left-side">
-            <Nav isLoggedIn={isLoggedIn} seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}/>
+            <Nav isLoggedIn={isLoggedIn}/>
           </div>
 
           <div className="main-container">

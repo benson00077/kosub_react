@@ -31,7 +31,7 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
             <div className="side-menu">
               
               { isLoggedIn 
-                  ? (<Link style={navStyle} to="/mysentences" onClick={seteIfUpdateMySentencePage(true)}>
+                  ? (<Link style={navStyle} to="/mysentences">
                       <h4>My Setences</h4>
                     </Link>)
                   : ''}

@@ -16,10 +16,10 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
               <path xmlns="http://www.w3.org/2000/svg" d="M181 391c-41.353 0-75-33.647-75-75 0-8.291 6.709-15 15-15s15 6.709 15 15c0 24.814 20.186 45 45 45s45-20.186 45-45-20.186-45-45-45c-41.353 0-75-33.647-75-75s33.647-75 75-75 75 33.647 75 75c0 8.291-6.709 15-15 15s-15-6.709-15-15c0-24.814-20.186-45-45-45s-45 20.186-45 45 20.186 45 45 45c41.353 0 75 33.647 75 75s-33.647 75-75 75z" fill="#d6355b" data-original="#ff468c" />
               <path xmlns="http://www.w3.org/2000/svg" d="M391 361h-30c-8.276 0-15-6.724-15-15V211h45c8.291 0 15-6.709 15-15s-6.709-15-15-15h-45v-45c0-8.291-6.709-15-15-15s-15 6.709-15 15v45h-15c-8.291 0-15 6.709-15 15s6.709 15 15 15h15v135c0 24.814 20.186 45 45 45h30c8.291 0 15-6.709 15-15s-6.709-15-15-15z" fill="#d6355b" data-original="#d72878" />
             </svg>
-            為何韓文一定要用台詞學？
+            為什麼要用韓劇臺詞學韓文？
           </h3>
-          <div className="content-text">韓文繁複的句型變化總令人暈頭轉向，沒有上下文的參照、語境的參考 ，只會讓學習者混淆......</div>
-          <button className="content-button">Start free trial</button>
+          <div className="content-text">韓文為 high-context language ，句型變化繁複，沒有上下文、語境的參照 ，只會讓學習者混淆......</div>
+          <button className="content-button" > <a href="https://www.quora.com/Why-is-South-Korea-high-context">了解更多</a></button>
         </div>  
         <img className="content-wrapper-img" src="https://assets.codepen.io/3364143/glass.png" alt=""></img>
       </div>  
@@ -70,7 +70,7 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
                 <path d="M27.44 39H24.2l-2.76-9.04h-8.32L10.48 39H7.36l8.24-28h3.32l8.52 28zm-6.72-12l-3.48-11.36L13.88 27h6.84zM31.48 33.48c0 2.267 1.333 3.399 4 3.399 1.653 0 3.466-.546 5.44-1.64L42 37.6c-2.054 1.254-4.2 1.881-6.44 1.881-4.64 0-6.96-1.946-6.96-5.841v-8.2c0-2.16.673-3.841 2.02-5.04 1.346-1.2 3.126-1.801 5.34-1.801s3.94.594 5.18 1.78c1.24 1.187 1.86 2.834 1.86 4.94V30.8l-11.52.6v2.08zm8.6-5.24v-3.08c0-1.413-.44-2.42-1.32-3.021-.88-.6-1.907-.899-3.08-.899-1.174 0-2.167.359-2.98 1.08-.814.72-1.22 1.773-1.22 3.16v3.199l8.6-.439z" fill="#e4d1eb" data-original="#e7adfb" />
               </g>
               </svg>
-              Describe the photo
+              同樣一句話有太多表方式
             </span>
             <div class="app-card__subtext">test test test test test test test test test test test test test test </div>
             <div class="app-card-buttons">

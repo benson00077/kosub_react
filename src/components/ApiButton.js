@@ -8,7 +8,7 @@ function ApiButton({sentencesID_SelectedList, toggleDrawer, SentencebookPush}) {
     
   const buttonRef_mySentenceBook = useRef(null)
   const buttonRef_fetchContext = useRef(null)
-  const history = useHistory()
+  const history = useHistory() // history.push('/mysentnece') redirect
   
   
   useEffect(() => {
