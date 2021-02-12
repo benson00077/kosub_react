@@ -1,53 +1,30 @@
 import React, {useState, useEffect} from 'react'
 import styles from './appCards.module.css'
+import useSelectSentence from './useSelectSentence'
 
 function AppCards({koList, zhList, enList, idList, ...rest}) {
 
 
-    // state for Sentence UI
-    const [SentenceIsSelected, setSentenceIsSelected] = useState([])
-    // state for Sentence content button
+    const [{sentencesID_SelectedList, ifsentences_SelectedList}, {sentenceID_ClickHandler, ifSentence_Selected_ClickHandler}] = useSelectSentence(idList)
 
-    
-    // sentences in appCards UI section 
-    let responseLength = 0
-    if (idList) {
-        responseLength = idList.length
-    }
-    // let responseLength = idList ? idList.length : 0
-    
-
-    // Initialize Array: [... , true, true]: include {responseLength}  of true  
-    useEffect(() => {
-        if (idList) {
-        let SentenceSelectionSwitcher = Array.from(Array(responseLength), ele => false) 
-        setSentenceIsSelected([...SentenceSelectionSwitcher])
-        }
-    }, [idList])
-    
-    
-    // sentences in appCards UI section 
-    const SentenceBooleanList_ClickHandler  = (beforeSwitch, i) => {
-        const afterSwitch = [...beforeSwitch]
-        afterSwitch[i] = !beforeSwitch[i]
-        return afterSwitch
-    }
-
+    console.log('------ sentnecesID_SelectedList ------')
+    console.log(sentencesID_SelectedList)
+    console.log('------ ifsentences_SelectedList ------')
+    console.log(ifsentences_SelectedList)
 
     // appCard section
     const appCardRenderer = (koList, zhList, enList) => {
         return (
         <React.Fragment>
-        {koList && koList.map(
+        {idList && idList.map(
             (each, i) =>  
             <div 
-            className={`${styles.appCardOneSubtextRow} ${SentenceIsSelected[i] ? styles.appCardOneSubtextRow_isSelected : ''}`}
-            onClick={() => { 
-                rest.sentenceID_ClickHandler(idList[i])
-                let afterSwitch = SentenceBooleanList_ClickHandler(SentenceIsSelected ,i)
-                setSentenceIsSelected([...afterSwitch])
+            className={`${styles.appCardOneSubtextRow} ${ifsentences_SelectedList[i] ? styles.appCardOneSubtextRow_isSelected : ''}`}
+            onClick={() => {
+                sentenceID_ClickHandler(idList[i])
+                ifSentence_Selected_ClickHandler([i])
             }} 
-            key={idList[i]}>
+            key={i}>
                 {rest.koShow? <p>{koList[i]}</p> : ''}
                 {rest.zhShow? <p>{zhList[i]}</p> : ''}
                 {rest.enShow? <p>{enList[i]}</p> : ''}

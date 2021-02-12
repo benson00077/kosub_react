@@ -6,6 +6,8 @@ function SearchController({ko, zh, en, id, user, mainQuery, seteIfUpdateMySenten
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [drawResponse, setDrawResponse] = useState({})
+    
+    ///  /// 要刪掉 
     const [sentencesID_SelectedList, setSentencesID_SelectedList] = useState([])
 
     
@@ -21,6 +23,8 @@ function SearchController({ko, zh, en, id, user, mainQuery, seteIfUpdateMySenten
         // setSentencesID_SelectedList([...new Set(tempList)])
         setSentencesID_SelectedList([...tempList])
     } 
+
+    /// //////
 
     const SentencebookPush = (myList) => {
         if (user) {

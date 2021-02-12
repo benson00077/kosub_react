@@ -4,6 +4,7 @@ import styles from './contentWrapperSearch.module.css'
 import ShowHideHandler from './ShowHideHandler'
 import ApiButton from './ApiButton'
 import AppCards from './AppCards'
+import ApiButtons from './ApiButtons'
 
 function ContentWrapperSearch({...rest}) {
 
@@ -44,6 +45,11 @@ function ContentWrapperSearch({...rest}) {
             setEnShow={setEnShow}/>
             
           <ApiButton 
+            sentencesID_SelectedList={rest.sentencesID_SelectedList}
+            toggleDrawer={rest.toggleDrawer}
+            SentencebookPush={rest.SentencebookPush}/>
+          
+          <ApiButtons
             sentencesID_SelectedList={rest.sentencesID_SelectedList}
             toggleDrawer={rest.toggleDrawer}
             SentencebookPush={rest.SentencebookPush}/>
