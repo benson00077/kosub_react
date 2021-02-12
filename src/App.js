@@ -76,9 +76,9 @@ function App() {
                         ? (<h3>Logged In Successfully</h3>) 
                         : (<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>)
                       }/>   
-              <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
+              {/* <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
                 <MySentenceController isLoggedIn={isLoggedIn} user={user} ifUpdateMySentencePage={ifUpdateMySentencePage}/>
-              </PrivateRoute>
+              </PrivateRoute> */}
 
             </Switch>
           </div>
