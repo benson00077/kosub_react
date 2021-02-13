@@ -1,8 +1,8 @@
 import React from 'react'
-
+import {useState} from 'react'
 
 function About({headerImg, headerTitle, headerContent, headerButton}) {
-  
+
   return (
      <div className="content-wrapper">
       <div className="content-wrapper-header">

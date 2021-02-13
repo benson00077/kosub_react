@@ -77,10 +77,9 @@ function ContentWrapperSearch({ ...rest }) {
       <div className="content-section">
         <div className="content-section-title">{rest.sectionTitle}</div>
         <div className="apps-card">
-          {/* {appCardsRenderer(rest.ko, rest.zh, rest.en)} */}
-          <AppCards koList={rest.ko} zhList={rest.zh} enList={rest.en} idList={rest.id}
+          <AppCards 
             koShow={koShow} zhShow={zhShow} enShow={enShow}
-            sentenceID_ClickHandler={sentenceID_ClickHandler} />
+            sentenceID_ClickHandler={sentenceID_ClickHandler} />  
 
         </div>
       </div>

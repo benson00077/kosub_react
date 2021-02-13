@@ -1,13 +1,16 @@
-import React, { useState }from 'react'
+import React, { useContext }from 'react'
 import axios from 'axios'
 import ContentWrapperSearch from './ContentWrapperSearch'
+import { SearchContext } from './SearchContext'
 
-function SearchController({ko, zh, en, id, user, mainQuery, seteIfUpdateMySentencePage, ifUpdateMySentencePage}) {
+function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentencePage}) {
 
+    const [SearchResult, setSearchResult] = useContext(SearchContext)
+    
     const SentencebookPush = (myList) => {
         if (user) {
             let pushData = myList.map((eachSentenceID) => (
-                {id: user, sentence_id: eachSentenceID, query: mainQuery}
+                {id: user, sentence_id: eachSentenceID, query: SearchResult['mainQuery']}
             ))
             axios
                 .post("http://127.0.0.1:5000/sub/sentencebook", pushData)
@@ -33,9 +36,8 @@ function SearchController({ko, zh, en, id, user, mainQuery, seteIfUpdateMySenten
             
             <ContentWrapperSearch 
                 isSearchController={true} 
-                ko={ko} zh={zh} en={en} id={id}
                 headerTitle="Context" 
-                sectionTitle="Query Result"
+                sectionTitle={`Query Result: ${SearchResult['result_number']} sentneces found`}
 
                 SentencebookPush={SentencebookPush}   
 

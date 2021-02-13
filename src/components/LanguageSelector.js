@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { SearchContext } from './SearchContext'
 
 
-function LanguageSelector({value, setQueryLanguage}) {
+function LanguageSelector({value}) {
   
   const [isActive, setIsActive] = useState([true, false, false])
+  const [SearchResult, setSearchResult] = useContext(SearchContext)
+
+
 
   let checkLabel = ['한국어', '中文', 'English']
 
   const clickHandler = (language, i) => {
-    setQueryLanguage(language)
+    setSearchResult({...SearchResult, queryLanguage: language})
     let tempList = [false, false, false]
     tempList[i] = true
     setIsActive([...tempList])
