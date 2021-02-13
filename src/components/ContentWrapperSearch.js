@@ -77,7 +77,7 @@ function ContentWrapperSearch({ ...rest }) {
       <div className="content-section">
         <div className="content-section-title">{rest.sectionTitle}</div>
         <div className="apps-card">
-          <AppCards 
+          <AppCards controller='search'
             koShow={koShow} zhShow={zhShow} enShow={enShow}
             sentenceID_ClickHandler={sentenceID_ClickHandler} />  
 

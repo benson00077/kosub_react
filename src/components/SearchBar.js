@@ -11,7 +11,7 @@ function SearchBar({ seteIfRerenderSearchPage }) {
     const [query, setQuery] = useState("")
     const inputRef = useRef(null)
     let history = useHistory()
-    // const [fetchResponse, {fetch_search}] = useFetch(null)
+    const [fetchResponse, { fetch_search }] = useFetch(null)
 
     const submitHandler = e => {
         e.preventDefault()
@@ -20,14 +20,29 @@ function SearchBar({ seteIfRerenderSearchPage }) {
         axios
             .get(`http://127.0.0.1:5000/sub/query/${SearchResult['queryLanguage']}?word=${query}`)
             .then(res => {
-                inputRef.current.value = ''
-                setSearchResult({...SearchResult, mainQuery: query, result: res.data, result_number: res.data['id'].length })
+                setSearchResult({ ...SearchResult, mainQuery: query, result: res.data, result_number: res.data['id'].length })
             })
             .catch(err => {
                 console.log(err)
             })
 
+        setQuery('')
         history.push("/search")
+
+        // fetch_search(SearchResult.queryLanguage, query)
+
+        // const apifetch = async () => {
+        //     const res = fetch_search(SearchResult.queryLanguage, query)
+        //     return
+        // }
+
+        // apifetch()
+        //     .then (() => console.log(1))
+        //     .then (() => console.log(fetchResponse.post))
+        //     .then (() => console.log(2))
+        //     // await setSearchResult({...SearchResult, mainQuery: query, result: fetchResponse.post, result_number: fetchResponse.post['id'].length })
+        //     .then (() => history.push("/search"))
+        //     .then (() => console.log(3))
     }
 
     useEffect(() => {

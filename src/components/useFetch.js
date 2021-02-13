@@ -1,7 +1,6 @@
 import React, { useReducer, useEffect, useRef } from 'react'
 import axios from 'axios'
 
-
 function useFetch() {
 
     const initialState = {

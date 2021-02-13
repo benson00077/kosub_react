@@ -6,7 +6,7 @@ export const SearchContextProvider = props => {
     const [SearchResult, setSearchResult] = useState({
         queryLanguage: 'ko',
         mainQuery: '',
-        result: {id:[], ko:[], zh:[], en:[]},
+        result: { id: [], ko: [], zh: [], en: [] },
         result_number: 0
     });
 

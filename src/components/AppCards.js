@@ -1,22 +1,23 @@
-import React, {useContext, useEffect} from 'react'
+import React, { useContext } from 'react'
 import { SearchContext } from './SearchContext'
+import { UserContext } from './UserContext'
 import styles from './appCards.module.css'
 import useIfSelectSentence from './useIfSelectSentence'
 
-function AppCards({...rest }) {
+
+function AppCards({ ...rest }) {
 
     const [SearchResult, setSearchResult] = useContext(SearchContext)
-    console.log('----- AppCatds SearchResult ------')
-    console.log(SearchResult)
-    
+    const [userInfo, setUserInfo] = useContext(UserContext)
+
     // const [ ifsentences_SelectedList, ifSentence_Selected_ClickHandler ] = useIfSelectSentence(idList)
-    const [ ifsentences_SelectedList, ifSentence_Selected_ClickHandler ] = useIfSelectSentence(SearchResult['result']['id'])
+    const [ifsentences_SelectedList, ifSentence_Selected_ClickHandler] = useIfSelectSentence(SearchResult['result']['id'])
     //     console.log('------ ifsentences_SelectedList ------')
     //     console.log(ifsentences_SelectedList)
 
 
-    
-    
+
+
     // useEffect(() => {
     //     // return () => {
     //     //     cleanup
@@ -55,7 +56,10 @@ function AppCards({...rest }) {
 
                 <div className={styles.appCardOneSubtext}>
                     {/* {appCardRenderer(koList, zhList, enList)} */}
-                    {appCardRenderer(SearchResult['result']['ko'], SearchResult['result']['zh'], SearchResult['result']['en'], SearchResult['result']['id'])}
+                    {rest.controller === 'search' &&
+                        appCardRenderer(SearchResult['result']['ko'], SearchResult['result']['zh'], SearchResult['result']['en'], SearchResult['result']['id'])}
+                    {rest.controller === 'mysentence' &&
+                        appCardRenderer(userInfo['mysentence']['ko'], userInfo['mysentence']['zh'], userInfo['mysentence']['en'], userInfo['mysentence']['id'])}
                 </div>
 
                 <div className="app-card-buttons">
