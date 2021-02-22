@@ -5,6 +5,11 @@ import AppCards from './AppCards'
 import ShowHideHandler from './ShowHideHandler'
 import useSelectSentenceId from './useSelectSentenceId'
 
+import styles from './contentWrapperSearch.module.css'
+import Drawer from './Drawer'
+import useFetch from './useFetch'
+
+
 function ContentWrapperMySentence({ koList, zhList, enList, idList, ...rest }) {
 
     // state for Sentence content button
@@ -15,9 +20,34 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, ...rest }) {
     // pass to ApiButton & AppCards
     const [sentencesID_SelectedList, sentenceID_ClickHandler] = useSelectSentenceId(rest.id)
 
+    // pass to Drawer & ApiButton
+    const [fetchResponse, { fetch_drawer }] = useFetch(null)
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
     return (
         <div className="content-wrapper" id="content-wrapper">
 
+            <div className={`${styles.contentWrapperHeaderSearchpage} ${isDrawerOpen ? styles.contentWrapperHeaderSearchpage__isopen : ''}`}>
+                <div className="content-wrapper-context">
+                <h3 className="img-content">
+                    {rest.headerImg}
+                    {rest.headerTitle}
+                </h3>
+                <div className="content-text">
+                    <Drawer
+                    isLoading = {fetchResponse.isLoading}
+                    drawerKo={fetchResponse.post.ko}
+                    drawerZh={fetchResponse.post.zh}
+                    drawerEn={fetchResponse.post.en}
+                    drawerId={fetchResponse.post.id} />
+                    {rest.headerContent}
+                </div>
+                <button className="content-button" onClick={()=> setIsDrawerOpen(false)}>{rest.headerButton}</button>
+                </div>
+                <img className="content-wrapper-img" src="https://assets.codepen.io/3364143/glass.png" alt=""></img>
+            </div>
+            
+            
             <div>
                 <ShowHideHandler
                     koShow={koShow}
@@ -28,7 +58,10 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, ...rest }) {
                     setEnShow={setEnShow} />
 
                 <ApiButtons
-                    sentencesID_SelectedList={sentencesID_SelectedList} />
+                    isDrawerOpen={isDrawerOpen}
+                    setIsDrawerOpen={setIsDrawerOpen}
+                    sentencesID_SelectedList={sentencesID_SelectedList}
+                    fetch_drawer={fetch_drawer} />
             </div>
 
             <div className="content-section">

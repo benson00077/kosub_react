@@ -36,7 +36,7 @@ function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, ...re
                 console.log(err)
             })
     }, [ifUpdateMySentencePage])
-
+    
     return (
         <React.Fragment>
             {/* <ContentWrapperMySentence koList={match.ko} zhList={match.zh} enList={match.en} idList={match.id}
