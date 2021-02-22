@@ -38,6 +38,7 @@ function ContentWrapperSearch({ ...rest }) {
               drawerEn={rest.drawerResponseEn}
               drawerId={rest.drawerResponseId} /> */}
             <Drawer
+              isLoading = {fetchResponse.isLoading}
               drawerKo={fetchResponse.post.ko}
               drawerZh={fetchResponse.post.zh}
               drawerEn={fetchResponse.post.en}
