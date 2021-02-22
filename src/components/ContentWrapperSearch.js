@@ -21,6 +21,7 @@ function ContentWrapperSearch({ ...rest }) {
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetch_drawer }] = useFetch(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isButtonsShow, setIsButtonsShow] = useState(false)
 
 
   return (
@@ -51,26 +52,35 @@ function ContentWrapperSearch({ ...rest }) {
       </div>
 
 
-      <div>
-        <ShowHideHandler
-          koShow={koShow}
-          zhShow={zhShow}
-          enShow={enShow}
-          setKoShow={setKoShow}
-          setZhShow={setZhShow}
-          setEnShow={setEnShow} />
+      <div className={styles.buttons}>
+        <button onClick={() => setIsButtonsShow(!isButtonsShow)}>...</button>
+        
+        {isButtonsShow 
+          ? 
+            <React.Fragment>
+              <ShowHideHandler
+              koShow={koShow}
+              zhShow={zhShow}
+              enShow={enShow}
+              setKoShow={setKoShow}
+              setZhShow={setZhShow}
+              setEnShow={setEnShow} />
+                
+              <ApiButtons
+              isDrawerOpen={isDrawerOpen}
+              setIsDrawerOpen={setIsDrawerOpen}
+              SentencebookPush={rest.SentencebookPush}
+              sentencesID_SelectedList={sentencesID_SelectedList}
+              fetch_drawer={fetch_drawer} />
+            </React.Fragment> 
+          :
+            ''
+        }
 
         {/* <ApiButton 
             sentencesID_SelectedList={rest.sentencesID_SelectedList}
             toggleDrawer={rest.toggleDrawer}
             SentencebookPush={rest.SentencebookPush}/> */}
-
-        <ApiButtons
-          isDrawerOpen={isDrawerOpen}
-          setIsDrawerOpen={setIsDrawerOpen}
-          SentencebookPush={rest.SentencebookPush}
-          sentencesID_SelectedList={sentencesID_SelectedList}
-          fetch_drawer={fetch_drawer} />
       </div>
 
 

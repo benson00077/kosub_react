@@ -38,7 +38,7 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
                     className={styles.apiButton}
                     ref={buttonRef_mySentenceBook}
                     onClick={() => SentencebookPush(sentencesID_SelectedList)}>
-                    Add to my Sentence Book
+                    love
                  </button>
                 : ''
             }
@@ -48,7 +48,7 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
                     className={styles.apiButton}
                     ref={buttonRef_mySentenceBook}
                     onClick={() => SentencebookDel(sentencesID_SelectedList)}>
-                    Delete from my Sentence Book
+                    Del
                  </button>
                 : ''
             }
@@ -61,7 +61,7 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
                     fetch_drawer(sentencesID_SelectedList[0])
                     setIsDrawerOpen(!isDrawerOpen)
                 }}>
-                See Context of selected sentence
+                Context
             </button>
 
         </React.Fragment>

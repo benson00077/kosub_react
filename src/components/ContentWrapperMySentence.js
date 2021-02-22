@@ -48,7 +48,7 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
             </div>
             
             
-            <div>
+            <div className={styles.buttons}>
                 <ShowHideHandler
                     koShow={koShow}
                     zhShow={zhShow}

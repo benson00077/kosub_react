@@ -10,19 +10,7 @@ function AppCards({ ...rest }) {
     const [SearchResult, setSearchResult] = useContext(SearchContext)
     const [userInfo, setUserInfo] = useContext(UserContext)
 
-    // const [ ifsentences_SelectedList, ifSentence_Selected_ClickHandler ] = useIfSelectSentence(idList)
     const [ifsentences_SelectedList, ifSentence_Selected_ClickHandler] = useIfSelectSentence(SearchResult['result']['id'])
-    //     console.log('------ ifsentences_SelectedList ------')
-    //     console.log(ifsentences_SelectedList)
-
-
-
-
-    // useEffect(() => {
-    //     // return () => {
-    //     //     cleanup
-    //     // }
-    // }, [searchInfo['result']])
 
     // appCard section
     const appCardRenderer = (koList, zhList, enList, idList) => {
