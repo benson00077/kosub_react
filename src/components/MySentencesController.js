@@ -4,26 +4,10 @@ import ContentWrapperMySentence from './ContentWrapperMySentence'
 import { UserContext } from './UserContext'
 
 
-function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, ...rest }) {
+function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, seteIfUpdateMySentencePage, ...rest }) {
 
     const [match, setMatch] = useState({}) // Match result from api
-    const [sentencesID_SelectedList, setSentencesID_SelectedList] = useState([])
-
     const [userInfo, setUserInfo] = useContext(UserContext)
-
-
-    // Sentencebook select Handler
-    const sentenceID_ClickHandler = (id) => {
-        let tempList = []
-        // cancel selection or push selection to list
-        if (sentencesID_SelectedList.includes(id)) {
-            tempList = sentencesID_SelectedList.filter(ele => ele !== id)
-        } else {
-            tempList = [...sentencesID_SelectedList, id]
-        }
-        // setSentencesID_SelectedList([...new Set(tempList)])
-        setSentencesID_SelectedList([...tempList])
-    }
 
     useEffect(() => {
         axios
@@ -36,13 +20,36 @@ function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, ...re
                 console.log(err)
             })
     }, [ifUpdateMySentencePage])
+
+    const SentencebookDel = (myList) => {
+        if (user) {
+            let delData = myList.map((eachSentenceID) => (
+                {id: user, sentence_id: eachSentenceID}
+            ))
+            axios
+                .post("http://127.0.0.1:5000/sub/sentencebook/del", delData)
+                .then((res) => {
+                    if (res.data.isDeletedFromSentencebook) {
+                        window.alert("Deleted From Sentence Book!")
+                        seteIfUpdateMySentencePage(!ifUpdateMySentencePage)
+                    } else {
+                        window.alert("Oops! some error occur.") // BackEnd error
+                    }
+                })        
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+        if(!user) {
+            window.alert("Please Log in !")
+        }
+    }
     
     return (
         <React.Fragment>
             {/* <ContentWrapperMySentence koList={match.ko} zhList={match.zh} enList={match.en} idList={match.id}
                 sentenceID_ClickHandler={sentenceID_ClickHandler} sentencesID_SelectedList={sentencesID_SelectedList} /> */}
-            <ContentWrapperMySentence
-                sentenceID_ClickHandler={sentenceID_ClickHandler} sentencesID_SelectedList={sentencesID_SelectedList} />    
+            <ContentWrapperMySentence SentencebookDel={SentencebookDel}/>    
         </React.Fragment>
     )
 }

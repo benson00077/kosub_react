@@ -10,7 +10,7 @@ import Drawer from './Drawer'
 import useFetch from './useFetch'
 
 
-function ContentWrapperMySentence({ koList, zhList, enList, idList, ...rest }) {
+function ContentWrapperMySentence({ koList, zhList, enList, idList, SentencebookDel, ...rest }) {
 
     // state for Sentence content button
     const [koShow, setKoShow] = useState(true)
@@ -58,6 +58,7 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, ...rest }) {
                     setEnShow={setEnShow} />
 
                 <ApiButtons
+                    SentencebookDel={SentencebookDel}
                     isDrawerOpen={isDrawerOpen}
                     setIsDrawerOpen={setIsDrawerOpen}
                     sentencesID_SelectedList={sentencesID_SelectedList}
@@ -67,10 +68,6 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, ...rest }) {
             <div className="content-section">
                 <div className="content-section-title">{rest.sectionTitle}</div>
                 <div className="apps-card">
-
-                    {/* <AppCards koList={koList} zhList={zhList} enList={enList} idList={idList}
-                        koShow={koShow} zhShow={zhShow} enShow={enShow}
-                        sentenceID_ClickHandler={rest.sentenceID_ClickHandler} /> */}
 
                     <AppCards controller='mysentence'
                         koShow={koShow} zhShow={zhShow} enShow={enShow}

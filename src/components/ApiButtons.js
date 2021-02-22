@@ -4,7 +4,7 @@ import styles from './apiButton.module.css'
 
 
 // function ApiButtons({sentencesID_SelectedList, toggleDrawer, SentencebookPush}) {
-function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, SentencebookPush, fetch_drawer }) {
+function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, SentencebookPush, SentencebookDel, fetch_drawer }) {
 
 
     const buttonRef_mySentenceBook = useRef(null)
@@ -32,13 +32,27 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
 
     return (
         <React.Fragment>
+            
+            {SentencebookPush
+                ? <button
+                    className={styles.apiButton}
+                    ref={buttonRef_mySentenceBook}
+                    onClick={() => SentencebookPush(sentencesID_SelectedList)}>
+                    Add to my Sentence Book
+                 </button>
+                : ''
+            }
 
-            <button
-                className={styles.apiButton}
-                ref={buttonRef_mySentenceBook}
-                onClick={() => SentencebookPush(sentencesID_SelectedList)}>
-                Add to my Sentence Book
-            </button>
+            {SentencebookDel
+                ? <button
+                    className={styles.apiButton}
+                    ref={buttonRef_mySentenceBook}
+                    onClick={() => SentencebookDel(sentencesID_SelectedList)}>
+                    Delete from my Sentence Book
+                 </button>
+                : ''
+            }
+
 
             <button
                 className={styles.apiButton}

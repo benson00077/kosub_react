@@ -77,7 +77,7 @@ function App() {
                         : (<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />)
                     } />
                   <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
-                    <MySentenceController isLoggedIn={isLoggedIn} user={user} ifUpdateMySentencePage={ifUpdateMySentencePage} />
+                    <MySentenceController isLoggedIn={isLoggedIn} user={user} seteIfUpdateMySentencePage={seteIfUpdateMySentencePage} ifUpdateMySentencePage={ifUpdateMySentencePage} />
                   </PrivateRoute>
 
                 </Switch>
