@@ -28,7 +28,7 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
         <div className="content-wrapper" id="content-wrapper">
 
             <div className={`${styles.contentWrapperHeaderSearchpage} ${isDrawerOpen ? styles.contentWrapperHeaderSearchpage__isopen : ''}`}>
-                <div className="content-wrapper-context">
+                <div className={styles.contentWrapperContext}>
                 <h3 className="img-content">
                     {rest.headerImg}
                     {rest.headerTitle}

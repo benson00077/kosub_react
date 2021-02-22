@@ -26,7 +26,7 @@ function ContentWrapperSearch({ ...rest }) {
   return (
     <div className="content-wrapper">
       <div className={`${styles.contentWrapperHeaderSearchpage} ${isDrawerOpen ? styles.contentWrapperHeaderSearchpage__isopen : ''}`}>
-        <div className="content-wrapper-context">
+        <div className={styles.contentWrapperContext}>
           <h3 className="img-content">
             {rest.headerImg}
             {rest.headerTitle}
@@ -47,7 +47,7 @@ function ContentWrapperSearch({ ...rest }) {
           </div>
           <button className="content-button" onClick={()=> setIsDrawerOpen(false)}>{rest.headerButton}</button>
         </div>
-        <img className="content-wrapper-img" src="https://assets.codepen.io/3364143/glass.png" alt=""></img>
+        {/* <img className="content-wrapper-img" src="" alt=""></img> */}
       </div>
 
 

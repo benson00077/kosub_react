@@ -10,6 +10,9 @@ function Drawer({ drawerKo, drawerZh, drawerEn, drawerId, isLoading }) {
                 ? 'Fetching...'
                 : drawerId && drawerId.map((each, i) =>
                     <div key={i} className={styles.DrawerContainer_SubtextRow}>
+                        {/* {drawerKo[i] ? <p>{drawerKo[i]}</p> : <p> - </p>}
+                        {drawerZh[i] ? <p>{drawerZh[i]}</p> : <p> - </p>}
+                        {drawerEn[i] ? <p>{drawerEn[i]}</p> : <p> - </p>} */}
                         <p>{drawerKo[i]}</p>
                         <p>{drawerZh[i]}</p>
                         <p>{drawerEn[i]}</p>

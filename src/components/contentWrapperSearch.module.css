@@ -40,24 +40,31 @@
   transition: all 0.5s ease-in-out;
   /* transform: translateX(0) translateY(0vh); */
   z-index: 1;  
-  width: 100vh;
-  height: 30vh;
+  width: 100vh; 
+  height: 45vh;
   opacity: 1;
 }
 
+.contentWrapperContext {
+  width: 100%;
+}
 
 .DrawerContainer {
-  width: 245%;
-  height: 200px ;
+  height: auto ;
   display: flex;
   flex-direction: column; 
   overflow-x: scroll;
 }
 
 .DrawerContainer_SubtextRow {
+  /* font-size: 18px; */
   border-radius: 10px;
   display: flex;
   flex-direction: row;  
   align-items: center;
   justify-content: space-around;
+}
+
+.DrawerContainer_SubtextRow p {
+  width: 30%;
 }
