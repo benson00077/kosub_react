@@ -35,7 +35,6 @@ function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentenceP
         <React.Fragment>
             
             <ContentWrapperSearch 
-                isSearchController={true} 
                 headerTitle="Context" 
                 sectionTitle={`Query Result: ${SearchResult['result_number']} sentneces found`}
 

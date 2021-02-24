@@ -10,10 +10,13 @@ import useFetch from './useFetch'
 
 function ContentWrapperSearch({ ...rest }) {
 
-  // state for Sentence content button
+  // if show sentence output
   const [koShow, setKoShow] = useState(true)
   const [zhShow, setZhShow] = useState(true)
   const [enShow, setEnShow] = useState(true)
+
+  // if show buttons for sentnece manipulating
+  const [isButtonsShow, setIsButtonsShow] = useState(false)
 
   // pass to ApiButton & AppCards
   const [sentencesID_SelectedList, sentenceID_ClickHandler] = useSelectSentenceId(rest.id)
@@ -21,7 +24,6 @@ function ContentWrapperSearch({ ...rest }) {
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetch_drawer }] = useFetch(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const [isButtonsShow, setIsButtonsShow] = useState(false)
 
 
   return (
@@ -39,48 +41,59 @@ function ContentWrapperSearch({ ...rest }) {
               drawerEn={rest.drawerResponseEn}
               drawerId={rest.drawerResponseId} /> */}
             <Drawer
-              isLoading = {fetchResponse.isLoading}
+              isLoading={fetchResponse.isLoading}
               drawerKo={fetchResponse.post.ko}
               drawerZh={fetchResponse.post.zh}
               drawerEn={fetchResponse.post.en}
               drawerId={fetchResponse.post.id} />
             {rest.headerContent}
           </div>
-          <button className="content-button" onClick={()=> setIsDrawerOpen(false)}>{rest.headerButton}</button>
+          <button className="content-button" onClick={() => setIsDrawerOpen(false)}>{rest.headerButton}</button>
         </div>
         {/* <img className="content-wrapper-img" src="" alt=""></img> */}
       </div>
 
 
-      <div className={styles.buttons}>
-        <button onClick={() => setIsButtonsShow(!isButtonsShow)}>...</button>
-        
-        {isButtonsShow 
-          ? 
-            <React.Fragment>
-              <ShowHideHandler
+      <div className={styles.dropdownParent}>
+      <button onClick={() => setIsButtonsShow(!isButtonsShow)}>...</button>
+      </div>
+      <div className={isButtonsShow ? styles.dropdown__isactive : styles.dropdown}>
+
+        <ShowHideHandler
+          koShow={koShow}
+          zhShow={zhShow}
+          enShow={enShow}
+          setKoShow={setKoShow}
+          setZhShow={setZhShow}
+          setEnShow={setEnShow} />
+
+        <ApiButtons
+          isDrawerOpen={isDrawerOpen}
+          setIsDrawerOpen={setIsDrawerOpen}
+          SentencebookPush={rest.SentencebookPush}
+          sentencesID_SelectedList={sentencesID_SelectedList}
+          fetch_drawer={fetch_drawer} />
+
+        {/* {isButtonsShow
+          ?
+          <React.Fragment>
+            <ShowHideHandler
               koShow={koShow}
               zhShow={zhShow}
               enShow={enShow}
               setKoShow={setKoShow}
               setZhShow={setZhShow}
               setEnShow={setEnShow} />
-                
-              <ApiButtons
+
+            <ApiButtons
               isDrawerOpen={isDrawerOpen}
               setIsDrawerOpen={setIsDrawerOpen}
               SentencebookPush={rest.SentencebookPush}
               sentencesID_SelectedList={sentencesID_SelectedList}
               fetch_drawer={fetch_drawer} />
-            </React.Fragment> 
-          :
-            ''
-        }
-
-        {/* <ApiButton 
-            sentencesID_SelectedList={rest.sentencesID_SelectedList}
-            toggleDrawer={rest.toggleDrawer}
-            SentencebookPush={rest.SentencebookPush}/> */}
+          </React.Fragment>
+          : ''
+        } */}
       </div>
 
 
@@ -90,7 +103,7 @@ function ContentWrapperSearch({ ...rest }) {
         <div className="apps-card">
           <AppCards controller='search'
             koShow={koShow} zhShow={zhShow} enShow={enShow}
-            sentenceID_ClickHandler={sentenceID_ClickHandler} />  
+            sentenceID_ClickHandler={sentenceID_ClickHandler} />
 
         </div>
       </div>

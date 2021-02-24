@@ -89,6 +89,10 @@
   flex-shrink: 0;
 }
 
+.side-home svg{
+  fill: #f9fafb;
+}
+
 .side-wrapper {
   margin-top: 20px;
 }
@@ -106,7 +110,8 @@
 
 .side-menu a {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   white-space: nowrap;
   text-decoration: none;
   color: #f9fafb;
@@ -121,6 +126,12 @@
 
 .side-menu a:hover {
   background-color: rgba(12, 14, 25, 0.3);
+}
+
+.side-menu a svg {
+  fill: #f9fafb;
+  width: 20px;
+  height: 20px;
 }
 
 .main-container {
@@ -151,7 +162,9 @@
   /*  */
   /* width: 100%; */
   justify-content: space-between;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png"),
+  /* background-image: url("https://www.transparenttextures.com/patterns/cubes.png"), */
+  /* background-image: url("https://www.transparenttextures.com/patterns/old-wall.png"), */
+  /* background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png"),
    linear-gradient(
     to right top,
     #cf4af3,
@@ -166,7 +179,11 @@
     #ffaa49,
     #ffc848,
     #ffe652
-   );
+   ); */
+   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png"),
+   /* linear-gradient(45deg, rgba(24,212,214,1) 0%, rgba(253,186,45,1) 100%); */
+   /* linear-gradient(45deg, rgba(3,195,198,1) 0%, rgba(252,221,22,1) 100%); */
+   linear-gradient(45deg, rgba(63,66,159,1) 0%, rgba(3,195,255,1) 50%, rgba(255,221,0,1) 100%);
   border-radius: 14px;
   padding: 20px 40px;
 }
@@ -190,7 +207,8 @@
   font-size: 14px;
   margin-top: 16px;
   line-height: 1.7em;
-  color: #ebecec;
+  /* color: #ebecec; */
+  color: #2a3a3a;
   display: -webkit-box;
   /* -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -217,7 +235,7 @@
 .content-wrapper-img {
   width: 186px;
   object-fit: cover;
-  margin-top: -25px;
+  /* margin-top: -25px; */
   object-position: center;
   @media screen and (max-width: 570px) {
    width: 110px;
@@ -247,7 +265,10 @@
 .app-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: calc(29% - 20px);
+  height: 30vh;
+  overflow-y: scroll;
   font-size: 16px;
   background-color: rgba(14, 151, 179, 0.13);
   border-radius: 14px;
