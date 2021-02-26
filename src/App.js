@@ -41,7 +41,7 @@ function App() {
               </div>
             </div>
 
-            <div className="wrapper">
+            <div className="wrapper"> 
               <div className="left-side">
                 <Nav isLoggedIn={isLoggedIn} />
               </div>

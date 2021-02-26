@@ -1,6 +1,6 @@
-/* ApiButton  */
+/* temparary aligned with apiButton.mudule.css */
 
-.apiButton {
+.showHideHandler {
     background-color: #3a6df0;
     border: none;
     padding: 8px 26px;
@@ -11,11 +11,11 @@
     transition: 0.3s;
     /* white-space: nowrap; */
   }
-  .apiButton:disabled {
+  .showHideHandler:disabled {
     background-color: #3a6ef04f;
     border: none;
     padding: 8px 26px;
-    color: rgb(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.096);
     border-radius: 20px;
     margin-top: 16px;
     cursor: default;

@@ -50,9 +50,9 @@ function AppCards({ ...rest }) {
                         appCardRenderer(userInfo['mysentence']['ko'], userInfo['mysentence']['zh'], userInfo['mysentence']['en'], userInfo['mysentence']['id'])}
                 </div>
 
-                <div className="app-card-buttons">
+                {/* <div className="app-card-buttons" >
                     <button className="content-button status-button"> ^ </button>
-                </div>
+                </div> */}
             </div>
         </React.Fragment>
     )

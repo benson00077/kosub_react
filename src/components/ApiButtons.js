@@ -11,6 +11,10 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
     const buttonRef_fetchContext = useRef(null)
     const history = useHistory() // history.push('/mysentnece') redirect
 
+    // CSS for svg img
+    const img_apibutton_style1 = { fill: 'rgba(218, 46, 136, 0.75)' }
+    const img_apibutton_style2 = { fill: 'rgba(80, 250, 240, 0.5)'}
+
     useEffect(() => {
         const len = sentencesID_SelectedList.length
 
@@ -38,7 +42,10 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
                     className={styles.apiButton}
                     ref={buttonRef_mySentenceBook}
                     onClick={() => SentencebookPush(sentencesID_SelectedList)}>
-                    love
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style={img_apibutton_style1}>
+                      <path d="M10 3.22l-.61-.6a5.5 5.5 0 00-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 00-7.78-7.77l-.61.61z" />
+                    </svg>      
+                    Favorite
                  </button>
                 : ''
             }
@@ -61,7 +68,10 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
                     fetch_drawer(sentencesID_SelectedList[0])
                     setIsDrawerOpen(!isDrawerOpen)
                 }}>
-                Context
+              <svg viewBox="0 0 20 20" style={img_apibutton_style2}>
+                <path d="M16 2h4v15a3 3 0 01-3 3H3a3 3 0 01-3-3V0h16v2zm0 2v13a1 1 0 001 1 1 1 0 001-1V4h-2zM2 2v15a1 1 0 001 1h11.17a2.98 2.98 0 01-.17-1V2H2zm2 8h8v2H4v-2zm0 4h8v2H4v-2zM4 4h8v4H4V4z"/>
+              </svg>        
+              Context
             </button>
 
         </React.Fragment>

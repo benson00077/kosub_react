@@ -73,33 +73,63 @@
 .dropdownParent{
   position: fixed;
   left: 95%;
-  top: 3%;
-  z-index: 100;
+  top: 1.5%;
+  transform: rotate(0turn);
+  transition: all 0.5s ease;
 }
+
+.dropdownParent:hover {
+  cursor: pointer;
+  transform: rotate(0.3turn);
+  transition: all 0.5s ease;
+}
+
 .dropdown {
-  display: none !important;
+  /* display: none !important; */
+  /* display: block; */
   /* be overwritten ......  */
   position: fixed;
-  left: 90%;
+  left: 89%;
   top: 10%;
   z-index: 100;
   display: flex;
   flex-direction: column;
-  transform: translateY(10px) ;
-  transition: all 0.4s ease;
+  transform-origin: right top;
+  transform: scale(0) ;
+  transition: all 0.3s ease;
 }
 
 .dropdown__isactive {
-  display: inherit;
+  /* display: inherit; */
+  background-color: rgba(61, 74, 110, 1);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.582);
+  padding: 1vh;
+  
   position: fixed;
-  left: 90%;
+  left: 89%;
   top: 10%;
   z-index: 100;
   display: flex;
   flex-direction: column;
-  transform: translateY(10px) ;
-  transition: all 0.4s ease;
+  transform: scale(1) ;
+  transition: all 0.3s ease;
   opacity: 1;
   pointer-events: all;
-  transform: translateY(25px);
+}
+
+.dropdown__isactive button:hover {
+  transform: translateY(-0.5vh);
+}
+
+/* goTop button */
+
+.goTop {
+  position: fixed;
+  left: 93%;
+  bottom: 5%;
+}
+
+.goTop:hover {
+  cursor: pointer;
 }

@@ -12,9 +12,9 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
       <div className="content-wrapper-header">
         <div className="content-wrapper-context">
           <h3 className="img-content">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path d="M10 20a10 10 0 110-20 10 10 0 010 20zm2-13c0 .28-.21.8-.42 1L10 9.58c-.57.58-1 1.6-1 2.42v1h2v-1c0-.29.21-.8.42-1L13 9.42c.57-.58 1-1.6 1-2.42a4 4 0 10-8 0h2a2 2 0 114 0zm-3 8v2h2v-2H9z"/>
-          </svg>
+            <svg viewBox="0 0 25 25" fill="white">
+              <path d="M8 20H3V10H0L10 0l10 10h-3v10h-5v-6H8v6z"/>
+            </svg>
             為什麼要用韓劇臺詞學韓文
           </h3>
           <div className="content-text">韓文為 high-context language ，句型變化繁複，沒有上下文、語境的參照 ，只會讓學習者混淆......</div>

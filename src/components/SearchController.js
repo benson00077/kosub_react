@@ -36,7 +36,9 @@ function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentenceP
             
             <ContentWrapperSearch 
                 headerTitle="Context" 
-                sectionTitle={`Query Result: ${SearchResult['result_number']} sentneces found`}
+                sectionTitle={"Search Information"}
+                sectionInfo={`Query : ${SearchResult['mainQuery']}`}
+                sectionInfo2={`Result : ${SearchResult['result_number']} sentneces found`}
 
                 SentencebookPush={SentencebookPush}   
 
