@@ -89,8 +89,8 @@ function ContentWrapperSearch({ ...rest }) {
       <div className="content-section">
         <div className="content-section-title">
           {rest.sectionTitle}
-          <p>{rest.sectionInfo}</p>
-          <p>{rest.sectionInfo2}</p>
+          <li>{rest.sectionInfo}</li>
+          <li>{rest.sectionInfo2}</li>
         </div>
         <div className="apps-card">
           <AppCards controller='search'

@@ -6,6 +6,15 @@ function Drawer({ drawerKo, drawerZh, drawerEn, drawerId, isLoading }) {
 
     return (
         <div className={styles.DrawerContainer}>
+            { isLoading 
+                ? '' 
+                : 
+                <React.Fragment>
+                <li>Result: {drawerId.length} sentences found</li>
+                <li>Range: before and after 5 secs from target sentence</li>
+                </React.Fragment>
+            }
+            
             {isLoading
                 ? 'Fetching...'
                 : drawerId && drawerId.map((each, i) =>

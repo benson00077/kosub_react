@@ -6,22 +6,8 @@
     /*  */
     /* width: 100%; */
     justify-content: space-between;
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png"),
-     linear-gradient(
-      to right top,
-      #cf4af3,
-      #e73bd7,
-      #f631bc,
-      #fd31a2,
-      #ff3a8b,
-      #ff4b78,
-      #ff5e68,
-      #ff705c,
-      #ff8c51,
-      #ffaa49,
-      #ffc848,
-      #ffe652
-     );
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png"),
+     linear-gradient(45deg, rgba(63,66,159,1) 0%, rgba(3,195,255,1) 50%, rgba(255,221,0,1) 100%);
     border-radius: 14px;
     padding: 20px 40px;
     transition: all 0.3s ease-in-out;
@@ -32,7 +18,8 @@
     width: 100vh;
     height: 0vh;
     opacity: 0;
-
+    overflow: scroll;
+    padding-top: 5vh;
   }
 
 .contentWrapperHeaderSearchpage__isopen {
@@ -43,6 +30,7 @@
   width: 100vh; 
   height: 45vh;
   opacity: 1;
+  overflow: scroll;
 }
 
 .contentWrapperContext {

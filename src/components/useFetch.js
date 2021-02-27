@@ -48,9 +48,13 @@ function useFetch() {
             .get(`http://127.0.0.1:5000/sub/query/${queryLanguage}?word=${mainQuery}`)
             .then((res) => {
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+                console.log('fethcing response in fetch_search function')
+                console.log(res)
+                console.log(state)
             })
             .catch((err) => {
                 dispatch({ type: 'FETCH_ERROR' })
+                // console.log(err)
             })
     }
 
@@ -59,7 +63,6 @@ function useFetch() {
             .get(`http://127.0.0.1:5000/sub/search/all?id=${id}&contextrange=5000`)
             .then((res) => {
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
-                console.log('fetch response from fetch_drawer')
             })
             .catch((err) => {
                 dispatch({ type: 'FETCH_ERROR' })

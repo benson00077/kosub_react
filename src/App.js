@@ -12,6 +12,7 @@ import MySentenceController from './components/MySentencesController'
 import SearchBar from './components/SearchBar';
 import { SearchContextProvider } from './components/SearchContext';
 import { UseContextProvider } from './components/UserContext'
+import SearchRawPage from './components/SearchRawPage';
 
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
                           <SearchController user={user}
                             seteIfUpdateMySentencePage={seteIfUpdateMySentencePage} ifUpdateMySentencePage={ifUpdateMySentencePage} />
                         )
-                        : (<h3>How to Use ?????</h3>)
+                        : <SearchRawPage/>
                     } />
 
                   {/* <Route path="/search">  

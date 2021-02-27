@@ -7,15 +7,16 @@ import useIfSelectSentence from './useIfSelectSentence'
 
 function AppCards({ ...rest }) {
 
-    const [SearchResult, setSearchResult] = useContext(SearchContext)
+    const [searchResult, setSearchResult] = useContext(SearchContext)
     const [userInfo, setUserInfo] = useContext(UserContext)
 
-    const [ifsentences_SelectedList, ifSentence_Selected_ClickHandler] = useIfSelectSentence(SearchResult['result']['id'])
+    const [ifsentences_SelectedList, ifSentence_Selected_ClickHandler] = useIfSelectSentence(searchResult['result']['id'])
 
     // appCard section
-    const appCardRenderer = (koList, zhList, enList, idList) => {
+    const appCardRenderer = (koList, zhList, enList, idList, noResult) => {
         return (
             <React.Fragment>
+                {noResult ? 'no result found' : ''}
                 {idList && idList.map(
                     (each, i) =>
                         <div
@@ -36,6 +37,7 @@ function AppCards({ ...rest }) {
 
     return (
         <React.Fragment>
+            
             <div className={styles.appCardOne}>
                 <span>
                     {rest.appCardImg}
@@ -45,7 +47,13 @@ function AppCards({ ...rest }) {
                 <div className={styles.appCardOneSubtext}>
                     {/* {appCardRenderer(koList, zhList, enList)} */}
                     {rest.controller === 'search' &&
-                        appCardRenderer(SearchResult['result']['ko'], SearchResult['result']['zh'], SearchResult['result']['en'], SearchResult['result']['id'])}
+                        appCardRenderer(
+                            searchResult['result']['ko'], 
+                            searchResult['result']['zh'], 
+                            searchResult['result']['en'], 
+                            searchResult['result']['id'],
+                            searchResult['noResult']
+                        )}
                     {rest.controller === 'mysentence' &&
                         appCardRenderer(userInfo['mysentence']['ko'], userInfo['mysentence']['zh'], userInfo['mysentence']['en'], userInfo['mysentence']['id'])}
                 </div>
