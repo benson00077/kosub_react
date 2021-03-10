@@ -1,20 +1,22 @@
 # Kosub
 
-Kosub is a SPA demo in which one can search the subtitles from K-drama "Goblin" by some Korean/Chinese/English word query.
+Kosub is a demo SPA in which one can search the subtitles from K-drama "Goblin" by some Korean/Chinese/English word query.
 
 
 ## Website content
-Following main contnets included:
+Following main contents included:
 
 - Regiser (to be updated)
 - Log in
 - Searching page
-- My Favorite Sentence page
+- MySentence page
 
-Following helper buttons included in Searching page:
+Following helper buttons included in Searching & MySentence page:
 
-- Show/Hide English, Chinese or Korean line in Search Page.
+- Show/Hide English, Chinese or Korean line.
 - Add-to-SentneceBook: Add the selected sentences as favorite.
+- Delete-from-SentenceBook: Delete the selected sentences from favorite.
+- Context button: Fetch the context of the selected senence.
 
 ## Front-end 
 
@@ -25,16 +27,16 @@ Following helper buttons included in Searching page:
 
 ## Back-end
 
- - Python Flask RESTful api
- - SQLite.
- - Subtiles pre-processed by Python module [KoNLPy](https://konlpy.org/en/v0.4.4/).
+ - Python Flask RESTful api deployed on Heroku
+ - PostgreSQL
+ - Subtiles db pre-processed by Python module [KoNLPy](https://konlpy.org/en/v0.4.4/).
 
 
-## Learn More: `Conjugatoin Form` in Korean
+## Learn More: the Conjugatoin Form in Korean
 
-Predicate(Verb/Adjective) have 2 forms. <br />
-Basic Form looks like: `하다`. <br />
-Conjugation Form looks like: `해요` or `합니다` etc. <br />
+Korean predicate(Verb/Adjective) have 2 forms. <br />
+- Basic Form looks like: `하다`. <br />
+- Conjugation Form looks like: `해요` or `합니다` etc. <br />
 
 Notice that `하` transform into `해` or `합` here. <br />
 It's hard to search a single word and get all it's variatio on the same time.
@@ -44,7 +46,7 @@ It's hard to search a single word and get all it's variatio on the same time.
 
 Pre-process of Korean sentences refered to as below functionalities:
 - Analyze morphemes
-- Sentnece Segment according to morphemes
+- Sentnece Segmentation according to morphemes
 
 Befor:
 ```bash
