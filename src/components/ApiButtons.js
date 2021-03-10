@@ -17,15 +17,17 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
 
     useEffect(() => {
         const len = sentencesID_SelectedList.length
+        console.log('---len---')
+        console.log(len)
 
-        // Button UI : Add to my Sentence Book 
+        // Button UI : Add to mySentence 
         if (len >= 1) {
             buttonRef_mySentenceBook.current.disabled = false
         } else {
             buttonRef_mySentenceBook.current.disabled = true
         }
 
-        // Button UI : See Context of selected sentence
+        // Button UI : Fetch Context of selected sentence
         if (len === 1) {
             buttonRef_fetchContext.current.disabled = false
         } else {
@@ -65,8 +67,12 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
                 className={styles.apiButton}
                 ref={buttonRef_fetchContext}
                 onClick={() => {
+                    if (sentencesID_SelectedList.length !== 0) {
                     fetch_drawer(sentencesID_SelectedList[0])
                     setIsDrawerOpen(!isDrawerOpen)
+                  } else {
+                    window.alert("Please select a sentence to see it's context")
+                  }
                 }}>
               <svg viewBox="0 0 20 20" style={img_apibutton_style2}>
                 <path d="M16 2h4v15a3 3 0 01-3 3H3a3 3 0 01-3-3V0h16v2zm0 2v13a1 1 0 001 1 1 1 0 001-1V4h-2zM2 2v15a1 1 0 001 1h11.17a2.98 2.98 0 01-.17-1V2H2zm2 8h8v2H4v-2zm0 4h8v2H4v-2zM4 4h8v4H4V4z"/>
