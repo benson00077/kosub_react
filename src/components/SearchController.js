@@ -7,13 +7,15 @@ function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentenceP
 
     const [searchResult, setSearchResult] = useContext(SearchContext)
     
+    const sentencebookpush_root_url = 'https://kosub-api-pro.herokuapp.com'
+    
     const SentencebookPush = (myList) => {
         if (user) {
             let pushData = myList.map((eachSentenceID) => (
                 {id: user, sentence_id: eachSentenceID, query: searchResult['mainQuery']}
             ))
             axios
-                .post("http://127.0.0.1:5000/sub/sentencebook", pushData)
+                .post(`${sentencebookpush_root_url}/sub/sentencebook`, pushData)
                 .then((res) => {
                     if (res.data.isAddedToSentencebook) {
                         window.alert("Added to Sentence Book!")

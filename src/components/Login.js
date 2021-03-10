@@ -18,6 +18,9 @@ function PrivateRoute({ children, ...rest }) {
 
 
 function Login( {setIsLoggedIn, setUser} ) {
+    
+    const login_root_url = 'https://kosub-api-pro.herokuapp.com'
+
     const [redirectToReferer, setRedirectToReferer] = useState(false)
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
@@ -28,7 +31,7 @@ function Login( {setIsLoggedIn, setUser} ) {
     const login = (e) => {
         e.preventDefault()
         axios
-            .post('http://127.0.0.1:5000/sub/login', {user: userName, pass: password})
+            .post(`${login_root_url}/sub/login`, {user: userName, pass: password})
             .then((res) => { 
                 if (res.data.isLoggedIn) {
                   setRedirectToReferer(true)

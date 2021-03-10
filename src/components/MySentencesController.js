@@ -6,12 +6,14 @@ import { UserContext } from './UserContext'
 
 function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, seteIfUpdateMySentencePage, ...rest }) {
 
+    const mysentence_root_url = 'https://kosub-api-pro.herokuapp.com'
+    
     const [match, setMatch] = useState({}) // Match result from api
     const [userInfo, setUserInfo] = useContext(UserContext)
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/sub/sentencebook?id=${user}`)
+            .get(`${mysentence_root_url}/sub/sentencebook?id=${user}`)
             .then((res) => {
                 // setMatch(res.data)
                 setUserInfo({...userInfo, mysentence: res.data, mysentence_number: res.data['id'].length})
@@ -27,7 +29,7 @@ function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, seteI
                 {id: user, sentence_id: eachSentenceID}
             ))
             axios
-                .post("http://127.0.0.1:5000/sub/sentencebook/del", delData)
+                .post(`${mysentence_root_url}/sub/sentencebook/del`, delData)
                 .then((res) => {
                     if (res.data.isDeletedFromSentencebook) {
                         window.alert("Deleted From Sentence Book!")
