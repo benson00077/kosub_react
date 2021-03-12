@@ -121,3 +121,187 @@
 .goTop:hover {
   cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width:480px) and (max-width: 1200px) {
+
+  /* Drawer */
+  .contentWrapperHeaderSearchpage{
+    width: 55vw;
+  }
+  .contentWrapperHeaderSearchpage__isopen{
+    width: 55vw;
+  }
+
+  .DrawerContainer_SubtextRow {
+    flex-direction: column;
+  }
+  
+  .DrawerContainer_SubtextRow p {
+    width: 100%;
+  }
+  
+  
+  /* Buttons */
+  .dropdownParent{
+    position: fixed;
+    left: 6vw;
+    top: 90%;
+    transform: rotate(0turn);
+    transition: all 0.5s ease;
+  }
+  .dropdownParent:hover {
+    cursor: pointer;
+    transform: rotate(0.3turn);
+    transition: all 0.5s ease;
+  }
+  .dropdown {
+    position: fixed;
+    left: 0%;
+    top: 20vh;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transform-origin: right top;
+    transform: scale(0) ;
+    transition: all 0.3s ease;
+  }
+  .dropdown__isactive {
+    /* display: inherit; */
+    background-color: rgba(61, 74, 110, 1);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.582);
+    padding: 1vh;
+    position: fixed;
+    left: 2vw;
+    top: 35vh;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transform: scale(1) ;
+    transition: all 0.3s ease;
+    opacity: 1;
+    pointer-events: all;
+  }
+  .dropdown__isactive button:hover {
+    transform: translateY(-0.5vh);
+  }
+  
+  /* goTop button */
+  .goTop {
+    display: none;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 480px){
+  /* Drawer */
+  .contentWrapperHeaderSearchpage{
+    width: 63%;
+  }
+  .contentWrapperHeaderSearchpage__isopen{
+    width: 63%;
+  }
+
+  .DrawerContainer_SubtextRow {
+    flex-direction: column;
+  }
+  
+  .DrawerContainer_SubtextRow p {
+    width: 100%;
+  }
+  
+  
+  /* Buttons */
+  .dropdownParent{
+    position: fixed;
+    left: 2%;
+    top: 2.7%;
+    transform: rotate(0turn);
+    transition: all 0.5s ease;
+  }
+  .dropdownParent:hover {
+    cursor: pointer;
+    transform: rotate(0.3turn);
+    transition: all 0.5s ease;
+  }
+  .dropdown {
+    position: fixed;
+    left: 0%;
+    top: 9.5%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transform-origin: right top;
+    transform: scale(0) ;
+    transition: all 0.3s ease;
+  }
+  .dropdown__isactive {
+    /* display: inherit; */
+    background-color: rgba(61, 74, 110, 1);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.582);
+    padding: 1vh;
+    position: fixed;
+    left: 0%;
+    top: 9.5%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transform: scale(1) ;
+    transition: all 0.3s ease;
+    opacity: 1;
+    pointer-events: all;
+  }
+  .dropdown__isactive button:hover {
+    transform: translateY(-0.5vh);
+  }
+  
+  /* goTop button */
+  .goTop {
+    display: none;
+  }
+}

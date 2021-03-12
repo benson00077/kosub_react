@@ -43,7 +43,7 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
       </div>
 
       <div className="side-wrapper">
-        <div className="side-title">Personalization</div>
+        <div className="side-title">Account</div>
         <div className="side-menu">
 
           {isLoggedIn

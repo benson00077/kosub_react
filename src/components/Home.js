@@ -4,7 +4,10 @@ import React from 'react'
 function Home({headerImg, headerTitle, headerContent, headerButton}) {
 
   const img_content_wrapper = '/logo.png'
-  const img_content_wrapper_style = { width: '25vh', height: '25vh' }
+  const window_wid = window.innerWidth
+  const img_content_wrapper_style = (window_wid <= 480) ? { width: '15vh', height: '15vh' } : { width: '25vh', height: '25vh' }
+  console.log(window_wid)
+  console.log(img_content_wrapper_style)
   const img_appcard_logo_style = { fill: 'rgba(81, 201, 175, 0.75)'}
   
   return (
@@ -69,7 +72,7 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
               綜合來說：同一句話太多表達
             </span>
             <div class="app-card__subtext">
-              <p>同一句話指的是，直譯成中文後意思相同的句子，舉例而言，我們可能會問</p>
+              <p>舉例而言，中文我們可能會問</p>
               <ul>
                 <li>要去哪？</li>
               </ul>

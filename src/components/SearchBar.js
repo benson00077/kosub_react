@@ -33,12 +33,14 @@ function SearchBar({ seteIfRerenderSearchPage }) {
             {...searchResult, 
             isLoading: true}
         )
-        setTimeout(() => {
-            console.log('async fetching testing...')
-            console.log('REMEMBER: to REFACTORING fake fetching waiting block here')
-            console.log('Since fetch_search would be put to event loop ... as a cb function')
-            fetch_search(searchResult.queryLanguage, query)
-        }, 2000)
+
+        fetch_search(searchResult.queryLanguage, query)
+        // setTimeout(() => {
+        //     console.log('async fetching testing...')
+        //     console.log('REMEMBER: to REFACTORING fake fetching waiting block here')
+        //     console.log('Since fetch_search would be put to event loop ... as a cb function')
+        //     fetch_search(searchResult.queryLanguage, query)
+        // }, 2000)
 
         history.push("/search")
     }

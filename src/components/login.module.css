@@ -2,8 +2,8 @@
 
 .login {
     position: relative;
-    top: 40%;
-    left: 40%;
+    top: 50%;
+    left: 45%;
     margin: -150px 0 0 -150px;
     width: 300px;
     height: 300px;
@@ -43,4 +43,23 @@
 .login button {
     width: 100%;
     
+}
+
+
+@media (max-width: 480px){
+    .login {
+        position: relative;
+        top: 15vh;
+        left: 5vw;
+        margin: 0 0 0 0;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 1200px){
+    .login {
+        position: relative;
+        top: 20vh;
+        left: 20vw;
+        margin: 0 0 0 0;
+    }
 }

@@ -34,12 +34,16 @@ function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentenceP
     }
 
     const loadingUI_loader_css = {
-        position: 'fixed',
-        top: '45vh',
-        left: '85vh',
+        // position: 'fixed',
+        position: 'absolute',
+        // top: '45vh',
+        // left: '85vh',
+        top: '40vh',
+        left: '40vw',
         margin: '0 0 2em',
         height: '100px',
-        width: '20%',
+        // width: '20%',
+        width: '20vh',
         text_align: 'center',
         padding: '1em',
         margin: '0 auto 1em',
@@ -62,6 +66,10 @@ function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentenceP
                     repeatCount="indefinite"/>
                   </path>
                 </svg>  
+                <div style={{color: 'white'}}>
+                <p>Activating Herkou database....</p>
+                <p>Might take few seconds to initally wake it up</p>
+                </div>
             </div>
         )
     }
