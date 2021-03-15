@@ -21,7 +21,13 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
             為什麼要用韓劇臺詞學韓文
           </h3>
           <div className="content-text">韓文為 high-context language ，句型變化繁複，沒有上下文、語境的參照 ，只會讓學習者混淆......</div>
-          <button className="content-button" > <a href="https://www.quora.com/Why-is-South-Korea-high-context">了解更多</a></button>
+          <button className="content-button" > 
+            <a href="https://www.quora.com/Why-is-South-Korea-high-context" 
+              target="_blank"
+              style={{'text-decoration': 'none', color: '#f9fafb', display: "table-cell"}}>
+                了解更多
+            </a>
+          </button>
         </div>  
         <img className="content-wrapper-img" src={img_content_wrapper} alt="" style={img_content_wrapper_style}></img>
       </div>  
@@ -43,7 +49,7 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
               <p>背過的單字，在使用時長得完全不一樣，而且是每次都變得跟上一次不一樣⋯⋯。</p>
             </div>
             <div className="app-card-buttons">
-              <button className="content-button status-button">Update</button>
+              {/* <button className="content-button status-button">Update</button> */}
             </div>
           </div>
           
@@ -59,7 +65,7 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
               <p>韓國人能自然使用各種文法描述不同心情，因為他們從小就按照上下文、語境來學習。</p> 
             </div>
             <div class="app-card-buttons">
-              <button class="content-button status-button">Update</button>
+              {/* <button class="content-button status-button">Update</button> */}
             <div class="menu"></div>
             </div>
           </div>
@@ -88,7 +94,7 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
               </ul>
             </div>
             <div class="app-card-buttons">
-              <button class="content-button status-button">Update</button>
+              {/* <button class="content-button status-button">Update</button> */}
               <div class="menu"></div>
             </div>
           </div>

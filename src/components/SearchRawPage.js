@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
 
   // CSS for svg img for dropdownParent button
   const img_flag_style = { width:'35'}
+
+  // UI for copy '사랑하다' button 
+  const [copySuccess, setCopySuccess] = useState('Copy 안녕하다');
 
   return (
      <div className="content-wrapper">
@@ -16,9 +19,16 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
             If your'e new to Korean and this website
           </h3>
           <div className="content-text">
-            <p>You may want to search: 사랑하다 in Korean on the right-top searching bar so as to test this app. </p>
+            <p>You may want to search: 안녕하다 (greetings in Korean) on the right-top searching bar so as to test this app. </p>
           </div>
-          <button className="content-button">Start free trial</button>
+          <button className="content-button"
+            onClick={() => {
+              navigator.clipboard.writeText('안녕하다').then(
+                setCopySuccess('Copied Succesfully !')
+              )
+            }}>
+            {copySuccess}
+          </button>
         </div>  
         {/* <img className="content-wrapper-img" src="https://assets.codepen.io/3364143/glass.png" alt=""></img> */}
         <img className="content-wrapper-img" src="/vector-creator2.png" alt=""></img>
@@ -48,7 +58,7 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
               可搜尋出 動/形容詞 的不同變化 
             </div>
             <div className="app-card-buttons">
-              <button className="content-button status-button">了解更多</button>
+              {/* <button className="content-button status-button">了解更多</button> */}
             </div>
           </div>
           
@@ -72,7 +82,7 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
               <div>在搜尋前，選擇 Searh in 中文</div>
             </div>
             <div class="app-card-buttons">
-              <button class="content-button status-button">了解更多</button>
+              {/* <button class="content-button status-button">了解更多</button> */}
             <div class="menu"></div>
             </div>
           </div>
@@ -101,7 +111,7 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
               <div>Remember to select query language</div>
             </div>
             <div class="app-card-buttons">
-              <button class="content-button status-button">了解更多</button>
+              {/* <button class="content-button status-button">了解更多</button> */}
               <div class="menu"></div>
             </div>
           </div>

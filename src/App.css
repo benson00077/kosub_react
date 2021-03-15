@@ -194,6 +194,10 @@
     /* white-space: nowrap; */
   }
 
+  .content-button a {
+    text-decoration: none !important;
+  }
+
   .content-wrapper-img {
     position: relative;
     /* top: 8vh; */
@@ -235,7 +239,7 @@
     border-radius: 14px;
     border: 1px solid rgba(16, 18, 27, 0.4);
     padding: 20px;
-    cursor: pointer;
+    cursor: crosshair;
     transition: 0.3s ease;
     /* margin-left: 20px; */
     margin-top: 10px;

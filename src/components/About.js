@@ -24,10 +24,9 @@ function About({headerImg, headerTitle, headerContent, headerButton}) {
             </svg>
             About this website
           </h3>
-          <div className="content-text">A browse-based searching engine in which one can search the subtitles from K-drama so as to enjoy learning Korean with context</div>
-          <button className="content-button">Start free trial</button>
+          <div className="content-text">This is a browse-based app in which one can search the subtitles from K-drama so as to enjoy learning Korean with context</div>
+          {/* <button className="content-button">Start free trial</button> */}
         </div>  
-        {/* <img className="content-wrapper-img" src="https://assets.codepen.io/3364143/glass.png" alt=""></img> */}
         <img className="content-wrapper-img" src="/vector-creator.png" alt=""></img>
       </div>  
         
@@ -52,7 +51,13 @@ function About({headerImg, headerTitle, headerContent, headerButton}) {
               </ul>
             </div>
             <div className="app-card-buttons">
-              <button className="content-button status-button">Why KoNLPy ?</button>
+              <button className="content-button status-button">
+              <a href="https://konlpy.org/en/latest/" 
+              target="_blank"
+              style={{'text-decoration': 'none', color: '#f9fafb', display: "table-cell"}}>
+                What is KoNLPy ?
+              </a>  
+              </button>
             </div>
           </div>
           
@@ -66,12 +71,18 @@ function About({headerImg, headerTitle, headerContent, headerButton}) {
             <div class="app-card__subtext">
               RESTful api built with 
               <ul>
-                <li>Flask</li>
-                <li>SQLite</li>
+                <li>Flask + PostreSQL</li>
+                <li>Deployed on Heroku</li>
               </ul>
             </div>
             <div class="app-card-buttons">
-              <button class="content-button status-button">Building log</button>
+              {/* <button class="content-button status-button"> */}
+                <a href="https://github.com/benson00077/kosub_api_heroku" target="_blank">
+                  <svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                  </svg>
+                  </a>  
+              {/* </button> */}
             <div class="menu"></div>
             </div>
           </div>
@@ -95,7 +106,13 @@ function About({headerImg, headerTitle, headerContent, headerButton}) {
               </ul>
             </div>
             <div class="app-card-buttons">
-              <button class="content-button status-button">Building log</button>
+              {/* <button class="content-button status-button"> */}
+                <a href="https://github.com/benson00077/kosub_react" target="_blank">
+                <svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20">
+                  <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                </a>
+              {/* </button> */}
               <div class="menu"></div>
             </div>
           </div>
