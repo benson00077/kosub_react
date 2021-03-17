@@ -7,8 +7,8 @@ import useIfSelectSentence from './useIfSelectSentence'
 
 function AppCards({ ...rest }) {
 
-    const [searchResult, setSearchResult] = useContext(SearchContext)
-    const [userInfo, setUserInfo] = useContext(UserContext)
+    const [searchResult] = useContext(SearchContext)
+    const [userInfo] = useContext(UserContext)
 
     const [ifsentences_SelectedList, ifSentence_Selected_ClickHandler] = useIfSelectSentence(searchResult['result']['id'])
 

@@ -5,7 +5,7 @@ import { SearchContext } from './SearchContext'
 
 function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentencePage}) {
 
-    const [searchResult, setSearchResult] = useContext(SearchContext)
+    const [searchResult] = useContext(SearchContext)
     
     const sentencebookpush_root_url = 'https://kosub-api-pro.herokuapp.com'
     
@@ -46,7 +46,7 @@ function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentenceP
         width: '20vh',
         text_align: 'center',
         padding: '1em',
-        margin: '0 auto 1em',
+        // margin: '0 auto 1em',
         display: 'inline-block',
         vertical_align: 'top'
     }

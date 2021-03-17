@@ -73,7 +73,7 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
               </svg>
               中文
             </span>
-            <div class="app-card__subtext">
+            <div className="app-card__subtext">
               簡易搜尋 單字、表達，例如：
               <ul>
                 <li>名詞：故事</li>
@@ -81,13 +81,13 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
               </ul>
               <div>在搜尋前，選擇 Searh in 中文</div>
             </div>
-            <div class="app-card-buttons">
+            <div className="app-card-buttons">
               {/* <button class="content-button status-button">了解更多</button> */}
-            <div class="menu"></div>
+            <div className="menu"></div>
             </div>
           </div>
 
-          <div class="app-card">
+          <div className="app-card">
             <span>
               <svg viewBox="0 0 512 512" style={img_flag_style}>
                   <path fill="#f0f0f0" d="M0 85.331h512v341.337H0z" />
@@ -101,7 +101,7 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
               </svg>
               英文
             </span>
-            <div class="app-card__subtext"> 
+            <div className="app-card__subtext"> 
               簡易搜尋 單字、表達，例如：
                 <span> ( case-sensitive 區分大小寫 ) </span>
               <ul>
@@ -110,9 +110,9 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
               </ul>
               <div>Remember to select query language</div>
             </div>
-            <div class="app-card-buttons">
-              {/* <button class="content-button status-button">了解更多</button> */}
-              <div class="menu"></div>
+            <div className="app-card-buttons">
+              {/* <button className="content-button status-button">了解更多</button> */}
+              <div className="menu"></div>
             </div>
           </div>
 

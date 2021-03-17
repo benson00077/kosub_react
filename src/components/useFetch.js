@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useRef } from 'react'
+import { useReducer } from 'react'
 import axios from 'axios'
 
 function useFetch() {
@@ -50,9 +50,9 @@ function useFetch() {
             .get(`${root_url}/sub/query/${queryLanguage}?word=${mainQuery}`)
             .then((res) => {
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
-                console.log('fethcing response in fetch_search function')
-                console.log(res)
-                console.log(state)
+                // console.log('fethcing response in fetch_search function')
+                // console.log(res)
+                // console.log(state)
             })
             .catch((err) => {
                 dispatch({ type: 'FETCH_ERROR' })

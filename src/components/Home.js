@@ -6,8 +6,8 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
   const img_content_wrapper = '/logo.png'
   const window_wid = window.innerWidth
   const img_content_wrapper_style = (window_wid <= 480) ? { width: '15vh', height: '15vh' } : { width: '25vh', height: '25vh' }
-  console.log(window_wid)
-  console.log(img_content_wrapper_style)
+  // console.log(window_wid)
+  // console.log(img_content_wrapper_style)
   const img_appcard_logo_style = { fill: 'rgba(81, 201, 175, 0.75)'}
   
   return (
@@ -23,8 +23,8 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
           <div className="content-text">韓文為 high-context language ，句型變化繁複，沒有上下文、語境的參照 ，只會讓學習者混淆......</div>
           <button className="content-button" > 
             <a href="https://www.quora.com/Why-is-South-Korea-high-context" 
-              target="_blank"
-              style={{'text-decoration': 'none', color: '#f9fafb', display: "table-cell"}}>
+              target="_blank" rel="noreferrer noopener"
+              style={{'textDecoration': 'none', color: '#f9fafb', display: "table-cell"}}>
                 了解更多
             </a>
           </button>
@@ -60,24 +60,24 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
             </svg>
               文法、規則：相近文法太多
             </span>
-            <div class="app-card__subtext">
+            <div className="app-card__subtext">
               <p>太多相近文法，教科書上單一例句說明不清楚。</p>
               <p>韓國人能自然使用各種文法描述不同心情，因為他們從小就按照上下文、語境來學習。</p> 
             </div>
-            <div class="app-card-buttons">
+            <div className="app-card-buttons">
               {/* <button class="content-button status-button">Update</button> */}
-            <div class="menu"></div>
+            <div className="menu"></div>
             </div>
           </div>
 
-          <div class="app-card">
+          <div className="app-card">
             <span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style={img_appcard_logo_style}>
               <path d="M0 6c0-1.1.9-2 2-2h16a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V6zm2 0v8h16V6H2zm1 1h4v6H3V7z"/>
             </svg>
               綜合來說：同一句話太多表達
             </span>
-            <div class="app-card__subtext">
+            <div className="app-card__subtext">
               <p>舉例而言，中文我們可能會問</p>
               <ul>
                 <li>要去哪？</li>
@@ -93,9 +93,9 @@ function Home({headerImg, headerTitle, headerContent, headerButton}) {
                 <li>...</li>
               </ul>
             </div>
-            <div class="app-card-buttons">
-              {/* <button class="content-button status-button">Update</button> */}
-              <div class="menu"></div>
+            <div className="app-card-buttons">
+              {/* <button className="content-button status-button">Update</button> */}
+              <div className="menu"></div>
             </div>
           </div>
 

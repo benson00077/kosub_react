@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
 import styles from './apiButton.module.css'
 
 
@@ -9,7 +8,8 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
 
     const buttonRef_mySentenceBook = useRef(null)
     const buttonRef_fetchContext = useRef(null)
-    const history = useHistory() // history.push('/mysentnece') redirect
+    // const history = useHistory() 
+    // history.push('/mysentnece') redirect
 
     // CSS for svg img
     const img_apibutton_style1 = { fill: 'rgba(218, 46, 136, 0.75)' }
@@ -17,8 +17,6 @@ function ApiButtons({ sentencesID_SelectedList, setIsDrawerOpen, isDrawerOpen, S
 
     useEffect(() => {
         const len = sentencesID_SelectedList.length
-        console.log('---len---')
-        console.log(len)
 
         // Button UI : Add to mySentence 
         if (len >= 1) {

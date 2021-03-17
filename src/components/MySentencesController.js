@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import axios from 'axios'
 import ContentWrapperMySentence from './ContentWrapperMySentence'
 import { UserContext } from './UserContext'
@@ -7,8 +7,6 @@ import { UserContext } from './UserContext'
 function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, seteIfUpdateMySentencePage, ...rest }) {
 
     const mysentence_root_url = 'https://kosub-api-pro.herokuapp.com'
-    
-    const [match, setMatch] = useState({}) // Match result from api
     const [userInfo, setUserInfo] = useContext(UserContext)
 
     useEffect(() => {

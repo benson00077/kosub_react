@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Link, Redirect, useLocation, useHistory } from 'react-router-dom';
+import { Route, Redirect, useLocation } from 'react-router-dom';
 import axios from 'axios'
 import styles from './login.module.css'
 
@@ -64,11 +64,11 @@ function Login( {setIsLoggedIn, setUser} ) {
     )
 }
 
-function Logout( {setIsLoggedIn} ) {
-    <from>
+// function Logout( {setIsLoggedIn} ) {
+//     <from>
         
-    </from>
-}
+//     </from>
+// }
 
 export default Login
 export {

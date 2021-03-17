@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ShowHideHandler from './ShowHideHandler'
 
 function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
 
