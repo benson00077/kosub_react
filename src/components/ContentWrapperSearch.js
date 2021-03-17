@@ -25,7 +25,7 @@ function ContentWrapperSearch({ ...rest }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   // CSS for svg img for dropdownParent button
-  const img_dropdownparent_style = { width:'40' ,fill: 'rgba(255, 255, 255, 0.582)' }
+  const img_dropdownparent_style = { width:'4vh' ,fill: 'rgba(255, 255, 255, 0.582)' }
 
   // Go-To-Top button
   const goTop_ref = useRef(null)
