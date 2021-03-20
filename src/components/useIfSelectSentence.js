@@ -10,7 +10,7 @@ function useIfSelectSentence(idList) {
             let tempList = Array.from(Array(idList.length), ele => false)
             setIfsentences_SelectedList([...tempList])
         }
-        console.log(' ------ useSelectSentence.js --- useEffect render ------')
+        // console.log(' ------ useSelectSentence.js --- useEffect render ------')
     }, [idList])
 
 

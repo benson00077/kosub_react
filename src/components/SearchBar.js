@@ -48,8 +48,8 @@ function SearchBar({ seteIfRerenderSearchPage }) {
     useEffect(() => {
         // fetched sccesfully
         if (Object.keys(fetchResponse.post) != 0) {
-            console.log(fetchResponse.post)
-            console.log(query)
+            // console.log(fetchResponse.post)
+            // console.log(query)
 
             setSearchResult(
                 {...searchResult,   
@@ -63,8 +63,8 @@ function SearchBar({ seteIfRerenderSearchPage }) {
         }
         // fetch error
         if (!fetchResponse.isLoading && fetchResponse.error) {
-            console.log(fetchResponse)
-            console.log(query)
+            // console.log(fetchResponse)
+            // console.log(query)
             setSearchResult(
                 {...searchResult,
                 mainQuery: query,
