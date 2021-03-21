@@ -36,7 +36,12 @@
     font-weight: 500;
     margin-top: -5%;
     margin-left: -2.5%;
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+
+  .app::-webkit-scrollbar {
+    display: none;
+  } /* for Chrome in window os */
 }
 
 
@@ -80,7 +85,11 @@
     font-weight: 500;
     margin-top: 2vh;
     margin-left: 3vw;
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+  .app::-webkit-scrollbar {
+    display: none;
+  } /* for Chrome in window os */
 }
 
 /* @media (max-width: 992px) {
@@ -142,5 +151,9 @@
     font-weight: 500;
     margin-top: 5vh;
     margin-left: 5vw;
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+  .app::-webkit-scrollbar {
+    display: none;
+  } /* for Chrome in window os */
 }

@@ -62,7 +62,11 @@
     flex-direction: column;
     flex-grow: 1;
     overflow: scroll;
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }  
+  .wrapper::-webkit-scrollbar {
+    display: none;
+  } /* for Chrome in window os */
 
   /* 3rd class -- .left-side & .main-container */
   .left-side {
@@ -136,7 +140,11 @@
     height: 100%;
     overflow: scroll;
     background-color: rgba(16, 18, 27, 0.4);
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+  .content-wrapper::-webkit-scrollbar {
+    display: none;
+  }   /* for Chrome in window os */
 
   /* 5th class -- header */
 
@@ -244,6 +252,9 @@
     /* margin-left: 20px; */
     margin-top: 10px;
   }
+  .app-card::-webkit-scrollbar{
+    display: none;
+  } /* for Chrome in window os  */
 
   .app-card:hover {
     transform: scale(1.02);
@@ -385,7 +396,11 @@
     display: flex;
     flex-grow: 1;
     overflow: scroll;
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+  .wrapper::-webkit-scrollbar {
+    display: none;
+  } /* for Chrome in window os */
 
   /* 3rd class -- .left-side & .main-container */
 
@@ -459,7 +474,15 @@
     height: 100%;
     overflow: scroll;
     background-color: rgba(16, 18, 27, 0.4);
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+
+  .content-wrapper::-webkit-scrollbar {
+    display: none;
+  }   /* for Chrome in window os */
+
+
+
 
   /* 5th class -- header */
 
@@ -564,6 +587,9 @@
     margin-left: 20px;
     margin-top: 10px;
   }
+  .app-card::-webkit-scrollbar{
+    display: none;
+  } /* for Chrome in window os  */
 
   .app-card:hover {
     transform: scale(1.02);
@@ -703,7 +729,11 @@
     display: flex;
     flex-grow: 1;
     overflow: scroll;
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+  .wrapper::-webkit-scrollbar {
+    display: none;
+  } /* for Chrome in window os */
 
   /* 3rd class -- .left-side & .main-container */
 
@@ -777,7 +807,11 @@
     height: 100%;
     overflow: scroll;
     background-color: rgba(16, 18, 27, 0.4);
+    -ms-overflow-style: none; /* for IE/Edge no show scroll bar */
   }
+  .content-wrapper::-webkit-scrollbar {
+    display: none;
+  }   /* for Chrome in window os */
 
   /* 5th class -- header */
 
@@ -907,6 +941,10 @@
     margin-left: 20px;
     margin-top: 10px;
   }
+
+  .app-card::-webkit-scrollbar{
+    display: none;
+  } /* for Chrome in window os  */
 
   .app-card:hover {
     transform: scale(1.02);
