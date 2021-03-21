@@ -44,13 +44,12 @@ function SearchBar({ seteIfRerenderSearchPage }) {
         history.push("/search")
     }
 
-    // listening to axios fetching status
+    // listening to axios fetching
     useEffect(() => {
-        // fetched sccesfully
+        
+        // fetched sccesfully, pass fetched result to global search result
         if (Object.keys(fetchResponse.post) != 0) {
-            // console.log(fetchResponse.post)
             // console.log(query)
-
             setSearchResult(
                 {...searchResult,   
                 mainQuery: query, 
@@ -63,10 +62,11 @@ function SearchBar({ seteIfRerenderSearchPage }) {
         }
         // fetch error
         if (!fetchResponse.isLoading && fetchResponse.error) {
-            // console.log(fetchResponse)
             // console.log(query)
             setSearchResult(
                 {...searchResult,
+                result: { id: [], ko: [], zh: [], en: [] },
+                result_number: 0,
                 mainQuery: query,
                 isLoading: false,
                 noResult: true}
