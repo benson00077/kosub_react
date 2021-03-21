@@ -33,6 +33,10 @@
   overflow: scroll;
 }
 
+.contentWrapperHeaderSearchpage__isopen::-webkit-scrollbar {
+  display: none;
+} /* for Chrome in window os */
+
 .contentWrapperContext {
   width: 100%;
 }
@@ -43,6 +47,9 @@
   flex-direction: column; 
   overflow-x: scroll;
 }
+.DrawerContainer::-webkit-scrollbar {
+  display: none;
+} /* for Chrome in window os */
 
 .DrawerContainer_SubtextRow {
   /* font-size: 18px; */
