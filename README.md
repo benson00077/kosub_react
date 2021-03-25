@@ -1,6 +1,13 @@
 # Kosub
 
-[Kosub](https://kosub.herokuapp.com/) is a demo SPA in which one can search the subtitles from K-drama "Goblin" by some Korean/Chinese/English word query.
+[Kosub](https://kosub.herokuapp.com/) is a demo SPA in which one can search the subtitles from K-drama "Goblin" by some Korean/Chinese/English word query. <br />
+![image](https://github.com/benson00077/kosub_react/blob/master/readme_src/demo1.gif) <br />
+![image](https://github.com/benson00077/kosub_react/blob/master/readme_src/demo2.gif) <br />
+
+RWD supported. <br />
+![image](https://github.com/benson00077/kosub_react/blob/master/readme_src/demo_search_mobile.gif) 
+![image](https://github.com/benson00077/kosub_react/blob/master/readme_src/demo_drawer_mobile.gif)
+
 
 ## Content
 Following main contents included:
@@ -8,11 +15,14 @@ Following main contents included:
 1. Log in page
 2. Searching page
     - Search subtitles in Kdrama
-    - Add selected line as favorite sentence  
-    - Fetch the context of the selected line
+    - Add selected line as favorite sentence (Currently unavailable due to Heroku db limit)
+    - Fetch the context of the selected line, as shown below
+    - Show / Hide target language line, as shown below
+
 3. MySentence page 
-    - Delete selected line as favorite sentence
     - Fetch the context of the selected line
+    - Delete selected line as favorite sentence
+        ![image](https://github.com/benson00077/kosub_react/blob/master/readme_src/demo_delete_fav.gif)
 
 ## Front-end 
 - React
