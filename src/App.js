@@ -13,6 +13,7 @@ import SearchBar from './components/SearchBar';
 import { SearchContextProvider } from './components/SearchContext';
 import { UseContextProvider } from './components/UserContext'
 import SearchRawPage from './components/SearchRawPage';
+import Register from './components/Register';
 
 
 function App() {
@@ -77,6 +78,11 @@ function App() {
                         ? (<h3>Logged In Successfully</h3>)
                         : (<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />)
                     } />
+                  <Route path="/register"
+                    render={() =>
+                      <Register/>
+                    } />
+                  
                   <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
                     <MySentenceController isLoggedIn={isLoggedIn} user={user} seteIfUpdateMySentencePage={seteIfUpdateMySentencePage} ifUpdateMySentencePage={ifUpdateMySentencePage} />
                   </PrivateRoute>

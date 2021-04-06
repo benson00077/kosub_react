@@ -26,10 +26,12 @@
     color: rgba(133, 119, 144, 0.78);
     transition: 0.3s;
     font-size: 90%;
+    font-family: none;
   }
 
   .header-menu h3:hover, h3.isActive{
     color: #f9fafb;
+    font-family: none;
   }
 
   .search-bar {
@@ -360,11 +362,13 @@
     color: rgba(133, 119, 144, 0.78);
     border-bottom: 2px solid transparent;
     transition: 0.3s;
+    font-family: none;
   }
 
   .header-menu h3:hover, h3.isActive{
     color: #f9fafb;
     border-bottom: 2px solid #f9fafb;
+    font-family: none;
   }
 
   .search-bar {
@@ -692,12 +696,13 @@
     color: rgba(133, 119, 144, 0.78);
     border-bottom: 2px solid transparent;
     transition: 0.3s;
+    font-family: none;
   }
 
   .header-menu h3:hover, h3.isActive{
     color: #f9fafb;
     border-bottom: 2px solid #f9fafb;
-
+    font-family: none;
   }
 
   .search-bar {
