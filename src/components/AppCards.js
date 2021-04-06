@@ -15,23 +15,24 @@ function AppCards({ ...rest }) {
     // appCard section
     const appCardRenderer = (koList, zhList, enList, idList, noResult) => {
         return (
-            <React.Fragment>
+            // event Delegation
+            <div onClick={(e) => {
+                const dataId = e.target.getAttribute('data-id')
+                const dataIndex = e.target.getAttribute('data-index')
+                rest.sentenceID_ClickHandler(dataId)
+                ifSentence_Selected_ClickHandler([dataIndex])
+            }}>
                 {noResult ? 'no result found' : ''}
                 {idList && idList.map(
                     (each, i) =>
                         <div
-                            className={`${styles.appCardOneSubtextRow} ${ifsentences_SelectedList[i] ? styles.appCardOneSubtextRow_isSelected : ''}`}
-                            onClick={() => {
-                                rest.sentenceID_ClickHandler(idList[i])
-                                ifSentence_Selected_ClickHandler([i])
-                            }}
-                            key={i}>
-                            {rest.koShow ? <p>{koList[i]}</p> : ''}
-                            {rest.zhShow ? <p>{zhList[i]}</p> : ''}
-                            {rest.enShow ? <p>{enList[i]}</p> : ''}
+                            className={`${styles.appCardOneSubtextRow} ${ifsentences_SelectedList[i] ? styles.appCardOneSubtextRow_isSelected : ''}`}>
+                            {rest.koShow ? <p data-id={idList[i]} data-index={i}>{koList[i]}</p> : ''}
+                            {rest.zhShow ? <p data-id={idList[i]} data-index={i}>{zhList[i]}</p> : ''}
+                            {rest.enShow ? <p data-id={idList[i]} data-index={i}>{enList[i]}</p> : ''}
                         </div>
                 )}
-            </React.Fragment>
+            </div>
         )
     }
 

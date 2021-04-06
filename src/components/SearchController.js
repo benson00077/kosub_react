@@ -68,7 +68,7 @@ function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentenceP
                 </svg>  
                 <div style={{color: 'white'}}>
                 <p>Activating Herkou database....</p>
-                <p>Might take few seconds to initally wake it up</p>
+                <p>Might take few seconds to initially wake it up</p>
                 </div>
             </div>
         )
