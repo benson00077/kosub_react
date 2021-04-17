@@ -1,19 +1,22 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Nav from './components/Nav';
-import About from './components/About'
-import Home from './components/Home'
-
 import React, { useState } from 'react'
-import LanguageSelector from './components/LanguageSelector'
-import Login, { PrivateRoute } from './components/Login';
-import SearchController from './components/SearchController';
-import MySentenceController from './components/MySentencesController'
-import SearchBar from './components/SearchBar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Nav from './components/SideMenu/Nav';
+import About from './components/Pages/About/About'
+import Home from './components/Pages/Home/Home'
+
+import Login, { PrivateRoute } from './components/Pages/LogIn/Login';
+import SearchController from './components/Pages/Search/SearchController';
+import MySentenceController from './components/Pages/MySentence/MySentencesController'
+
+import SearchBar from './components/SearchBar/SearchBar';
+import LanguageSelector from './components/SearchBar/LanguageSelector'
+
 import { SearchContextProvider } from './components/SearchContext';
 import { UseContextProvider } from './components/UserContext'
-import SearchRawPage from './components/SearchRawPage';
-import Register from './components/Register';
+import SearchRawPage from './components/Pages/Search/SearchRawPage';
+import Register from './components/Pages/Register/Register';
 
 
 function App() {

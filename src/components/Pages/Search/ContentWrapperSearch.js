@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react'
-import Drawer from './Drawer'
+import Drawer from '../Asset_crossPages/Drawer'
 import styles from './contentWrapperSearch.module.css'
-import ShowHideHandler from './ShowHideHandler'
-import AppCards from './AppCards'
-import ApiButtons from './ApiButtons'
-import useSelectSentenceId from './useSelectSentenceId'
-import useFetch from './useFetch'
+import ShowHideHandler from '../Asset_crossPages/Extend/ShowHideHandler'
+import AppCards from '../Asset_crossPages/AppCards'
+import ApiButtons from '../Asset_crossPages/Extend/ApiButtons'
+import useSelectSentenceId from '../../useSelectSentenceId'
+import useFetch from '../../useFetch'
 
 function ContentWrapperSearch({ ...rest }) {
 

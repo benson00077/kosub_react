@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { SearchContext } from './SearchContext';
-import useFetch from './useFetch';
+import { SearchContext } from '../SearchContext';
+import useFetch from '../useFetch';
 
 
 function SearchBar({ seteIfRerenderSearchPage }) {

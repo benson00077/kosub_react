@@ -1,6 +1,4 @@
 import React from 'react'
-import Drawer from './Drawer'
-import styles from './contentWrapperSearch.module.css'
 
 function ContentWrapper({isSearchController, isAboutController, isHomeController, ...rest}) {
     

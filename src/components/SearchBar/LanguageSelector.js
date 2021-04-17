@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { SearchContext } from './SearchContext'
+import { SearchContext } from '../SearchContext'
 
 
 function LanguageSelector({value}) {

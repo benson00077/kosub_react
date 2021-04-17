@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { SearchContext } from './SearchContext'
-import { UserContext } from './UserContext'
+import { SearchContext } from '../../SearchContext'
+import { UserContext } from '../../UserContext'
 import styles from './appCards.module.css'
-import useIfSelectSentence from './useIfSelectSentence'
+import useIfSelectSentence from '../../useIfSelectSentence'
 
 
 function AppCards({ ...rest }) {
@@ -17,6 +17,8 @@ function AppCards({ ...rest }) {
         return (
             // event Delegation
             <div onClick={(e) => {
+                // TODO: 修正 event delegation 有時會抓錯的問題
+                console.log(e.target) // https://shubo.io/event-bubbling-event-capturing-event-delegation/
                 const dataId = e.target.getAttribute('data-id')
                 const dataIndex = e.target.getAttribute('data-index')
                 rest.sentenceID_ClickHandler(dataId)

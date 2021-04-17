@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import ApiButtons from './ApiButtons'
-import AppCards from './AppCards'
-import ShowHideHandler from './ShowHideHandler'
-import useSelectSentenceId from './useSelectSentenceId'
+import ApiButtons from '../Asset_crossPages/Extend/ApiButtons'
+import AppCards from '../Asset_crossPages/AppCards'
+import ShowHideHandler from '../Asset_crossPages/Extend/ShowHideHandler'
+import useSelectSentenceId from '../../useSelectSentenceId'
 
-import styles from './contentWrapperSearch.module.css'
-import Drawer from './Drawer'
-import useFetch from './useFetch'
+import styles from '../Search/contentWrapperSearch.module.css'
+
+import Drawer from '../Asset_crossPages/Drawer'
+import useFetch from '../../useFetch'
 
 
 function ContentWrapperMySentence({ koList, zhList, enList, idList, SentencebookDel, ...rest }) {

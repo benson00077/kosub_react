@@ -1,7 +1,7 @@
 import React, { useContext }from 'react'
 import axios from 'axios'
 import ContentWrapperSearch from './ContentWrapperSearch'
-import { SearchContext } from './SearchContext'
+import { SearchContext } from '../../SearchContext'
 
 function SearchController({user, seteIfUpdateMySentencePage, ifUpdateMySentencePage}) {
 

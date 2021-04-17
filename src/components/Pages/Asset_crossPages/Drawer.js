@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './contentWrapperSearch.module.css'
+import styles from '../Search/contentWrapperSearch.module.css'
 
 
 function Drawer({ drawerKo, drawerZh, drawerEn, drawerId, isLoading }) {
