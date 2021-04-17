@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/kosub_react/static/css/main.d45a996c.chunk.css",
+    "main.js": "/kosub_react/static/js/main.ffa89cef.chunk.js",
+    "main.js.map": "/kosub_react/static/js/main.ffa89cef.chunk.js.map",
+    "runtime-main.js": "/kosub_react/static/js/runtime-main.93b00e6c.js",
+    "runtime-main.js.map": "/kosub_react/static/js/runtime-main.93b00e6c.js.map",
+    "static/js/2.a0894a0e.chunk.js": "/kosub_react/static/js/2.a0894a0e.chunk.js",
+    "static/js/2.a0894a0e.chunk.js.map": "/kosub_react/static/js/2.a0894a0e.chunk.js.map",
+    "static/js/3.0909fc4f.chunk.js": "/kosub_react/static/js/3.0909fc4f.chunk.js",
+    "static/js/3.0909fc4f.chunk.js.map": "/kosub_react/static/js/3.0909fc4f.chunk.js.map",
+    "index.html": "/kosub_react/index.html",
+    "static/css/main.d45a996c.chunk.css.map": "/kosub_react/static/css/main.d45a996c.chunk.css.map",
+    "static/js/2.a0894a0e.chunk.js.LICENSE.txt": "/kosub_react/static/js/2.a0894a0e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93b00e6c.js",
+    "static/js/2.a0894a0e.chunk.js",
+    "static/css/main.d45a996c.chunk.css",
+    "static/js/main.ffa89cef.chunk.js"
+  ]
+}
