@@ -12,22 +12,31 @@ function AppCards({ ...rest }) {
 
     const [ifsentences_SelectedList, ifSentence_Selected_ClickHandler] = useIfSelectSentence(searchResult['result']['id'])
 
+    const Line_Select_Handler = e => {
+        let selected_line = "";
+        if (e.target.localName === "div") {
+            selected_line = e.target.firstElementChild
+        }
+        if (e.target.localName === "p") {
+            selected_line = e.target
+        }
+        const dataId = selected_line.getAttribute('data-id')
+        const dataIndex = selected_line.getAttribute('data-index')
+        rest.sentenceID_ClickHandler(dataId)
+        ifSentence_Selected_ClickHandler([dataIndex])
+    }
+
     // appCard section
     const appCardRenderer = (koList, zhList, enList, idList, noResult) => {
         return (
-            // event Delegation
-            <div onClick={(e) => {
-                // TODO: 修正 event delegation 有時會抓錯的問題
-                console.log(e.target) // https://shubo.io/event-bubbling-event-capturing-event-delegation/
-                const dataId = e.target.getAttribute('data-id')
-                const dataIndex = e.target.getAttribute('data-index')
-                rest.sentenceID_ClickHandler(dataId)
-                ifSentence_Selected_ClickHandler([dataIndex])
-            }}>
+            // event Delegation --- (X)
+            // in React No Need, see more
+            // https://dev.to/thawsitt/should-i-use-event-delegation-in-react-nl0
+            <div>
                 {noResult ? 'no result found' : ''}
                 {idList && idList.map(
                     (each, i) =>
-                        <div
+                        <div onClick={e => Line_Select_Handler(e)}
                             className={`${styles.appCardOneSubtextRow} ${ifsentences_SelectedList[i] ? styles.appCardOneSubtextRow_isSelected : ''}`}>
                             {rest.koShow ? <p data-id={idList[i]} data-index={i}>{koList[i]}</p> : ''}
                             {rest.zhShow ? <p data-id={idList[i]} data-index={i}>{zhList[i]}</p> : ''}
@@ -40,7 +49,7 @@ function AppCards({ ...rest }) {
 
     return (
         <React.Fragment>
-            
+
             <div className={styles.appCardOne}>
                 <span>
                     {rest.appCardImg}
@@ -51,9 +60,9 @@ function AppCards({ ...rest }) {
                     {/* {appCardRenderer(koList, zhList, enList)} */}
                     {rest.controller === 'search' &&
                         appCardRenderer(
-                            searchResult['result']['ko'], 
-                            searchResult['result']['zh'], 
-                            searchResult['result']['en'], 
+                            searchResult['result']['ko'],
+                            searchResult['result']['zh'],
+                            searchResult['result']['en'],
                             searchResult['result']['id'],
                             searchResult['noResult']
                         )}
