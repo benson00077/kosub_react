@@ -8,6 +8,8 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
   // UI for copy '사랑하다' button 
   const [copySuccess, setCopySuccess] = useState('Click to copy 안녕하다');
 
+  const img_content_wrapper = "./vector-creator2.png"
+
   return (
      <div className="content-wrapper">
       <div className="content-wrapper-header">
@@ -31,7 +33,7 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
           </button>
         </div>  
         {/* <img className="content-wrapper-img" src="https://assets.codepen.io/3364143/glass.png" alt=""></img> */}
-        <img className="content-wrapper-img" src="/vector-creator2.png" alt=""></img>
+        <img className="content-wrapper-img" src={img_content_wrapper} alt=""></img>
       </div>  
         
       

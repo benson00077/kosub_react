@@ -1,6 +1,6 @@
 # Kosub
 
-[Kosub](https://kosub.herokuapp.com/) is a demo SPA in which one can search the subtitles from K-drama "Goblin" by some Korean/Chinese/English word query. <br />
+[Kosub @ Heroku](https://kosub.herokuapp.com/), or [Kosub @ Gitpage](https://benson00077.github.io/kosub_react/) is a demo SPA in which one can search the subtitles from K-drama "Goblin" by some Korean/Chinese/English word query. <br />
 ![image](https://github.com/benson00077/kosub_react/blob/master/readme_src/demo1.gif) <br />
 ![image](https://github.com/benson00077/kosub_react/blob/master/readme_src/demo2.gif) <br />
 

@@ -28,7 +28,7 @@ function App() {
 
 
   return (
-    <Router>
+    <Router basename={ process.env.PUBLIC_URL }>
       <SearchContextProvider>
         <UseContextProvider>
           <div className="app">

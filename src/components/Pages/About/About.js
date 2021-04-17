@@ -13,6 +13,8 @@ function About({headerImg, headerTitle, headerContent, headerButton}) {
     </defs>
   )
 
+  const img_content_wrapper = "./vector-creator.png"
+
   return (
      <div className="content-wrapper">
       <div className="content-wrapper-header">
@@ -26,7 +28,7 @@ function About({headerImg, headerTitle, headerContent, headerButton}) {
           <div className="content-text">This is a browse-based app in which one can search the subtitles from K-drama so as to enjoy learning Korean with context</div>
           {/* <button className="content-button">Start free trial</button> */}
         </div>  
-        <img className="content-wrapper-img" src="/vector-creator.png" alt=""></img>
+        <img className="content-wrapper-img" src={img_content_wrapper} alt=""></img>
       </div>  
         
       
