@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/kosub_react/static/css/main.d45a996c.chunk.css",
-    "main.js": "/kosub_react/static/js/main.bf0f9f44.chunk.js",
-    "main.js.map": "/kosub_react/static/js/main.bf0f9f44.chunk.js.map",
+    "main.css": "/kosub_react/static/css/main.de242566.chunk.css",
+    "main.js": "/kosub_react/static/js/main.546ec2cf.chunk.js",
+    "main.js.map": "/kosub_react/static/js/main.546ec2cf.chunk.js.map",
     "runtime-main.js": "/kosub_react/static/js/runtime-main.93b00e6c.js",
     "runtime-main.js.map": "/kosub_react/static/js/runtime-main.93b00e6c.js.map",
     "static/js/2.a0894a0e.chunk.js": "/kosub_react/static/js/2.a0894a0e.chunk.js",
@@ -10,13 +10,17 @@
     "static/js/3.0909fc4f.chunk.js": "/kosub_react/static/js/3.0909fc4f.chunk.js",
     "static/js/3.0909fc4f.chunk.js.map": "/kosub_react/static/js/3.0909fc4f.chunk.js.map",
     "index.html": "/kosub_react/index.html",
-    "static/css/main.d45a996c.chunk.css.map": "/kosub_react/static/css/main.d45a996c.chunk.css.map",
-    "static/js/2.a0894a0e.chunk.js.LICENSE.txt": "/kosub_react/static/js/2.a0894a0e.chunk.js.LICENSE.txt"
+    "static/css/main.de242566.chunk.css.map": "/kosub_react/static/css/main.de242566.chunk.css.map",
+    "static/js/2.a0894a0e.chunk.js.LICENSE.txt": "/kosub_react/static/js/2.a0894a0e.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/kosub_react/static/media/dusk.37f79049.jpg",
+    "static/media/logo.2dc78cd5.png": "/kosub_react/static/media/logo.2dc78cd5.png",
+    "static/media/vector-creator.59219f20.png": "/kosub_react/static/media/vector-creator.59219f20.png",
+    "static/media/vector-creator2.93c5567b.png": "/kosub_react/static/media/vector-creator2.93c5567b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.93b00e6c.js",
     "static/js/2.a0894a0e.chunk.js",
-    "static/css/main.d45a996c.chunk.css",
-    "static/js/main.bf0f9f44.chunk.js"
+    "static/css/main.de242566.chunk.css",
+    "static/js/main.546ec2cf.chunk.js"
   ]
 }
