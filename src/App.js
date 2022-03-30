@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Nav from './components/SideMenu/Nav';
@@ -18,7 +18,6 @@ import { UseContextProvider } from './components/UserContext'
 import SearchRawPage from './components/Pages/Search/SearchRawPage';
 import Register from './components/Pages/Register/Register';
 
-
 function App() {
 
   const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
@@ -26,7 +25,18 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState('')
 
+  useEffect(() => {
+    const grettingsStyle = 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) '
+    const grettings = '😆 thanks for review '
+    console.log('%c %s', grettingsStyle, grettings)
+    const postscriptStyle = 'font-weight: bold; font-size: 16px'
+    const postscript = 'ps. You might want to use w/ Safari to enjoy a better styling and UI 😂'
+    const postscript2 = 'This is a old project, I might fix this sometime latter. 🥺'
+    console.log('%c %s', postscriptStyle , postscript)
+    console.log('%c %s', postscriptStyle , postscript2)
+  }, [])
 
+  
   return (
     <Router basename={ process.env.PUBLIC_URL }>
       <SearchContextProvider>
