@@ -1,9 +1,9 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
+import img_content_wrapper from '../../../asset/logo.png';
 
 function Home({headerImg, headerTitle, headerContent, headerButton}) {
 
-  const img_content_wrapper = './logo.png'
   const window_wid = window.innerWidth
   const img_content_wrapper_style = (window_wid <= 480) ? { width: '15vh', height: '15vh' } : { width: '25vh', height: '25vh' }
   // console.log(window_wid)

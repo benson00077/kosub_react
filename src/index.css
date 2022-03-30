@@ -5,7 +5,8 @@
     margin: 0;
     /* background-image: url(https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-dark-wwdc-2020-5120x2880-1432.jpg); */
     /* background-image: url(https://4kwallpapers.com/images/wallpapers/bannalpsee-switzerland-aurora-borealis-starry-sky-landscape-1920x1080-3938.jpg); */
-    background-image: url(https://4kwallpapers.com/images/wallpapers/starry-sky-sunlight-sunset-meteorite-fall-5k-1920x1080-158.jpg);
+    /* background-image: url(https://4kwallpapers.com/images/wallpapers/starry-sky-sunlight-sunset-meteorite-fall-5k-1920x1080-158.jpg); */
+    background-image: url(./asset/dusk.jpg);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -48,7 +49,8 @@
 @media (min-width:480px) and (max-width: 1200px) {
   body {
     margin: 0;
-    background-image: url(https://4kwallpapers.com/images/wallpapers/starry-sky-sunlight-sunset-meteorite-fall-5k-1920x1080-158.jpg);
+    /* background-image: url(https://4kwallpapers.com/images/wallpapers/starry-sky-sunlight-sunset-meteorite-fall-5k-1920x1080-158.jpg); */
+    background-image: url(./asset/dusk.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -113,7 +115,8 @@
 @media (max-width: 480px) {
   body {
     margin: 0;
-    background-image: url(https://4kwallpapers.com/images/wallpapers/starry-sky-sunlight-sunset-meteorite-fall-5k-1920x1080-158.jpg);
+    /* background-image: url(https://4kwallpapers.com/images/wallpapers/starry-sky-sunlight-sunset-meteorite-fall-5k-1920x1080-158.jpg); */
+    background-image: url(./asset/dusk.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

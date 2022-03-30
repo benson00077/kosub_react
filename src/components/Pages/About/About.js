@@ -1,4 +1,6 @@
 import React from 'react'
+import img_content_wrapper from '../../../asset/vector-creator.png';
+
 
 function About({headerImg, headerTitle, headerContent, headerButton}) {
 
@@ -12,8 +14,6 @@ function About({headerImg, headerTitle, headerContent, headerButton}) {
       </linearGradient>
     </defs>
   )
-
-  const img_content_wrapper = "./vector-creator.png"
 
   return (
      <div className="content-wrapper">

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import img_content_wrapper from "../../../asset/vector-creator2.png"
+
 
 function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
 
@@ -7,8 +9,6 @@ function SearchRawPage({headerImg, headerTitle, headerContent, headerButton}) {
 
   // UI for copy '사랑하다' button 
   const [copySuccess, setCopySuccess] = useState('Click to copy 안녕하다');
-
-  const img_content_wrapper = "./vector-creator2.png"
 
   return (
      <div className="content-wrapper">
