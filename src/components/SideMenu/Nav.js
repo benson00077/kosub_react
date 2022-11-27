@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
-
   const navStyle = {
-    color: 'white'
+    color: 'white',
   }
 
   return (
@@ -44,32 +43,36 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
       <div className="side-wrapper">
         <div className="side-title">Account</div>
         <div className="side-menu">
-
-          {isLoggedIn
-            ? (<Link style={navStyle} to="/mysentences">
+          {isLoggedIn ? (
+            <Link style={navStyle} to="/mysentences">
               <h4>My Setences</h4>
-            </Link>)
-            : ''}
+            </Link>
+          ) : (
+            ''
+          )}
 
-          {isLoggedIn
-            ? ''
-            : <Link style={navStyle} to="/login">
+          {isLoggedIn ? (
+            ''
+          ) : (
+            <Link style={navStyle} to="/login">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M5 5a5 5 0 0110 0v2A5 5 0 015 7V5zM0 16.68A19.9 19.9 0 0110 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z" />
               </svg>
               <h4>Log in</h4>
-            </Link>}
+            </Link>
+          )}
 
-          {isLoggedIn
-            ? ''
-            : <Link style={navStyle} to="/register">
+          {isLoggedIn ? (
+            ''
+          ) : (
+            <Link style={navStyle} to="/register">
               {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12a6 6 0 110-12 6 6 0 010 12zm0-3a3 3 0 100-6 3 3 0 000 6zm4 2.75V20l-4-4-4 4v-8.25a6.97 6.97 0 008 0z"/></svg> */}
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M10 3.22l-.61-.6a5.5 5.5 0 00-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 00-7.78-7.77l-.61.61z" />
               </svg>
               <h4>Register</h4>
-            </Link>}
-
+            </Link>
+          )}
         </div>
       </div>
 
@@ -87,7 +90,6 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
               </Link>
             </div>  
           </div>  */}
-
     </React.Fragment>
   )
 }

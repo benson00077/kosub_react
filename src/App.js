@@ -1,49 +1,47 @@
-import './App.css';
+import './App.css'
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Nav from './components/SideMenu/Nav';
+import Nav from './components/SideMenu/Nav'
 import About from './components/Pages/About/About'
 import Home from './components/Pages/Home/Home'
 
-import Login, { PrivateRoute } from './components/Pages/LogIn/Login';
-import SearchController from './components/Pages/Search/SearchController';
+import Login, { PrivateRoute } from './components/Pages/LogIn/Login'
+import SearchController from './components/Pages/Search/SearchController'
 import MySentenceController from './components/Pages/MySentence/MySentencesController'
 
-import SearchBar from './components/SearchBar/SearchBar';
+import SearchBar from './components/SearchBar/SearchBar'
 import LanguageSelector from './components/SearchBar/LanguageSelector'
 
-import { SearchContextProvider } from './components/SearchContext';
+import { SearchContextProvider } from './components/SearchContext'
 import { UseContextProvider } from './components/UserContext'
-import SearchRawPage from './components/Pages/Search/SearchRawPage';
-import Register from './components/Pages/Register/Register';
+import SearchRawPage from './components/Pages/Search/SearchRawPage'
+import Register from './components/Pages/Register/Register'
 
 function App() {
-
   const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
   const [ifUpdateMySentencePage, seteIfUpdateMySentencePage] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState('')
 
   useEffect(() => {
-    const grettingsStyle = 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) '
+    const grettingsStyle =
+      'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) '
     const grettings = '😆 thanks for review '
     console.log('%c %s', grettingsStyle, grettings)
     const postscriptStyle = 'font-weight: bold; font-size: 16px'
     const postscript = 'ps. You might want to use w/ Safari to enjoy a better styling and UI 😂'
     const postscript2 = 'This is a old project, I might fix this sometime latter. 🥺'
-    console.log('%c %s', postscriptStyle , postscript)
-    console.log('%c %s', postscriptStyle , postscript2)
+    console.log('%c %s', postscriptStyle, postscript)
+    console.log('%c %s', postscriptStyle, postscript2)
   }, [])
 
-  
   return (
-    <Router basename={ process.env.PUBLIC_URL }>
+    <Router basename={process.env.PUBLIC_URL}>
       <SearchContextProvider>
         <UseContextProvider>
           <div className="app">
             <div className="header">
-
               <div className="menu-circle"></div>
 
               <div className="header-menu">
@@ -51,12 +49,11 @@ function App() {
               </div>
 
               <div className="search-bar">
-                <SearchBar
-                  seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
+                <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
               </div>
             </div>
 
-            <div className="wrapper"> 
+            <div className="wrapper">
               <div className="left-side">
                 <Nav isLoggedIn={isLoggedIn} />
               </div>
@@ -66,15 +63,20 @@ function App() {
                   <Route path="/" exact component={Home} />
                   <Route path="/about" component={About} />
 
-                  <Route path="/search"
+                  <Route
+                    path="/search"
                     render={() =>
-                      ifRerenderSearchPage
-                        ? (
-                          <SearchController user={user}
-                            seteIfUpdateMySentencePage={seteIfUpdateMySentencePage} ifUpdateMySentencePage={ifUpdateMySentencePage} />
-                        )
-                        : <SearchRawPage/>
-                    } />
+                      ifRerenderSearchPage ? (
+                        <SearchController
+                          user={user}
+                          seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
+                          ifUpdateMySentencePage={ifUpdateMySentencePage}
+                        />
+                      ) : (
+                        <SearchRawPage />
+                      )
+                    }
+                  />
 
                   {/* <Route path="/search">  
                 {ifRerenderSearchPage
@@ -85,21 +87,26 @@ function App() {
                   : ''}
               </Route> */}
 
-                  <Route path="/login"
+                  <Route
+                    path="/login"
                     render={() =>
-                      isLoggedIn
-                        ? (<h3>Logged In Successfully</h3>)
-                        : (<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />)
-                    } />
-                  <Route path="/register"
-                    render={() =>
-                      <Register/>
-                    } />
-                  
-                  <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
-                    <MySentenceController isLoggedIn={isLoggedIn} user={user} seteIfUpdateMySentencePage={seteIfUpdateMySentencePage} ifUpdateMySentencePage={ifUpdateMySentencePage} />
-                  </PrivateRoute>
+                      isLoggedIn ? (
+                        <h3>Logged In Successfully</h3>
+                      ) : (
+                        <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+                      )
+                    }
+                  />
+                  <Route path="/register" render={() => <Register />} />
 
+                  <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
+                    <MySentenceController
+                      isLoggedIn={isLoggedIn}
+                      user={user}
+                      seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
+                      ifUpdateMySentencePage={ifUpdateMySentencePage}
+                    />
+                  </PrivateRoute>
                 </Switch>
               </div>
             </div>
@@ -107,8 +114,7 @@ function App() {
         </UseContextProvider>
       </SearchContextProvider>
     </Router>
-  );
+  )
 }
 
-
-export default App;
+export default App
