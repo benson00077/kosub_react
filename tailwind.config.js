@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'dusk-pattern': "url('../src/asset/dusk.jpg')"
+        'dusk-pattern': "url('../src/asset/dusk.jpg')",
       }
     },
   },

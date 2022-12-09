@@ -1,4 +1,4 @@
-import './App.css'
+// import './App.css'
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -11,7 +11,6 @@ import SearchController from './components/Pages/Search/SearchController'
 import MySentenceController from './components/Pages/MySentence/MySentencesController'
 
 import SearchBar from './components/SearchBar/SearchBar'
-import LanguageSelector from './components/SearchBar/LanguageSelector'
 
 import { SearchContextProvider } from './components/SearchContext'
 import { UseContextProvider } from './components/UserContext'
@@ -40,45 +39,38 @@ function App() {
     <Router basename={process.env.PUBLIC_URL}>
       <SearchContextProvider>
         <UseContextProvider>
-          <div className="app">
-            <div className="header">
-              <div className="menu-circle"></div>
-
-              <div className="header-menu">
-                <LanguageSelector value={['ko', 'zh', 'en']} />
+          <div className="bg-dusk-pattern bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
+            <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl">
+              <div className="h-[7%]">
+                <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage}/>
               </div>
 
-              <div className="search-bar">
-                <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
-              </div>
-            </div>
+              <div className="flex h-[93%]">
+                <div className="p-5 border-r-[1px] border-stone-400 border-opacity-25">
+                  <Nav isLoggedIn={isLoggedIn} />
+                </div>
 
-            <div className="wrapper">
-              <div className="left-side">
-                <Nav isLoggedIn={isLoggedIn} />
-              </div>
+                <div className="w-11/12 text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">
+                  <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/about" component={About} />
 
-              <div className="main-container">
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/about" component={About} />
+                    <Route
+                      path="/search"
+                      render={() =>
+                        ifRerenderSearchPage ? (
+                          <SearchController
+                            user={user}
+                            seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
+                            ifUpdateMySentencePage={ifUpdateMySentencePage}
+                          />
+                        ) : (
+                          <SearchRawPage />
+                        )
+                      }
+                    />
 
-                  <Route
-                    path="/search"
-                    render={() =>
-                      ifRerenderSearchPage ? (
-                        <SearchController
-                          user={user}
-                          seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
-                          ifUpdateMySentencePage={ifUpdateMySentencePage}
-                        />
-                      ) : (
-                        <SearchRawPage />
-                      )
-                    }
-                  />
-
-                  {/* <Route path="/search">  
+                    {/* <Route path="/search">  
                 {ifRerenderSearchPage
                   ? <SearchController ko={result.ko} zh={result.zh} en={result.en} id={result.id}/>
                   : <h3>How to Use ?????</h3>}
@@ -87,27 +79,28 @@ function App() {
                   : ''}
               </Route> */}
 
-                  <Route
-                    path="/login"
-                    render={() =>
-                      isLoggedIn ? (
-                        <h3>Logged In Successfully</h3>
-                      ) : (
-                        <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
-                      )
-                    }
-                  />
-                  <Route path="/register" render={() => <Register />} />
-
-                  <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
-                    <MySentenceController
-                      isLoggedIn={isLoggedIn}
-                      user={user}
-                      seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
-                      ifUpdateMySentencePage={ifUpdateMySentencePage}
+                    <Route
+                      path="/login"
+                      render={() =>
+                        isLoggedIn ? (
+                          <h3>Logged In Successfully</h3>
+                        ) : (
+                          <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+                        )
+                      }
                     />
-                  </PrivateRoute>
-                </Switch>
+                    <Route path="/register" render={() => <Register />} />
+
+                    <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
+                      <MySentenceController
+                        isLoggedIn={isLoggedIn}
+                        user={user}
+                        seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
+                        ifUpdateMySentencePage={ifUpdateMySentencePage}
+                      />
+                    </PrivateRoute>
+                  </Switch>
+                </div>
               </div>
             </div>
           </div>
