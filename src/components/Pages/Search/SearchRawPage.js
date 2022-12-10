@@ -30,7 +30,7 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
             label={copySuccess}
           />
         </div>
-        <img className="content-wrapper-img" src={img_content_wrapper} alt=""></img>
+        <img className="w-[25vh] object-cover object-center" src={img_content_wrapper} alt=""></img>
       </section>
 
       <section className="p-5">
@@ -39,7 +39,7 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
           <div className="w-1/3">
             <Card>
               <>
-                <IconFlags flag="Korean"/>
+                <IconFlags flag="Korean" />
                 搜尋韓文
               </>
               <>
@@ -59,7 +59,7 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
           <div className="w-1/3">
             <Card>
               <>
-                <IconFlags flag="Chinese"/>
+                <IconFlags flag="Chinese" />
                 搜尋中文
               </>
               <>
@@ -80,7 +80,7 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
           <div className="w-1/3">
             <Card>
               <>
-              <IconFlags flag="English"/>
+                <IconFlags flag="English" />
                 搜尋英文
               </>
               <>

@@ -24,7 +24,7 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
           </p>
           <ButtonLink onClick={() => history.push('/search')} label={'Try it on Search Page!'} />
         </div>
-        <img className="content-wrapper-img" src={img_content_wrapper} alt=""></img>
+        <img className="w-[25vh] object-cover object-center" src={img_content_wrapper} alt=""></img>
       </section>
 
       <section className="p-5">
