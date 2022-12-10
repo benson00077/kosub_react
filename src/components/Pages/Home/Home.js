@@ -40,33 +40,24 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
         <section className="flex flex-row space-x-8">
           <div className="w-1/3">
             <Card>
-                <>
-                  <IconsBattery flag={'highPower'}/>
-                  韓國為 high-context culture
-                </>
-                <>
-                  <p>這導致同一句話有非常多種表達方式</p>
-                  <p>學習過程會覺得越「背」會越不知道怎麼用</p>
-                </>
-                <>
-                  <ButtonLink
-                    onClick={() =>
-                      window.open(
-                        'https://www.quora.com/Why-is-South-Korea-high-context',
-                        '_blank',
-                        'noopener,noreferrer',
-                      )
-                    }
-                    label={'why?'}
-                  ></ButtonLink>
-                </>
+              <>
+                <IconsBattery flag={'highPower'} />
+                韓國為 high-context culture
+              </>
+              <>
+                <p>這導致同一句話有非常多種表達方式</p>
+                <p>學習過程會覺得越「背」會越不知道怎麼用</p>
+              </>
+              <>
+                <ButtonLink label={'why?'} link={'https://www.quora.com/Why-is-South-Korea-high-context'}></ButtonLink>
+              </>
             </Card>
           </div>
 
           <div className="w-1/3">
             <Card>
               <>
-               <IconsBattery flag={'middlePower'}/>
+                <IconsBattery flag={'middlePower'} />
                 韓文的相近文法、規則太多
               </>
               <>
@@ -80,7 +71,7 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
           <div className="w-1/3">
             <Card>
               <>
-               <IconsBattery flag={'lowPower'}/>
+                <IconsBattery flag={'lowPower'} />
                 同一句話太多表達，舉例而言...
               </>
               <>
