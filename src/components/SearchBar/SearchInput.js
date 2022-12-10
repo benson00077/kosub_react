@@ -69,7 +69,7 @@ function SearchInput({ seteIfRerenderSearchPage }) {
   }, [fetchResponse])
 
   return (
-    <div>
+    <div className="my-2 md:my-0" >
       <form onSubmit={submitHandler}>
         <input
           className="w-full h-full border-none pt-2 pb-2 pr-20 pl-16 bg-zinc-800 rounded-md text-amber-50 text-xl shadow-[0_0_0_2px_rgba(134,140,160,0.2)]"

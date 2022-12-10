@@ -40,12 +40,12 @@ function App() {
       <SearchContextProvider>
         <UseContextProvider>
           <div className="bg-dusk-pattern bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
-            <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl">
-              <div className="h-[7%]">
+            <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
+              <div className="">
                 <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage}/>
               </div>
 
-              <div className="flex h-[93%]">
+              <div className="flex h-full">
                 <div className="p-5 border-r-[1px] border-stone-400 border-opacity-25">
                   <Nav isLoggedIn={isLoggedIn} />
                 </div>
