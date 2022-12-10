@@ -24,7 +24,7 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
             <IconHome />
             這個網站可以？
           </h2>
-          <div className="text-indigo-100">給定關鍵字，搜尋韓劇台詞。藉此幫助韓文學習者</div>
+          <p className="w-96 text-indigo-100">給定關鍵字，搜尋韓劇台詞。藉此幫助韓文學習者</p>
           <ButtonLink onClick={() => history.push('/search')} label={'前往 Search page，了解更多'} />
         </div>
         <img
