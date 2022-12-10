@@ -37,7 +37,7 @@ function ContentWrapperSearch({ ...rest }) {
   // }
 
   return (
-    <div className="content-wrapper" ref={goTop_ref}>
+    <main className="m-5" ref={goTop_ref}>
       <div
         className={`${styles.contentWrapperHeaderSearchpage} ${
           isDrawerOpen ? styles.contentWrapperHeaderSearchpage__isopen : ''
@@ -112,7 +112,7 @@ function ContentWrapperSearch({ ...rest }) {
           <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
         </svg>
       </div>
-    </div>
+    </main>
   )
 }
 

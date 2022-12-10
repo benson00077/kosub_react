@@ -50,7 +50,7 @@ function App() {
                   <Nav isLoggedIn={isLoggedIn} />
                 </div>
 
-                <div className="w-11/12 text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">
+                <div className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">
                   <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/about" component={About} />
