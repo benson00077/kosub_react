@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react'
-import Drawer from '../Asset_crossPages/Drawer'
+import Drawer from '../Shared/Drawer'
 import styles from './contentWrapperSearch.module.css'
-import ShowHideHandler from '../Asset_crossPages/Extend/ShowHideHandler'
-import AppCards from '../Asset_crossPages/AppCards'
-import ApiButtons from '../Asset_crossPages/Extend/ApiButtons'
+import ShowHideHandler from '../Shared/ShowHideHandler'
+import AppCards from '../Shared/AppCards'
+import ApiButtons from '../Shared/ApiButtons'
 import useSelectSentenceId from '../../useSelectSentenceId'
 import useFetch from '../../useFetch'
 
