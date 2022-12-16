@@ -3,7 +3,8 @@ import { SearchContext } from '../../SearchContext'
 import { UserContext } from '../../UserContext'
 import mockSubtitles from '../mockSubtitles.json'
 
-function AppCards({ ...rest }) {
+function AppCards({ showLang, getSelectedIds }) {
+  const { ko, zh, en } = showLang
   const [searchResult] = useContext(SearchContext)
   const [userInfo] = useContext(UserContext)
 
@@ -12,11 +13,11 @@ function AppCards({ ...rest }) {
     if (selected[id]) {
       const copied = { ...selected }
       delete copied[id]
-      console.log(copied)
       setSelected(copied)
+      getSelectedIds(Object.keys(copied))
     } else {
-      console.log({ [id]: true, ...selected })
       setSelected({ [id]: true, ...selected })
+      getSelectedIds(Object.keys({ [id]: true, ...selected }))
     }
   }
 
@@ -24,12 +25,7 @@ function AppCards({ ...rest }) {
     <React.Fragment>
       {/* <div className={styles.appCardOne}> */}
       <div className="p-4 bg-sky-600/10 rounded-lg">
-        <span>
-          {rest.appCardImg}
-          {rest.appCardTitle}
-        </span>
-
-        <div className="">
+        <>
           {mockSubtitles.map((subtitle) => {
             const id = subtitle.timeId
             return (
@@ -41,14 +37,13 @@ function AppCards({ ...rest }) {
                   selected[id] ? 'bg-blue-600/40' : ''
                 }`}
               >
-                <p className="lg:w-1/3">{subtitle.sentences.join(' ')}</p>
-                <p className="lg:w-1/3">foo</p>
-                <p className="lg:w-1/3">bar</p>
+                {ko && <p className="lg:w-1/3">{subtitle.sentences.join(' ')}</p>}
+                {zh && <p className="lg:w-1/3">foo</p>}
+                {en && <p className="lg:w-1/3">bar</p>}
               </div>
             )
           })}
-        </div>
-
+        </>
         {/* <div className="app-card-buttons" >
                     <button className="content-button status-button"> ^ </button>
                 </div> */}

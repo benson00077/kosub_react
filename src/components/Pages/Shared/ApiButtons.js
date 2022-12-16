@@ -3,11 +3,12 @@ import styles from './apiButton.module.css'
 
 // function ApiButtons({sentencesID_SelectedList, toggleDrawer, SentencebookPush}) {
 function ApiButtons({
-  sentencesID_SelectedList,
-  setIsDrawerOpen,
+  // sentencesID_SelectedList,
   isDrawerOpen,
+  setIsDrawerOpen,
   SentencebookPush,
   SentencebookDel,
+  seletedSentences,  
   fetch_drawer,
 }) {
   const buttonRef_mySentenceBook = useRef(null)
@@ -19,23 +20,23 @@ function ApiButtons({
   const img_apibutton_style1 = { fill: 'rgba(218, 46, 136, 0.75)' }
   const img_apibutton_style2 = { fill: 'rgba(80, 250, 240, 0.5)' }
 
-  useEffect(() => {
-    const len = sentencesID_SelectedList.length
+  // useEffect(() => {
+  //   const len = sentencesID_SelectedList.length
 
-    // Button UI : Add to mySentence
-    if (len >= 1) {
-      buttonRef_mySentenceBook.current.disabled = false
-    } else {
-      buttonRef_mySentenceBook.current.disabled = true
-    }
+  //   // Button UI : Add to mySentence
+  //   if (len >= 1) {
+  //     buttonRef_mySentenceBook.current.disabled = false
+  //   } else {
+  //     buttonRef_mySentenceBook.current.disabled = true
+  //   }
 
-    // Button UI : Fetch Context of selected sentence
-    if (len === 1) {
-      buttonRef_fetchContext.current.disabled = false
-    } else {
-      buttonRef_fetchContext.current.disabled = true
-    }
-  }, [sentencesID_SelectedList])
+  //   // Button UI : Fetch Context of selected sentence
+  //   if (len === 1) {
+  //     buttonRef_fetchContext.current.disabled = false
+  //   } else {
+  //     buttonRef_fetchContext.current.disabled = true
+  //   }
+  // }, [sentencesID_SelectedList])
 
   return (
     <React.Fragment>
@@ -43,7 +44,7 @@ function ApiButtons({
         <button
           className={styles.apiButton}
           ref={buttonRef_mySentenceBook}
-          onClick={() => SentencebookPush(sentencesID_SelectedList)}
+          // onClick={() => SentencebookPush(sentencesID_SelectedList)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style={img_apibutton_style1}>
             <path d="M10 3.22l-.61-.6a5.5 5.5 0 00-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 00-7.78-7.77l-.61.61z" />
@@ -58,7 +59,7 @@ function ApiButtons({
         <button
           className={styles.apiButton}
           ref={buttonRef_mySentenceBook}
-          onClick={() => SentencebookDel(sentencesID_SelectedList)}
+          // onClick={() => SentencebookDel(sentencesID_SelectedList)}
         >
           <svg viewBox="0 0 20 20" style={img_apibutton_style2}>
             <path d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z" />
@@ -73,8 +74,8 @@ function ApiButtons({
         className={styles.apiButton}
         ref={buttonRef_fetchContext}
         onClick={() => {
-          if (sentencesID_SelectedList.length !== 0) {
-            fetch_drawer(sentencesID_SelectedList[0])
+          if (seletedSentences.length !== 0) {
+            // fetch_drawer(seletedSentences[0])
             setIsDrawerOpen(!isDrawerOpen)
           } else {
             window.alert("Please select a sentence to see it's context")

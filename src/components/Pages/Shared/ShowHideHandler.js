@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './showHideHandler.module.css'
 
-function ShowHideHandler({ koShow, zhShow, enShow, setKoShow, setZhShow, setEnShow }) {
-  const showHideHandler = (target, setTarget) => {
-    if (target) {
-      setTarget(!target)
-    } else {
-      setTarget(!target)
+function ShowHideHandler({ showLang, setShowLang }) {
+  const showHideHandler = (flag) => {
+    if (!Object.keys(showLang).includes(flag)) {
+      console.error('Flag is wrong.')
+      return
     }
+    const copied = { ...showLang }
+    copied[flag] = !copied[flag]
+    setShowLang(copied)
   }
 
   // CSS for svg img for dropdownParent button
@@ -15,11 +17,7 @@ function ShowHideHandler({ koShow, zhShow, enShow, setKoShow, setZhShow, setEnSh
 
   return (
     <React.Fragment>
-      {/* <div onClick={() => showHideHandler(koShow, setKoShow)}><h4>Hide Korean</h4></div>
-        <div onClick={() => showHideHandler(zhShow, setZhShow)}><h4>Hide Chinese</h4></div>
-        <div onClick={() => showHideHandler(enShow, setEnShow)}><h4>Hide English</h4></div> */}
-
-      <button onClick={() => showHideHandler(koShow, setKoShow)} className={styles.showHideHandler}>
+      <button onClick={() => showHideHandler('ko')} className={styles.showHideHandler}>
         <svg viewBox="0 0 512 512" style={img_dropdown_style}>
           <path fill="#fff" d="M0 85.331h512v341.337H0z" />
           <path
@@ -31,7 +29,7 @@ function ShowHideHandler({ koShow, zhShow, enShow, setKoShow, setZhShow, setEnSh
         </svg>
       </button>
 
-      <button onClick={() => showHideHandler(zhShow, setZhShow)} className={styles.showHideHandler}>
+      <button onClick={() => showHideHandler('zh')} className={styles.showHideHandler}>
         <svg viewBox="0 0 512 512" style={img_dropdown_style}>
           <path fill="#d80027" d="M0 85.337h512v341.326H0z" />
           <path fill="#0052b4" d="M0 85.337h256V256H0z" />
@@ -47,7 +45,7 @@ function ShowHideHandler({ koShow, zhShow, enShow, setKoShow, setZhShow, setEnSh
         </svg>
       </button>
 
-      <button onClick={() => showHideHandler(enShow, setEnShow)} className={styles.showHideHandler}>
+      <button onClick={() => showHideHandler('en')} className={styles.showHideHandler}>
         <svg viewBox="0 0 512 512" style={img_dropdown_style}>
           <path fill="#f0f0f0" d="M0 85.331h512v341.337H0z" />
           <g fill="#d80027">

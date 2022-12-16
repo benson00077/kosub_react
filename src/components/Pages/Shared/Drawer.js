@@ -1,31 +1,27 @@
 import React from 'react'
 import styles from '../Search/contentWrapperSearch.module.css'
 
-function Drawer({ drawerKo, drawerZh, drawerEn, drawerId, isLoading }) {
-  return (
-    <div className={styles.DrawerContainer}>
-      {isLoading ? (
-        ''
-      ) : (
-        <React.Fragment>
-          <li>Result: {drawerId.length} sentences found</li>
-          <li>Range: before and after 5 secs from target sentence</li>
-        </React.Fragment>
-      )}
+function Drawer({ sentences, showLang }) {
+  const { ko, zh, en } = showLang
 
-      {isLoading
-        ? 'Fetching...'
-        : drawerId &&
-          drawerId.map((each, i) => (
-            <div key={i} className={styles.DrawerContainer_SubtextRow}>
-              {/* {drawerKo[i] ? <p>{drawerKo[i]}</p> : <p> - </p>}
-                        {drawerZh[i] ? <p>{drawerZh[i]}</p> : <p> - </p>}
-                        {drawerEn[i] ? <p>{drawerEn[i]}</p> : <p> - </p>} */}
-              <p>{drawerKo[i]}</p>
-              <p>{drawerZh[i]}</p>
-              <p>{drawerEn[i]}</p>
-            </div>
-          ))}
+  return (
+    <div>
+      <ul>
+        <li>- Result: {sentences.length} sentences found</li>
+        <li>- Range: before and after 5 secs from target sentence</li>
+      </ul>
+
+      {sentences &&
+        sentences.map((sentence, i) => (
+          <div
+            key={sentence.timeId}
+            className="lg:flex space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer"
+          >
+            {ko && <p className="lg:w-1/3">{sentence.sentences}</p>}
+            {zh && <p className="lg:w-1/3">foo.zh</p>}
+            {en && <p className="lg:w-1/3">foo.en</p>}
+          </div>
+        ))}
     </div>
   )
 }

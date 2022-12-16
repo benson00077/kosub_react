@@ -6,18 +6,25 @@ import AppCards from '../Shared/AppCards'
 import ApiButtons from '../Shared/ApiButtons'
 import useSelectSentenceId from '../../useSelectSentenceId'
 import useFetch from '../../useFetch'
+import mockSubtitles from '../mockSubtitles.json'
+import ButtonLink from '../Shared/ButtonLink'
 
 function ContentWrapperSearch({ ...rest }) {
   // if show sentence output
   const [koShow, setKoShow] = useState(true)
   const [zhShow, setZhShow] = useState(true)
   const [enShow, setEnShow] = useState(true)
+  const [showLang, setShowLang] = useState({
+    ko: true,
+    zh: true,
+    en: true,
+  })
 
   // if show buttons for sentnece manipulating
   const [isButtonsShow, setIsButtonsShow] = useState(false)
 
   // pass to ApiButton & AppCards
-  const [sentencesID_SelectedList, sentenceID_ClickHandler] = useSelectSentenceId(rest.id)
+  const [selectedIds, setSelectedIds] = useState({})
 
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetch_drawer }] = useFetch(null)
@@ -38,32 +45,25 @@ function ContentWrapperSearch({ ...rest }) {
 
   return (
     <main className="m-5" ref={goTop_ref}>
-      <div
-        className={`${styles.contentWrapperHeaderSearchpage} ${
-          isDrawerOpen ? styles.contentWrapperHeaderSearchpage__isopen : ''
-        }`}
+      <section
+        className={`
+          ${isDrawerOpen ? 'p-5' : 'h-0 opacity-0 p-0'}
+            bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg
+        `}
       >
-        <div className={styles.contentWrapperContext}>
-          <h3 className="img-content">
+        <div className="flex flex-col space-y-8 w-full">
+          <h2 className="text-lg">
             {rest.headerImg}
             {rest.headerTitle}
-          </h3>
-          <div className="content-text">
-            <Drawer
-              isLoading={fetchResponse.isLoading}
-              drawerKo={fetchResponse.post.ko}
-              drawerZh={fetchResponse.post.zh}
-              drawerEn={fetchResponse.post.en}
-              drawerId={fetchResponse.post.id}
-            />
+          </h2>
+          <>
+            <Drawer sentences={mockSubtitles} showLang={showLang} />
             {rest.headerContent}
-          </div>
-          <button className="content-button" onClick={() => setIsDrawerOpen(false)}>
-            {rest.headerButton}
-          </button>
+          </>
+          <ButtonLink onClick={() => setIsDrawerOpen(false)} label={rest.headerButton} />
         </div>
         {/* <img className="content-wrapper-img" src="" alt=""></img> */}
-      </div>
+      </section>
 
       <div className={styles.dropdownParent} onClick={() => setIsButtonsShow(!isButtonsShow)}>
         <svg viewBox="0 0 20 20" style={img_dropdownparent_style}>
@@ -72,20 +72,13 @@ function ContentWrapperSearch({ ...rest }) {
         {/* </button> */}
       </div>
       <div className={isButtonsShow ? styles.dropdown__isactive : styles.dropdown}>
-        <ShowHideHandler
-          koShow={koShow}
-          zhShow={zhShow}
-          enShow={enShow}
-          setKoShow={setKoShow}
-          setZhShow={setZhShow}
-          setEnShow={setEnShow}
-        />
+        <ShowHideHandler showLang={showLang} setShowLang={setShowLang} />
 
         <ApiButtons
           isDrawerOpen={isDrawerOpen}
           setIsDrawerOpen={setIsDrawerOpen}
           SentencebookPush={rest.SentencebookPush}
-          sentencesID_SelectedList={sentencesID_SelectedList}
+          seletedSentences={selectedIds}
           fetch_drawer={fetch_drawer}
         />
       </div>
@@ -99,10 +92,10 @@ function ContentWrapperSearch({ ...rest }) {
         <div>
           <AppCards
             controller="search"
-            koShow={koShow}
-            zhShow={zhShow}
-            enShow={enShow}
-            sentenceID_ClickHandler={sentenceID_ClickHandler}
+            showLang={showLang}
+            getSelectedIds={(selectedIds) => {
+              setSelectedIds(selectedIds)
+            }}
           />
         </div>
       </div>
