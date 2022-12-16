@@ -90,13 +90,13 @@ function ContentWrapperSearch({ ...rest }) {
         />
       </div>
 
-      <div className="content-section">
-        <div className="content-section-title">
-          {rest.sectionTitle}
+      <div>
+        <div className="mb-8">
+          <h2 className="text-xl">{rest.sectionTitle}</h2>
           <li>{rest.sectionInfo}</li>
           <li>{rest.sectionInfo2}</li>
         </div>
-        <div className="apps-card">
+        <div>
           <AppCards
             controller="search"
             koShow={koShow}

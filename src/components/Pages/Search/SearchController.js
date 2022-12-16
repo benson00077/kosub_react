@@ -98,7 +98,7 @@ function SearchController({ user, seteIfUpdateMySentencePage, ifUpdateMySentence
           headerTitle="Context"
           sectionTitle={'Search Information'}
           sectionInfo={`Query : ${searchResult['mainQuery']}`}
-          sectionInfo2={`Result : ${searchResult['result_number']} sentneces found`}
+          sectionInfo2={`Result : ${searchResult['result_number']} sentences found`}
           SentencebookPush={SentencebookPush}
           headerButton={'close'}
         />

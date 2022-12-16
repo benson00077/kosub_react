@@ -1,97 +1,52 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { SearchContext } from '../../SearchContext'
 import { UserContext } from '../../UserContext'
-import styles from './appCards.module.css'
-import useIfSelectSentence from '../../useIfSelectSentence'
+import mockSubtitles from '../mockSubtitles.json'
 
 function AppCards({ ...rest }) {
   const [searchResult] = useContext(SearchContext)
   const [userInfo] = useContext(UserContext)
 
-  const [ifsentences_SelectedList, ifSentence_Selected_ClickHandler] = useIfSelectSentence(searchResult['result']['id'])
-
-  const Line_Select_Handler = (e) => {
-    let selected_line = ''
-    if (e.target.localName === 'div') {
-      selected_line = e.target.firstElementChild
+  const [selected, setSelected] = useState({})
+  const lineSelectHandler = (e, id) => {
+    if (selected[id]) {
+      const copied = { ...selected }
+      delete copied[id]
+      console.log(copied)
+      setSelected(copied)
+    } else {
+      console.log({ [id]: true, ...selected })
+      setSelected({ [id]: true, ...selected })
     }
-    if (e.target.localName === 'p') {
-      selected_line = e.target
-    }
-    const dataId = selected_line.getAttribute('data-id')
-    const dataIndex = selected_line.getAttribute('data-index')
-    rest.sentenceID_ClickHandler(dataId)
-    ifSentence_Selected_ClickHandler([dataIndex])
-  }
-
-  // appCard section
-  const appCardRenderer = (koList, zhList, enList, idList, noResult) => {
-    return (
-      // event Delegation --- (X)
-      // in React No Need, see more
-      // https://dev.to/thawsitt/should-i-use-event-delegation-in-react-nl0
-      <div>
-        {noResult ? 'no result found' : ''}
-        {idList &&
-          idList.map((each, i) => (
-            <div
-              onClick={(e) => Line_Select_Handler(e)}
-              className={`${styles.appCardOneSubtextRow} ${
-                ifsentences_SelectedList[i] ? styles.appCardOneSubtextRow_isSelected : ''
-              }`}
-            >
-              {rest.koShow ? (
-                <p data-id={idList[i]} data-index={i}>
-                  {koList[i]}
-                </p>
-              ) : (
-                ''
-              )}
-              {rest.zhShow ? (
-                <p data-id={idList[i]} data-index={i}>
-                  {zhList[i]}
-                </p>
-              ) : (
-                ''
-              )}
-              {rest.enShow ? (
-                <p data-id={idList[i]} data-index={i}>
-                  {enList[i]}
-                </p>
-              ) : (
-                ''
-              )}
-            </div>
-          ))}
-      </div>
-    )
   }
 
   return (
     <React.Fragment>
-      <div className={styles.appCardOne}>
+      {/* <div className={styles.appCardOne}> */}
+      <div className="p-4 bg-sky-600/10 rounded-lg">
         <span>
           {rest.appCardImg}
           {rest.appCardTitle}
         </span>
 
-        <div className={styles.appCardOneSubtext}>
-          {/* {appCardRenderer(koList, zhList, enList)} */}
-          {rest.controller === 'search' &&
-            appCardRenderer(
-              searchResult['result']['ko'],
-              searchResult['result']['zh'],
-              searchResult['result']['en'],
-              searchResult['result']['id'],
-              searchResult['noResult'],
-            )}
-          {rest.controller === 'mysentence' &&
-            appCardRenderer(
-              userInfo['mysentence']['ko'],
-              userInfo['mysentence']['zh'],
-              userInfo['mysentence']['en'],
-              userInfo['mysentence']['id'],
-            )}
+        <div className="">
+          {mockSubtitles.map((subtitle) => {
+            const id = subtitle.timeId
+            return (
+              <div
+                onClick={(e) => lineSelectHandler(e, id)}
+                key={id}
+                data-id={id}
+                className={`lg:flex space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer ${
+                  selected[id] ? 'bg-blue-600/40' : ''
+                }`}
+              >
+                <p className="lg:w-1/3">{subtitle.sentences.join(' ')}</p>
+                <p className="lg:w-1/3">foo</p>
+                <p className="lg:w-1/3">bar</p>
+              </div>
+            )
+          })}
         </div>
 
         {/* <div className="app-card-buttons" >
