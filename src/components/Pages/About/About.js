@@ -13,24 +13,24 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
   return (
     <main className="m-5">
       <section className="p-5 bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg">
-        <div className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-8 w-full sm:w-auto">
           <h2 className="text-lg">
             <IconAbout />
             About this website
           </h2>
-          <p className="w-96 text-indigo-100">
+          <p className="sm:w-96 text-indigo-100">
             This is a web app in which one can search the subtitles from K-drama so as to enjoy learning Korean with
             context
           </p>
           <ButtonLink onClick={() => navigate('/search')} label={'Try it on Search Page!'} />
         </div>
-        <img className="w-[17vw] object-cover object-center" src={img_content_wrapper} alt=""></img>
+        <img className="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img>
       </section>
 
       <section className="p-5">
         <h2 className="text-lg pb-4">This app is built with ...</h2>
-        <section className="flex flex-row space-x-8">
-          <div className="w-1/3">
+        <section className="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
+          <div className="sm:w-1/3">
             <Card>
               <>
                 <IconTechStack flag="KoNLPy" />
@@ -49,7 +49,7 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
             </Card>
           </div>
 
-          <div className="w-1/3">
+          <div className="sm:w-1/3">
             <Card>
               <>
                 <IconTechStack flag="Nest.js" />
@@ -68,7 +68,7 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
             </Card>
           </div>
 
-          <div className="w-1/3">
+          <div className="pb-24 sm:w-1/3">
             <Card>
               <>
                 <IconTechStack flag="React.js" />

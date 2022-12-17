@@ -6,20 +6,17 @@ import IconFlags from './IconFlags'
 import IconSearchRaw from './IconSearchRaw'
 
 function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) {
-  // CSS for svg img for dropdownParent button
-  const img_flag_style = { width: '35' }
-
   const [copySuccess, setCopySuccess] = useState('Click to copy 안녕하다')
 
   return (
     <main className="m-5">
       <section className="p-5 bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg">
-        <div className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-8 w-full sm:w-auto">
           <h2 className="text-lg">
             <IconSearchRaw />
             If your'e new to Korean and this website
           </h2>
-          <p className="w-96 text-indigo-100">
+          <p className="sm:w-96 text-indigo-100">
             You may want to search: 안녕하다 (greetings in Korean) on the right-top searching bar so as to test this
             app.{' '}
           </p>
@@ -30,13 +27,13 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
             label={copySuccess}
           />
         </div>
-        <img className="w-[17vw] object-cover object-center" src={img_content_wrapper} alt=""></img>
+        <img className="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img>
       </section>
 
       <section className="p-5">
         <h2 className="text-lg pb-4">or try searching something else !</h2>
-        <section className="flex flex-row space-x-8">
-          <div className="w-1/3">
+        <section className="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
+          <div className="sm:w-1/3">
             <Card>
               <>
                 <IconFlags flag="Korean" />
@@ -56,7 +53,7 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
             </Card>
           </div>
 
-          <div className="w-1/3">
+          <div className="sm:w-1/3">
             <Card>
               <>
                 <IconFlags flag="Chinese" />
@@ -77,7 +74,7 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
             </Card>
           </div>
 
-          <div className="w-1/3">
+          <div className="pb-24 sm:w-1/3">
             <Card>
               <>
                 <IconFlags flag="English" />
