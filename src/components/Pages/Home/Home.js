@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import img_content_wrapper from '../../../asset/logo.png'
 import ButtonLink from '../Shared/ButtonLink'
 import Card from '../Shared/Card'
@@ -8,7 +8,7 @@ import IconsBattery from './IconsBattery'
 
 function Home({ headerImg, headerTitle, headerContent, headerButton }) {
 
-  let history = useHistory()
+  let navigate = useNavigate()
 
   return (
     <main className="m-5">
@@ -19,7 +19,7 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
             這個網站可以？
           </h2>
           <p className="w-96 text-indigo-100">給定關鍵字，搜尋韓劇台詞。藉此幫助韓文學習者</p>
-          <ButtonLink onClick={() => history.push('/search')} label={'前往 Search page，了解更多'} />
+          <ButtonLink onClick={() => navigate('/search')} label={'前往 Search page，了解更多'} />
         </div>
         <img
           className="w-[17vw] h-[17vw] object-cover object-center"

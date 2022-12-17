@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { SearchContext } from '../SearchContext'
 import useFetch from '../useFetch'
 
@@ -7,7 +7,7 @@ function SearchInput({ seteIfRerenderSearchPage }) {
   const [searchResult, setSearchResult] = useContext(SearchContext)
   const [query, setQuery] = useState('')
   const inputRef = useRef(null)
-  let history = useHistory()
+  let navigate = useNavigate()
   const [fetchResponse, { fetch_search }] = useFetch(null)
 
   const submitHandler = (e) => {
@@ -35,7 +35,7 @@ function SearchInput({ seteIfRerenderSearchPage }) {
     //     fetch_search(searchResult.queryLanguage, query)
     // }, 2000)
 
-    history.push('/search')
+    navigate('/search')
   }
 
   // listening to axios fetching
