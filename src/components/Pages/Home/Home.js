@@ -7,13 +7,7 @@ import IconHome from './IconHome'
 import IconsBattery from './IconsBattery'
 
 function Home({ headerImg, headerTitle, headerContent, headerButton }) {
-  const window_wid = window.innerWidth
-  const img_content_wrapper_style =
-    window_wid <= 480 ? { width: '15vh', height: '15vh' } : { width: '25vh', height: '25vh' }
-  // console.log(window_wid)
-  // console.log(img_content_wrapper_style)
 
-  // redirect to search page
   let history = useHistory()
 
   return (
@@ -28,10 +22,9 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
           <ButtonLink onClick={() => history.push('/search')} label={'前往 Search page，了解更多'} />
         </div>
         <img
-          className="w-[25vw] object-cover object-center"
+          className="w-[17vw] h-[17vw] object-cover object-center"
           src={img_content_wrapper}
           alt=""
-          style={img_content_wrapper_style}
         ></img>
       </section>
 

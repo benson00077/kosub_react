@@ -23,6 +23,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState('')
 
+  const [showSideMenu, setShowSideMenu] = useState(false)
+
   useEffect(() => {
     const grettingsStyle =
       'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) '
@@ -42,11 +44,15 @@ function App() {
           <div className="bg-dusk-pattern bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
             <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
               <div className="">
-                <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage}/>
+                <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
               </div>
 
               <div className="flex h-full">
-                <div className="p-5 border-r-[1px] border-stone-400 border-opacity-25">
+                <div
+                  className={`${
+                    showSideMenu ? 'p-5 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
+                  } transition-all md:z-0 md:flex md:flex-col border-r-[1px] border-stone-400 border-opacity-25`}
+                >
                   <Nav isLoggedIn={isLoggedIn} />
                 </div>
 
@@ -102,6 +108,12 @@ function App() {
                   </Switch>
                 </div>
               </div>
+            </div>
+            <div
+              className="absolute left-[5vw] bottom-[5vh] z-20 hover:cursor-pointer"
+              onClick={(e) => setShowSideMenu(!showSideMenu)}
+            >
+              ⚙
             </div>
           </div>
         </UseContextProvider>

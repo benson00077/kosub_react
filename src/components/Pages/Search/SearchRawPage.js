@@ -30,7 +30,7 @@ function SearchRawPage({ headerImg, headerTitle, headerContent, headerButton }) 
             label={copySuccess}
           />
         </div>
-        <img className="w-[25vh] object-cover object-center" src={img_content_wrapper} alt=""></img>
+        <img className="w-[17vw] object-cover object-center" src={img_content_wrapper} alt=""></img>
       </section>
 
       <section className="p-5">
