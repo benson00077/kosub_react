@@ -100,7 +100,7 @@ function SearchController({ user, seteIfUpdateMySentencePage, ifUpdateMySentence
           sectionInfo={`Query : ${searchResult['mainQuery']}`}
           sectionInfo2={`Result : ${searchResult['result_number']} sentences found`}
           SentencebookPush={SentencebookPush}
-          headerButton={'close'}
+          headerButton={'Close'}
         />
       )}
     </React.Fragment>

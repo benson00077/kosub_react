@@ -8,18 +8,23 @@ import styles from '../Search/contentWrapperSearch.module.css'
 
 import Drawer from '../Shared/Drawer'
 import useFetch from '../../useFetch'
+import ButtonLink from '../Shared/ButtonLink'
+
+import mockSubtitles from '../mockSubtitles.json'
 
 function ContentWrapperMySentence({ koList, zhList, enList, idList, SentencebookDel, ...rest }) {
   // if show sentence output
-  const [koShow, setKoShow] = useState(true)
-  const [zhShow, setZhShow] = useState(true)
-  const [enShow, setEnShow] = useState(true)
+  const [showLang, setShowLang] = useState({
+    ko: true,
+    zh: true,
+    en: true,
+  })
 
   // if show buttons for sentnece manipulating
   const [isButtonsShow, setIsButtonsShow] = useState(false)
 
   // pass to ApiButton & AppCards
-  const [sentencesID_SelectedList, sentenceID_ClickHandler] = useSelectSentenceId(rest.id)
+  const [selectedIds, setSelectedIds] = useState({})
 
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetch_drawer }] = useFetch(null)
@@ -29,33 +34,25 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
   const img_dropdownparent_style = { width: '40', fill: 'rgba(255, 255, 255, 0.582)' }
 
   return (
-    <div className="content-wrapper" id="content-wrapper">
-      <div
-        className={`${styles.contentWrapperHeaderSearchpage} ${
-          isDrawerOpen ? styles.contentWrapperHeaderSearchpage__isopen : ''
-        }`}
+    <main className="m-5">
+      <section
+        className={`
+        ${isDrawerOpen ? 'p-5' : 'h-0 opacity-0 p-0 -translate-y-40'}
+          bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg
+      `}
       >
-        <div className={styles.contentWrapperContext}>
-          <h3 className="img-content">
+        <div className="flex flex-col space-y-8 w-full">
+          <h2 className="text-lg">
             {rest.headerImg}
             {rest.headerTitle}
-          </h3>
-          <div className="content-text">
-            <Drawer
-              isLoading={fetchResponse.isLoading}
-              drawerKo={fetchResponse.post.ko}
-              drawerZh={fetchResponse.post.zh}
-              drawerEn={fetchResponse.post.en}
-              drawerId={fetchResponse.post.id}
-            />
+          </h2>
+          <>
+            <Drawer isLoading={fetchResponse.isLoading} sentences={mockSubtitles} showLang={showLang} />
             {rest.headerContent}
-          </div>
-          <button className="content-button" onClick={() => setIsDrawerOpen(false)}>
-            {rest.headerButton}
-          </button>
+          </>
+          <ButtonLink onClick={() => setIsDrawerOpen(false)} label={rest.headerButton} />
         </div>
-        {/* <img className="content-wrapper-img" src="" alt=""></img> */}
-      </div>
+      </section>
 
       <div className={styles.dropdownParent} onClick={() => setIsButtonsShow(!isButtonsShow)}>
         <svg viewBox="0 0 20 20" style={img_dropdownparent_style}>
@@ -64,37 +61,34 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
         {/* </button> */}
       </div>
       <div className={isButtonsShow ? styles.dropdown__isactive : styles.dropdown}>
-        <ShowHideHandler
-          koShow={koShow}
-          zhShow={zhShow}
-          enShow={enShow}
-          setKoShow={setKoShow}
-          setZhShow={setZhShow}
-          setEnShow={setEnShow}
-        />
+        <ShowHideHandler showLang={showLang} setShowLang={setShowLang} />
 
         <ApiButtons
-          SentencebookDel={SentencebookDel}
           isDrawerOpen={isDrawerOpen}
           setIsDrawerOpen={setIsDrawerOpen}
-          sentencesID_SelectedList={sentencesID_SelectedList}
+          SentencebookDel={SentencebookDel}
+          seletedSentences={selectedIds}
           fetch_drawer={fetch_drawer}
         />
       </div>
 
-      <div className="content-section">
-        <div className="content-section-title">{rest.sectionTitle}</div>
-        <div className="apps-card">
+      <div>
+        <div className="mb-8">
+          <h2 className="text-xl">{rest.sectionTitle}</h2>
+          <li>{rest.sectionInfo}</li>
+          <li>{rest.sectionInfo2}</li>
+        </div>
+        <div>
           <AppCards
             controller="mysentence"
-            koShow={koShow}
-            zhShow={zhShow}
-            enShow={enShow}
-            sentenceID_ClickHandler={sentenceID_ClickHandler}
+            showLang={showLang}
+            getSelectedIds={(selectedIds) => {
+              setSelectedIds(selectedIds)
+            }}
           />
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

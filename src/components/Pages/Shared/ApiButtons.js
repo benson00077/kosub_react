@@ -13,8 +13,6 @@ function ApiButtons({
 }) {
   const buttonRef_mySentenceBook = useRef(null)
   const buttonRef_fetchContext = useRef(null)
-  // const history = useHistory()
-  // history.push('/mysentnece') redirect
 
   // CSS for svg img
   const img_apibutton_style1 = { fill: 'rgba(218, 46, 136, 0.75)' }

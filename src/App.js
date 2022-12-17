@@ -1,6 +1,6 @@
 // import './App.css'
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Nav from './components/SideMenu/Nav'
 import About from './components/Pages/About/About'
@@ -38,7 +38,7 @@ function App() {
   }, [])
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <SearchContextProvider>
         <UseContextProvider>
           <div className="bg-dusk-pattern bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
@@ -57,37 +57,27 @@ function App() {
                 </div>
 
                 <div className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">
-                  <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/about" component={About} />
-
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
                     <Route
                       path="/search"
-                      render={() =>
+                      element={
                         ifRerenderSearchPage ? (
                           <SearchController
                             user={user}
                             seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
                             ifUpdateMySentencePage={ifUpdateMySentencePage}
-                          />
+                          ></SearchController>
                         ) : (
                           <SearchRawPage />
                         )
                       }
                     />
 
-                    {/* <Route path="/search">  
-                {ifRerenderSearchPage
-                  ? <SearchController ko={result.ko} zh={result.zh} en={result.en} id={result.id}/>
-                  : <h3>How to Use ?????</h3>}
-                {isSearched
-                  ? <Redirect push to="/search"/>
-                  : ''}
-              </Route> */}
-
                     <Route
                       path="/login"
-                      render={() =>
+                      element={
                         isLoggedIn ? (
                           <h3>Logged In Successfully</h3>
                         ) : (
@@ -95,17 +85,24 @@ function App() {
                         )
                       }
                     />
-                    <Route path="/register" render={() => <Register />} />
+                    <Route path="/register" element={<Register />} />
 
-                    <PrivateRoute path="/mysentences" isLoggedIn={isLoggedIn}>
-                      <MySentenceController
-                        isLoggedIn={isLoggedIn}
-                        user={user}
-                        seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
-                        ifUpdateMySentencePage={ifUpdateMySentencePage}
-                      />
-                    </PrivateRoute>
-                  </Switch>
+                    <Route
+                      path="/mysentences"
+                      element={
+                        isLoggedIn ? (
+                          <MySentenceController
+                            isLoggedIn={isLoggedIn}
+                            user={user}
+                            seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
+                            ifUpdateMySentencePage={ifUpdateMySentencePage}
+                          />
+                        ) : (
+                          <h3>Please log in to get your sentence book page !</h3>
+                        )
+                      }
+                    />
+                  </Routes>
                 </div>
               </div>
             </div>
@@ -118,7 +115,7 @@ function App() {
           </div>
         </UseContextProvider>
       </SearchContextProvider>
-    </Router>
+    </BrowserRouter>
   )
 }
 

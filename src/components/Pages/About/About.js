@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import img_content_wrapper from '../../../asset/vector-creator.png'
 import IconAbout from './IconAbout'
 import ButtonLink from '../Shared/ButtonLink'
@@ -8,7 +8,7 @@ import IconTechStack from './IconTechStack'
 import IconGitHubLink from './IconGitHubLink'
 
 function About({ headerImg, headerTitle, headerContent, headerButton }) {
-  let history = useHistory()
+  let navigate = useNavigate()
 
   return (
     <main className="m-5">
@@ -22,7 +22,7 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
             This is a web app in which one can search the subtitles from K-drama so as to enjoy learning Korean with
             context
           </p>
-          <ButtonLink onClick={() => history.push('/search')} label={'Try it on Search Page!'} />
+          <ButtonLink onClick={() => navigate('/search')} label={'Try it on Search Page!'} />
         </div>
         <img className="w-[17vw] object-cover object-center" src={img_content_wrapper} alt=""></img>
       </section>

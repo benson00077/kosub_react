@@ -11,9 +11,6 @@ import ButtonLink from '../Shared/ButtonLink'
 
 function ContentWrapperSearch({ ...rest }) {
   // if show sentence output
-  const [koShow, setKoShow] = useState(true)
-  const [zhShow, setZhShow] = useState(true)
-  const [enShow, setEnShow] = useState(true)
   const [showLang, setShowLang] = useState({
     ko: true,
     zh: true,
@@ -47,7 +44,7 @@ function ContentWrapperSearch({ ...rest }) {
     <main className="m-5" ref={goTop_ref}>
       <section
         className={`
-          ${isDrawerOpen ? 'p-5' : 'h-0 opacity-0 p-0'}
+          ${isDrawerOpen ? 'p-5' : 'h-0 opacity-0 p-0 -translate-y-40'}
             bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg
         `}
       >
@@ -62,7 +59,6 @@ function ContentWrapperSearch({ ...rest }) {
           </>
           <ButtonLink onClick={() => setIsDrawerOpen(false)} label={rest.headerButton} />
         </div>
-        {/* <img className="content-wrapper-img" src="" alt=""></img> */}
       </section>
 
       <div className={styles.dropdownParent} onClick={() => setIsButtonsShow(!isButtonsShow)}>
