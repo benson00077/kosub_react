@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import ApiButtons from '../Shared/ApiButtons'
 import AppCards from '../Shared/AppCards'
 import ShowHideHandler from '../Shared/ShowHideHandler'
-import useSelectSentenceId from '../../useSelectSentenceId'
 
 import styles from '../Search/contentWrapperSearch.module.css'
 
