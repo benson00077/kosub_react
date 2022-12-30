@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from '../Search/contentWrapperSearch.module.css'
 
 function Drawer({ sentences, showLang }) {
   const { ko, zh, en } = showLang

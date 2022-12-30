@@ -33,7 +33,7 @@ function Login({ setIsLoggedIn, setUser }) {
 
   let navigate = useNavigate();
 
-  const { state } = useLocation()
+  const { location } = useLocation()
 
   const login = (e) => {
     e.preventDefault()
@@ -58,7 +58,7 @@ function Login({ setIsLoggedIn, setUser }) {
   }
 
   if (redirectToReferer === true) {
-    return <Navigate to={state?.from || '/'} replace={true} />
+    return <Navigate to={location?.from || '/'} replace={true} />
   }
 
   return (
