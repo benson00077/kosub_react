@@ -69,19 +69,15 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
         </div>
       </div>
 
-      {showToolkit && (
-        <div className="mt-5">
-          <div className="text-zinc-400 mb-4">Interaction</div>
-          <ApiButtonsToolKit />
-        </div>
-      )}
+      <div class={`mt-5 transition-opacity ${showToolkit ? 'opacity-100' : '-translate-x-52 opacity-0'}`}>
+        <div className="text-zinc-400 mb-4">Interaction</div>
+        <ApiButtonsToolKit />
+      </div>
 
-      {showToolkit && (
-        <div className="mt-5">
-          <div className="text-zinc-400 mb-4">Preference</div>
-          <SentencesToolKit/>
-        </div>
-      )}
+      <div class={`mt-5 transition-opacity ${showToolkit ? 'opacity-100' : '-translate-x-52 opacity-0'}`}>
+        <div className="text-zinc-400 mb-4">Preference</div>
+        <SentencesToolKit />
+      </div>
     </>
   )
 }
