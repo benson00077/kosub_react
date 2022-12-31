@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
+import { useSelectContext } from '../../../hooks/SelectedEleProvider'
 import { SearchContext } from '../../SearchContext'
 import { UserContext } from '../../UserContext'
 import mockSubtitles from '../mockSubtitles.json'
@@ -8,7 +9,7 @@ function AppCards({ showLang, getSelectedIds }) {
   const [searchResult] = useContext(SearchContext)
   const [userInfo] = useContext(UserContext)
 
-  const [selected, setSelected] = useState({})
+  const [selected, setSelected] = useSelectContext()
   const lineSelectHandler = (e, id) => {
     if (selected[id]) {
       const copied = { ...selected }
@@ -32,7 +33,6 @@ function AppCards({ showLang, getSelectedIds }) {
               <div
                 onClick={(e) => lineSelectHandler(e, id)}
                 key={id}
-                data-id={id}
                 className={`lg:flex space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer ${
                   selected[id] ? 'bg-blue-600/40' : ''
                 }`}

@@ -13,11 +13,8 @@ function ContentWrapperSearch({ ...rest }) {
     en: true,
   })
 
-  // if show buttons for sentnece manipulating
-  const [isButtonsShow, setIsButtonsShow] = useState(false)
-
   // pass to ApiButton & AppCards
-  const [selectedIds, setSelectedIds] = useState({})
+  const [selectedIds, setSelectedIds] = useState([])
 
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetch_drawer }] = useFetch(null)
@@ -62,6 +59,7 @@ function ContentWrapperSearch({ ...rest }) {
           <h2 className="text-xl">{rest.sectionTitle}</h2>
           <li>{rest.sectionInfo}</li>
           <li>{rest.sectionInfo2}</li>
+          <li>{`${rest.sectionInfo3}${selectedIds}`}</li>
         </div>
         <div>
           <AppCards

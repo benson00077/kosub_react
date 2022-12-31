@@ -15,9 +15,6 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
     en: true,
   })
 
-  // if show buttons for sentnece manipulating
-  const [isButtonsShow, setIsButtonsShow] = useState(false)
-
   // pass to ApiButton & AppCards
   const [selectedIds, setSelectedIds] = useState({})
 
@@ -52,8 +49,7 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
       <div>
         <div className="mb-8">
           <h2 className="text-xl">{rest.sectionTitle}</h2>
-          <li>{rest.sectionInfo}</li>
-          <li>{rest.sectionInfo2}</li>
+          <li>{`${rest.sectionInfo}${selectedIds}`}</li>
         </div>
         <div>
           <AppCards

@@ -45,6 +45,7 @@ function SearchController({ user, seteIfUpdateMySentencePage, ifUpdateMySentence
           sectionTitle={'Search Information'}
           sectionInfo={`Query : ${searchResult['mainQuery']}`}
           sectionInfo2={`Result : ${searchResult['result_number']} sentences found`}
+          sectionInfo3={`Selected : `}
           SentencebookPush={SentencebookPush}
           headerButton={'Close'}
         />

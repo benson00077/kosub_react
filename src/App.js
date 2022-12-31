@@ -16,6 +16,7 @@ import { SearchContextProvider } from './components/SearchContext'
 import { UseContextProvider } from './components/UserContext'
 import SearchRawPage from './components/Pages/Search/SearchRawPage'
 import Register from './components/Pages/Register/Register'
+import { SelectedEleProvider } from './hooks/SelectedEleProvider'
 
 function App() {
   const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
@@ -50,65 +51,66 @@ function App() {
               <div className="">
                 <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
               </div>
+              <SelectedEleProvider>
+                <div className="flex h-full">
+                  <div
+                    className={`${
+                      showSideMenu ? 'p-5 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
+                    } transition-all md:z-0 md:flex md:flex-col border-r-[1px] border-stone-400 border-opacity-25`}
+                  >
+                    <Nav isLoggedIn={isLoggedIn} />
+                  </div>
 
-              <div className="flex h-full">
-                <div
-                  className={`${
-                    showSideMenu ? 'p-5 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
-                  } transition-all md:z-0 md:flex md:flex-col border-r-[1px] border-stone-400 border-opacity-25`}
-                >
-                  <Nav isLoggedIn={isLoggedIn} />
+                  <div className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<About />} />
+                      <Route
+                        path="/search"
+                        element={
+                          ifRerenderSearchPage ? (
+                            <SearchController
+                              user={user}
+                              seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
+                              ifUpdateMySentencePage={ifUpdateMySentencePage}
+                            ></SearchController>
+                          ) : (
+                            <SearchRawPage />
+                          )
+                        }
+                      />
+
+                      <Route
+                        path="/login"
+                        element={
+                          isLoggedIn ? (
+                            <h3>Logged In Successfully</h3>
+                          ) : (
+                            <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+                          )
+                        }
+                      />
+                      <Route path="/register" element={<Register />} />
+
+                      <Route
+                        path="/mysentences"
+                        element={
+                          isLoggedIn ? (
+                            <MySentenceController
+                              isLoggedIn={isLoggedIn}
+                              user={user}
+                              seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
+                              ifUpdateMySentencePage={ifUpdateMySentencePage}
+                            />
+                          ) : (
+                            <h3>Please log in to get your sentence book page !</h3>
+                          )
+                        }
+                      />
+                    </Routes>
+                  </div>
                 </div>
-
-                <div className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route
-                      path="/search"
-                      element={
-                        ifRerenderSearchPage ? (
-                          <SearchController
-                            user={user}
-                            seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
-                            ifUpdateMySentencePage={ifUpdateMySentencePage}
-                          ></SearchController>
-                        ) : (
-                          <SearchRawPage />
-                        )
-                      }
-                    />
-
-                    <Route
-                      path="/login"
-                      element={
-                        isLoggedIn ? (
-                          <h3>Logged In Successfully</h3>
-                        ) : (
-                          <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
-                        )
-                      }
-                    />
-                    <Route path="/register" element={<Register />} />
-
-                    <Route
-                      path="/mysentences"
-                      element={
-                        isLoggedIn ? (
-                          <MySentenceController
-                            isLoggedIn={isLoggedIn}
-                            user={user}
-                            seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
-                            ifUpdateMySentencePage={ifUpdateMySentencePage}
-                          />
-                        ) : (
-                          <h3>Please log in to get your sentence book page !</h3>
-                        )
-                      }
-                    />
-                  </Routes>
-                </div>
-              </div>
+              </SelectedEleProvider>
             </div>
             <div
               className="absolute left-[7vw] md:left-[6vw] bottom-[5vh] z-20 hover:cursor-pointer"
