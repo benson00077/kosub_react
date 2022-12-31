@@ -8,12 +8,6 @@ import ButtonLink from '../Shared/ButtonLink'
 import mockSubtitles from '../mockSubtitles.json'
 
 function ContentWrapperMySentence({ koList, zhList, enList, idList, SentencebookDel, ...rest }) {
-  // if show sentence output
-  const [showLang, setShowLang] = useState({
-    ko: true,
-    zh: true,
-    en: true,
-  })
 
   // pass to ApiButton & AppCards
   const [selectedIds, setSelectedIds] = useState({})
@@ -39,7 +33,7 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
             {rest.headerTitle}
           </h2>
           <>
-            <Drawer isLoading={fetchResponse.isLoading} sentences={mockSubtitles} showLang={showLang} />
+            <Drawer isLoading={fetchResponse.isLoading} sentences={mockSubtitles} />
             {rest.headerContent}
           </>
           <ButtonLink onClick={() => setIsDrawerOpen(false)} label={rest.headerButton} />
@@ -54,7 +48,6 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
         <div>
           <AppCards
             controller="mysentence"
-            showLang={showLang}
             getSelectedIds={(selectedIds) => {
               setSelectedIds(selectedIds)
             }}

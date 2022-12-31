@@ -6,12 +6,6 @@ import mockSubtitles from '../mockSubtitles.json'
 import ButtonLink from '../Shared/ButtonLink'
 
 function ContentWrapperSearch({ ...rest }) {
-  // if show sentence output
-  const [showLang, setShowLang] = useState({
-    ko: true,
-    zh: true,
-    en: true,
-  })
 
   // pass to ApiButton & AppCards
   const [selectedIds, setSelectedIds] = useState([])
@@ -47,7 +41,7 @@ function ContentWrapperSearch({ ...rest }) {
             {rest.headerTitle}
           </h2>
           <>
-            <Drawer sentences={mockSubtitles} showLang={showLang} />
+            <Drawer sentences={mockSubtitles}/>
             {rest.headerContent}
           </>
           <ButtonLink onClick={() => setIsDrawerOpen(false)} label={rest.headerButton} />
@@ -64,7 +58,6 @@ function ContentWrapperSearch({ ...rest }) {
         <div>
           <AppCards
             controller="search"
-            showLang={showLang}
             getSelectedIds={(selectedIds) => {
               setSelectedIds(selectedIds)
             }}

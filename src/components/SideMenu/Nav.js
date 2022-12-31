@@ -13,12 +13,6 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
   //TODO: show only when user searched before
   const showToolkit = ['/search', '/mysentences'].includes(location.pathname)
 
-  const [showLang, setShowLang] = useState({
-    ko: true,
-    zh: true,
-    en: true,
-  })
-
   const linkClassName = `flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded hover:bg-slate-500 opacity-80`
 
   return (
@@ -85,7 +79,7 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
       {showToolkit && (
         <div className="mt-5">
           <div className="text-zinc-400 mb-4">Preference</div>
-          <SentencesToolKit showLang={showLang} setShowLang={setShowLang} />
+          <SentencesToolKit/>
         </div>
       )}
     </>

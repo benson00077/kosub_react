@@ -1,6 +1,8 @@
 import React from 'react'
+import { useShowHideContext } from '../../../hooks/ShowHideEleProvider'
 
-function Drawer({ sentences, showLang }) {
+function Drawer({ sentences }) {
+  const [showLang, _] = useShowHideContext()
   const { ko, zh, en } = showLang
 
   return (

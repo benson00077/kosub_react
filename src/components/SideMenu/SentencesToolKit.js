@@ -1,6 +1,9 @@
+import { useShowHideContext } from '../../hooks/ShowHideEleProvider'
 import TogglerButton from '../ToggleButton'
 
-function SentencesToolKit({ showLang, setShowLang }) {
+function SentencesToolKit() {
+  const [showLang, setShowLang] = useShowHideContext()
+
   const showHideHandler = (flag) => {
     if (!Object.keys(showLang).includes(flag)) {
       console.error('Flag is wrong.')

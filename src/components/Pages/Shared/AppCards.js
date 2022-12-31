@@ -1,13 +1,17 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { useSelectContext } from '../../../hooks/SelectedEleProvider'
+import { useShowHideContext } from '../../../hooks/ShowHideEleProvider'
 import { SearchContext } from '../../SearchContext'
 import { UserContext } from '../../UserContext'
 import mockSubtitles from '../mockSubtitles.json'
 
-function AppCards({ showLang, getSelectedIds }) {
-  const { ko, zh, en } = showLang
+function AppCards({ getSelectedIds }) {
+
   const [searchResult] = useContext(SearchContext)
   const [userInfo] = useContext(UserContext)
+
+  const [showLang, _] = useShowHideContext()
+  const { ko, zh, en } = showLang
 
   const [selected, setSelected] = useSelectContext()
   const lineSelectHandler = (e, id) => {
@@ -23,7 +27,7 @@ function AppCards({ showLang, getSelectedIds }) {
   }
 
   return (
-    <React.Fragment>
+    <>
       {/* <div className={styles.appCardOne}> */}
       <div className="p-4 bg-sky-600/10 rounded-lg">
         <>
@@ -48,7 +52,7 @@ function AppCards({ showLang, getSelectedIds }) {
                     <button className="content-button status-button"> ^ </button>
                 </div> */}
       </div>
-    </React.Fragment>
+    </>
   )
 }
 
