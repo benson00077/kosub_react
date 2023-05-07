@@ -45,7 +45,12 @@ function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, seteI
     <React.Fragment>
       {/* <ContentWrapperMySentence koList={match.ko} zhList={match.zh} enList={match.en} idList={match.id}
                 sentenceID_ClickHandler={sentenceID_ClickHandler} sentencesID_SelectedList={sentencesID_SelectedList} /> */}
-      <ContentWrapperMySentence SentencebookDel={SentencebookDel} headerTitle="Context" />
+      <ContentWrapperMySentence
+        SentencebookDel={SentencebookDel}
+        headerTitle="Context"
+        headerButton="Close"
+        sectionInfo={`Selected : `}
+      />
     </React.Fragment>
   )
 }

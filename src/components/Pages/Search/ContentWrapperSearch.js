@@ -1,23 +1,14 @@
 import React, { useState, useRef } from 'react'
-import Drawer from '../Asset_crossPages/Drawer'
-import styles from './contentWrapperSearch.module.css'
-import ShowHideHandler from '../Asset_crossPages/Extend/ShowHideHandler'
-import AppCards from '../Asset_crossPages/AppCards'
-import ApiButtons from '../Asset_crossPages/Extend/ApiButtons'
-import useSelectSentenceId from '../../useSelectSentenceId'
+import Drawer from '../Shared/Drawer'
+import AppCards from '../Shared/AppCards'
 import useFetch from '../../useFetch'
+import mockSubtitles from '../mockSubtitles.json'
+import ButtonLink from '../Shared/ButtonLink'
 
 function ContentWrapperSearch({ ...rest }) {
-  // if show sentence output
-  const [koShow, setKoShow] = useState(true)
-  const [zhShow, setZhShow] = useState(true)
-  const [enShow, setEnShow] = useState(true)
-
-  // if show buttons for sentnece manipulating
-  const [isButtonsShow, setIsButtonsShow] = useState(false)
 
   // pass to ApiButton & AppCards
-  const [sentencesID_SelectedList, sentenceID_ClickHandler] = useSelectSentenceId(rest.id)
+  const [selectedIds, setSelectedIds] = useState([])
 
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetch_drawer }] = useFetch(null)
@@ -37,82 +28,49 @@ function ContentWrapperSearch({ ...rest }) {
   // }
 
   return (
-    <div className="content-wrapper" ref={goTop_ref}>
-      <div
-        className={`${styles.contentWrapperHeaderSearchpage} ${
-          isDrawerOpen ? styles.contentWrapperHeaderSearchpage__isopen : ''
-        }`}
+    <main className="m-5" ref={goTop_ref}>
+      <section
+        className={`
+          ${isDrawerOpen ? 'p-5' : 'h-0 opacity-0 p-0 -translate-y-40'}
+            bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg
+        `}
       >
-        <div className={styles.contentWrapperContext}>
-          <h3 className="img-content">
+        <div className="flex flex-col space-y-8 w-full">
+          <h2 className="text-lg">
             {rest.headerImg}
             {rest.headerTitle}
-          </h3>
-          <div className="content-text">
-            <Drawer
-              isLoading={fetchResponse.isLoading}
-              drawerKo={fetchResponse.post.ko}
-              drawerZh={fetchResponse.post.zh}
-              drawerEn={fetchResponse.post.en}
-              drawerId={fetchResponse.post.id}
-            />
+          </h2>
+          <>
+            <Drawer sentences={mockSubtitles}/>
             {rest.headerContent}
-          </div>
-          <button className="content-button" onClick={() => setIsDrawerOpen(false)}>
-            {rest.headerButton}
-          </button>
+          </>
+          <ButtonLink onClick={() => setIsDrawerOpen(false)} label={rest.headerButton} />
         </div>
-        {/* <img className="content-wrapper-img" src="" alt=""></img> */}
-      </div>
+      </section>
 
-      <div className={styles.dropdownParent} onClick={() => setIsButtonsShow(!isButtonsShow)}>
-        <svg viewBox="0 0 20 20" style={img_dropdownparent_style}>
-          <path d="M3.94 6.5L2.22 3.64l1.42-1.42L6.5 3.94c.52-.3 1.1-.54 1.7-.7L9 0h2l.8 3.24c.6.16 1.18.4 1.7.7l2.86-1.72 1.42 1.42-1.72 2.86c.3.52.54 1.1.7 1.7L20 9v2l-3.24.8c-.16.6-.4 1.18-.7 1.7l1.72 2.86-1.42 1.42-2.86-1.72c-.52.3-1.1.54-1.7.7L11 20H9l-.8-3.24c-.6-.16-1.18-.4-1.7-.7l-2.86 1.72-1.42-1.42 1.72-2.86c-.3-.52-.54-1.1-.7-1.7L0 11V9l3.24-.8c.16-.6.4-1.18.7-1.7zM10 13a3 3 0 100-6 3 3 0 000 6z" />
-        </svg>
-        {/* </button> */}
-      </div>
-      <div className={isButtonsShow ? styles.dropdown__isactive : styles.dropdown}>
-        <ShowHideHandler
-          koShow={koShow}
-          zhShow={zhShow}
-          enShow={enShow}
-          setKoShow={setKoShow}
-          setZhShow={setZhShow}
-          setEnShow={setEnShow}
-        />
-
-        <ApiButtons
-          isDrawerOpen={isDrawerOpen}
-          setIsDrawerOpen={setIsDrawerOpen}
-          SentencebookPush={rest.SentencebookPush}
-          sentencesID_SelectedList={sentencesID_SelectedList}
-          fetch_drawer={fetch_drawer}
-        />
-      </div>
-
-      <div className="content-section">
-        <div className="content-section-title">
-          {rest.sectionTitle}
+      <div>
+        <div className="mb-8">
+          <h2 className="text-xl">{rest.sectionTitle}</h2>
           <li>{rest.sectionInfo}</li>
           <li>{rest.sectionInfo2}</li>
+          <li>{`${rest.sectionInfo3}${selectedIds}`}</li>
         </div>
-        <div className="apps-card">
+        <div>
           <AppCards
             controller="search"
-            koShow={koShow}
-            zhShow={zhShow}
-            enShow={enShow}
-            sentenceID_ClickHandler={sentenceID_ClickHandler}
+            getSelectedIds={(selectedIds) => {
+              setSelectedIds(selectedIds)
+            }}
           />
         </div>
       </div>
 
-      <div className={styles.goTop} onClick={() => goTopHandler()}>
+      <div class="hidden md:block fixed right-[5%] bottom-[5%] hover:cursor-pointer" onClick={() => goTopHandler()}>
         <svg viewBox="0 0 20 20" style={img_goTop_style}>
           <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
         </svg>
       </div>
-    </div>
+    </main>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Redirect, useLocation } from 'react-router-dom'
+import { Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './login.module.css'
 
@@ -11,7 +11,7 @@ function PrivateRoute({ children, ...rest }) {
         return rest.isLoggedIn === true ? (
           children
         ) : (
-          <Redirect
+          <Navigate
             to={{
               pathname: '/login',
               state: { from: location },
@@ -31,28 +31,34 @@ function Login({ setIsLoggedIn, setUser }) {
   const [password, setPassword] = useState('')
   const [loginDescription, setLoginDescription] = useState('')
 
-  const { state } = useLocation()
+  let navigate = useNavigate();
+
+  const { location } = useLocation()
 
   const login = (e) => {
     e.preventDefault()
-    axios
-      .post(`${login_root_url}/sub/login`, { user: userName, pass: password })
-      .then((res) => {
-        if (res.data.isLoggedIn) {
-          setRedirectToReferer(true)
-          setIsLoggedIn(true)
-          setUser(res.data.userID)
-        } else {
-          setLoginDescription('Invalid username and/or password')
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    // axios
+    //   .post(`${login_root_url}/sub/login`, { user: userName, pass: password })
+    //   .then((res) => {
+    //     if (res.data.isLoggedIn) {
+    //       setRedirectToReferer(true)
+    //       setIsLoggedIn(true)
+    //       setUser(res.data.userID)
+    //     } else {
+    //       setLoginDescription('Invalid username and/or password')
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
+    setRedirectToReferer(true)
+    setIsLoggedIn(true)
+    navigate('/mysentences')
+    setUser(123)
   }
 
   if (redirectToReferer === true) {
-    return <Redirect to={state?.from || '/'} />
+    return <Navigate to={location?.from || '/'} replace={true} />
   }
 
   return (
