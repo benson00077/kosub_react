@@ -58,7 +58,7 @@ function App() {
                     <div
                       className={`${
                         showSideMenu ? 'p-5 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
-                      } transition-all md:z-0 md:flex md:flex-col border-r-[1px] border-stone-400 border-opacity-25`}
+                      } h-[78vh] overflow-scroll transition-all md:z-0 md:flex md:flex-col border-r-[1px] border-stone-400 border-opacity-25 no-scrollbar`}
                     >
                       <Nav isLoggedIn={isLoggedIn} />
                     </div>
