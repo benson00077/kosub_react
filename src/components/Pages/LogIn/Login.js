@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Route, Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './login.module.css'
 
@@ -23,42 +23,28 @@ function PrivateRoute({ children, ...rest }) {
   )
 }
 
-function Login({ setIsLoggedIn, setUser }) {
-  const login_root_url = 'https://kosub-api-pro.herokuapp.com'
+function Login({ setIsLoggedIn }) {
 
-  const [redirectToReferer, setRedirectToReferer] = useState(false)
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
-  const [loginDescription, setLoginDescription] = useState('')
+  const [hintMsg, setHintMsg] = useState('')
 
-  let navigate = useNavigate();
-
-  const { location } = useLocation()
+  let navigate = useNavigate()
 
   const login = (e) => {
     e.preventDefault()
-    // axios
-    //   .post(`${login_root_url}/sub/login`, { user: userName, pass: password })
-    //   .then((res) => {
-    //     if (res.data.isLoggedIn) {
-    //       setRedirectToReferer(true)
-    //       setIsLoggedIn(true)
-    //       setUser(res.data.userID)
-    //     } else {
-    //       setLoginDescription('Invalid username and/or password')
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
-    setRedirectToReferer(true)
-    setIsLoggedIn(true)
-    navigate('/mysentences')
-    setUser(123)
-  }
-
-  if (redirectToReferer === true) {
-    return <Navigate to={location?.from || '/'} replace={true} />
+    const rootURL = process.env.REACT_APP_API_URL
+    axios
+      .post(`${rootURL}/auth/login`, { username: userName, password: password })
+      .then((res) => {
+        window.localStorage.setItem('token', res.data.access_token)
+        setIsLoggedIn(true)
+        navigate('/mysentences')
+      })
+      .catch((err) => {
+        console.error(err.message)
+        setHintMsg('Invalid username and/or password')
+      })
   }
 
   return (
@@ -72,7 +58,7 @@ function Login({ setIsLoggedIn, setUser }) {
           Let me in{' '}
         </button>
       </form>
-      <h2>{loginDescription}</h2>
+      <h2 className='text-center text-red-400'>{hintMsg}</h2>
     </div>
   )
 }
