@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import img_content_wrapper from '../../../asset/logo.png'
-import ButtonLink from '../Shared/ButtonLink'
-import Card from '../Shared/Card'
+import img_content_wrapper from '../../asset/logo.png'
+import ButtonLink from '../../components/ButtonLink'
+import Card from '../../components/Card'
 import IconHome from './IconHome'
 import IconsBattery from './IconsBattery'
 

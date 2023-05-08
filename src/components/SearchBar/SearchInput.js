@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { SearchContext } from '../SearchContext'
-import useFetch from '../useFetch'
+import { SearchContext } from '../../context/SearchContext'
+import useFetch from '../../hooks/useFetch'
 
 function SearchInput({ seteIfRerenderSearchPage }) {
   const [searchResult, setSearchResult] = useContext(SearchContext)

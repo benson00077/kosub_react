@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import img_content_wrapper from '../../../asset/vector-creator2.png'
-import ButtonLink from '../Shared/ButtonLink'
-import Card from '../Shared/Card'
+import img_content_wrapper from '../../asset/vector-creator2.png'
+import ButtonLink from '../../components/ButtonLink'
+import Card from '../../components/Card'
 import IconFlags from './IconFlags'
 import IconSearchRaw from './IconSearchRaw'
 

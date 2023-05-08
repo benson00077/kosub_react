@@ -3,19 +3,19 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Nav from './components/SideMenu/Nav'
-import About from './components/Pages/About/About'
-import Home from './components/Pages/Home/Home'
+import About from './Pages/About/About'
+import Home from './Pages/Home/Home'
 
-import Login, { PrivateRoute } from './components/Pages/LogIn/Login'
-import SearchController from './components/Pages/Search/SearchController'
-import MySentenceController from './components/Pages/MySentence/MySentencesController'
+import Login, { PrivateRoute } from './Pages/LogIn/Login'
+import SearchController from './Pages/Search/SearchController'
+import MySentenceController from './Pages/MySentence/MySentencesController'
 
 import SearchBar from './components/SearchBar/SearchBar'
 
-import { SearchContextProvider } from './components/SearchContext'
-import { UseContextProvider } from './components/UserContext'
-import SearchRawPage from './components/Pages/Search/SearchRawPage'
-import Register from './components/Pages/Register/Register'
+import { SearchContextProvider } from './context/SearchContext'
+import { UseContextProvider } from './context/UserContext'
+import SearchRawPage from './Pages/Search/SearchRawPage'
+import Register from './Pages/Register/Register'
 import { SelectedEleProvider } from './hooks/SelectedEleProvider'
 import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
 

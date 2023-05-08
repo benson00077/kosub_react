@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import AppCards from '../Shared/AppCards'
+import AppCards from '../../components/AppCards'
 
-import Drawer from '../Shared/Drawer'
-import useFetch from '../../useFetch'
-import ButtonLink from '../Shared/ButtonLink'
+import Drawer from '../../components/Drawer'
+import useFetch from '../../hooks/useFetch'
+import ButtonLink from '../../components/ButtonLink'
 
-import mockSubtitles from '../mockSubtitles.json'
+import mockSubtitles from '../../data/mockSubtitles.json'
 
 function ContentWrapperMySentence({ koList, zhList, enList, idList, SentencebookDel, ...rest }) {
 

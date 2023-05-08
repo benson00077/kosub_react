@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { useSelectContext } from '../../../hooks/SelectedEleProvider'
-import { useShowHideContext } from '../../../hooks/ShowHideEleProvider'
-import { SearchContext } from '../../SearchContext'
-import { UserContext } from '../../UserContext'
-import mockSubtitles from '../mockSubtitles.json'
+import { useSelectContext } from '../hooks/SelectedEleProvider'
+import { useShowHideContext } from '../hooks/ShowHideEleProvider'
+import { SearchContext } from '../context/SearchContext'
+import { UserContext } from '../context/UserContext'
+import mockSubtitles from '../data/mockSubtitles.json'
 
 function AppCards({ getSelectedIds }) {
 

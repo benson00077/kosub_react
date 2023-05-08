@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import axios from 'axios'
 import ContentWrapperMySentence from './ContentWrapperMySentence'
-import { UserContext } from '../../UserContext'
+import { UserContext } from '../../context/UserContext'
 
 function MySentencesController({ isLoggedIn, user, ifUpdateMySentencePage, seteIfUpdateMySentencePage, ...rest }) {
   const mysentence_root_url = 'https://kosub-api-pro.herokuapp.com'

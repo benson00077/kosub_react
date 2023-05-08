@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { SearchContext } from '../SearchContext'
+import { SearchContext } from '../../context/SearchContext'
 
 function LanguageSelector({ value }) {
   const [isActive, setIsActive] = useState([true, false, false])

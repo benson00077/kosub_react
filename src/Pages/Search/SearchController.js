@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import axios from 'axios'
 import ContentWrapperSearch from './ContentWrapperSearch'
-import { SearchContext } from '../../SearchContext'
-import Spinning from '../Shared/Spinning'
+import { SearchContext } from '../../context/SearchContext'
+import Spinning from '../../components/Spinning'
 
 function SearchController({ user, seteIfUpdateMySentencePage, ifUpdateMySentencePage }) {
   const [searchResult] = useContext(SearchContext)

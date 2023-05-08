@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react'
-import Drawer from '../Shared/Drawer'
-import AppCards from '../Shared/AppCards'
-import useFetch from '../../useFetch'
-import mockSubtitles from '../mockSubtitles.json'
-import ButtonLink from '../Shared/ButtonLink'
+import Drawer from '../../components/Drawer'
+import AppCards from '../../components/AppCards'
+import useFetch from '../../hooks/useFetch'
+import mockSubtitles from '../../data/mockSubtitles.json'
+import ButtonLink from '../../components/ButtonLink'
 
 function ContentWrapperSearch({ ...rest }) {
 

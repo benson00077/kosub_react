@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import img_content_wrapper from '../../../asset/vector-creator.png'
+import img_content_wrapper from '../../asset/vector-creator.png'
 import IconAbout from './IconAbout'
-import ButtonLink from '../Shared/ButtonLink'
-import Card from '../Shared/Card'
+import ButtonLink from '../../components/ButtonLink'
+import Card from '../../components/Card'
 import IconTechStack from './IconTechStack'
 import IconGitHubLink from './IconGitHubLink'
 
