@@ -6,6 +6,19 @@ export const ERR_MESSAGES = `
   Please bear with us!
 `
 export const KOREAN_POS_TAG = {
-  nouns: 'NNG',
-  verbs: 'VV' //TODO: back end support
+  noun: 'NNG',
+  verb: 'VV',
+  adjective: 'VA',
+}
+
+export const KOREAN_POS = {
+  noun: 'Noun',
+  verb: 'Verb',
+  adjective: 'Adjective',
+}
+
+export const PLACEHOLDER = {
+  noun: 'e.g. 음식',
+  verb: 'e.g. 감사하다',
+  adjective: 'e.g. 맛있다',
 }

@@ -41,11 +41,10 @@ function useFetch() {
       })
   }
 
-  const fetch_search = (queryLanguage, mainQuery) => {
-    const defaultKoPosTag = KOREAN_POS_TAG.nouns
+  const fetch_search = (queryLanguage, mainQuery, posTag) => {
     const params = {
       pos: mainQuery,
-      tag: queryLanguage === 'ko' ? defaultKoPosTag : null,
+      tag: queryLanguage === 'ko' ? posTag : null,
     }
     axios
       .get(`${API_ROOT_URL}/sentences/${queryLanguage}`, { params })
