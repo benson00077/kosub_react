@@ -12,13 +12,13 @@ function SearchInput({ seteIfRerenderSearchPage }) {
   const [openModal, setOpenModal] = useState(false)
   const [selectedPos, setSelectedPos] = useState(KOREAN_POS.noun)
   let navigate = useNavigate()
-  const [fetchResponse, { fetch_search }] = useFetch(null)
+  const [fetchResponse, { fetchSearch }] = useFetch(null)
 
   const submitHandler = (e) => {
     e.preventDefault()
     seteIfRerenderSearchPage(true)
     setSearchResult({ ...searchResult, isLoading: true })
-    fetch_search(searchResult.queryLanguage, query, KOREAN_POS_TAG[selectedPos.toLowerCase()])
+    fetchSearch(searchResult.queryLanguage, query, KOREAN_POS_TAG[selectedPos.toLowerCase()])
     navigate('/search')
   }
 

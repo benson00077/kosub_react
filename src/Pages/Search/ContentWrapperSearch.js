@@ -13,7 +13,7 @@ function ContentWrapperSearch({ ...rest }) {
   const [selectedIds, setSelectedIds] = useState([])
 
   // pass to Drawer & ApiButton
-  const [fetchResponse, { fetch_drawer }] = useFetch(null)
+  const [fetchResponse, { fetchDrawer }] = useFetch(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   // CSS for svg img for dropdownParent button

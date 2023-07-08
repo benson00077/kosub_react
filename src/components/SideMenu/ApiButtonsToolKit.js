@@ -31,7 +31,7 @@ function ApiButtonsToolKit() {
           ${isActive.contextBtn ? 'hover:bg-slate-500 opacity-80' : 'opacity-30'}`}
         onClick={() => {
           if (!isActive.contextBtn) return
-          //fetch_drawer(seletedSentences[0])
+          //fetchDrawer(seletedSentences[0])
           //setIsDrawerOpen(!isDrawerOpen)
         }}
       >

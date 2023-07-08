@@ -42,7 +42,7 @@ function useFetch() {
       })
   }
 
-  const fetch_search = (queryLanguage, mainQuery, posTag) => {
+  const fetchSearch = (queryLanguage, mainQuery, posTag) => {
     const params = {
       pos: mainQuery,
       tag: queryLanguage === 'ko' ? posTag : null,
@@ -57,7 +57,7 @@ function useFetch() {
       })
   }
 
-  const fetch_drawer = (id) => {
+  const fetchDrawer = (id) => {
     axios
       .get(`${API_ROOT_URL}/sub/search/all?id=${id}&contextrange=5000`)
       .then((res) => {
@@ -68,7 +68,7 @@ function useFetch() {
       })
   }
 
-  return [state, { fetchFavoriteSpeeches, fetch_search, fetch_drawer }]
+  return [state, { fetchFavoriteSpeeches, fetchSearch, fetchDrawer }]
 }
 
 export default useFetch

@@ -17,7 +17,7 @@ function ContentWrapperMySentence({ ifUpdateMySentencePage, ...rest }) {
   const [selectedIds, setSelectedIds] = useState([])
 
   // pass to Drawer & ApiButton
-  const [fetchResponse, { fetch_drawer }] = useFetch(null)
+  const [fetchResponse, { fetchDrawer }] = useFetch(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   useEffect(() => {
