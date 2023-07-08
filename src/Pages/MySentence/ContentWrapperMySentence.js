@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState  } from 'react'
 import AppCards from '../../components/AppCards'
+import { UserContext } from '../context/UserContext'
 
 import Drawer from '../../components/Drawer'
 import useFetch from '../../hooks/useFetch'
@@ -7,7 +8,8 @@ import ButtonLink from '../../components/ButtonLink'
 
 import mockSubtitles from '../../data/mockSubtitles.json'
 
-function ContentWrapperMySentence({ koList, zhList, enList, idList, SentencebookDel, ...rest }) {
+function ContentWrapperMySentence({ SentencebookDel, ...rest }) {
+  const [userInfo] = useContext(UserContext)
 
   // pass to ApiButton & AppCards
   const [selectedIds, setSelectedIds] = useState({})
@@ -48,6 +50,7 @@ function ContentWrapperMySentence({ koList, zhList, enList, idList, Sentencebook
         <div>
           <AppCards
             controller="mysentence"
+            speechResult={favoriteSpeechesResult}
             getSelectedIds={(selectedIds) => {
               setSelectedIds(selectedIds)
             }}

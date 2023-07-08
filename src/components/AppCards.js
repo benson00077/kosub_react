@@ -1,13 +1,7 @@
-import { useContext } from 'react'
 import { useSelectContext } from '../hooks/SelectedEleProvider'
 import { useShowHideContext } from '../hooks/ShowHideEleProvider'
-import { SearchContext } from '../context/SearchContext'
-import { UserContext } from '../context/UserContext'
-import mockSubtitles from '../data/mockSubtitles.json'
 
-function AppCards({ getSelectedIds }) {
-  const [searchResult] = useContext(SearchContext)
-  const [userInfo] = useContext(UserContext)
+function AppCards({ speechResult, getSelectedIds }) {
 
   const [showLang, _] = useShowHideContext()
   const { ko, zh, en } = showLang
@@ -45,7 +39,7 @@ function AppCards({ getSelectedIds }) {
       {/* <div className={styles.appCardOne}> */}
       <div className="p-4 bg-sky-600/10 rounded-lg">
         <>
-          {searchResult.result.map((entity) => {
+          {Array.isArray(speechResult.result) && speechResult.result.map((entity) => {
             const id = entity.timeId
             return (
               <div

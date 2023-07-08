@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import Drawer from '../../components/Drawer'
 import AppCards from '../../components/AppCards'
 import useFetch from '../../hooks/useFetch'
 import mockSubtitles from '../../data/mockSubtitles.json'
 import ButtonLink from '../../components/ButtonLink'
+import { SearchContext } from '../../context/SearchContext'
 
 function ContentWrapperSearch({ ...rest }) {
+  const [searchResult] = useContext(SearchContext)
 
   // pass to ApiButton & AppCards
   const [selectedIds, setSelectedIds] = useState([])
@@ -58,6 +60,7 @@ function ContentWrapperSearch({ ...rest }) {
         <div>
           <AppCards
             controller="search"
+            speechResult={searchResult}
             getSelectedIds={(selectedIds) => {
               setSelectedIds(selectedIds)
             }}
