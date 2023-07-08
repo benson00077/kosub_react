@@ -6,7 +6,7 @@ function useFetch() {
   const initialState = {
     isLoading: true,
     error: '',
-    post: {},
+    post: [{}],
   }
 
   const reducer = (state, action) => {
@@ -30,9 +30,10 @@ function useFetch() {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const fetch_mysentencebook = (user) => {
+  const fetchFavoriteSpeeches = (jwt) => {
+    // axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
     axios
-      .get(`${API_ROOT_URL}/sub/sentencebook?id=${user}`)
+      .get(`${API_ROOT_URL}/users/favorite`, { headers: {"Authorization" : `Bearer ${jwt}`} })
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
       })
@@ -67,7 +68,7 @@ function useFetch() {
       })
   }
 
-  return [state, { fetch_mysentencebook, fetch_search, fetch_drawer }]
+  return [state, { fetchFavoriteSpeeches, fetch_search, fetch_drawer }]
 }
 
 export default useFetch

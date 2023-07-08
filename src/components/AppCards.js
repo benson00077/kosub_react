@@ -2,7 +2,6 @@ import { useSelectContext } from '../hooks/SelectedEleProvider'
 import { useShowHideContext } from '../hooks/ShowHideEleProvider'
 
 function AppCards({ speechResult, getSelectedIds }) {
-
   const [showLang, _] = useShowHideContext()
   const { ko, zh, en } = showLang
 
@@ -39,7 +38,7 @@ function AppCards({ speechResult, getSelectedIds }) {
       {/* <div className={styles.appCardOne}> */}
       <div className="p-4 bg-sky-600/10 rounded-lg">
         <>
-          {Array.isArray(speechResult.result) && speechResult.result.map((entity) => {
+          {speechResult.map((entity) => {
             const id = entity.timeId
             return (
               <div

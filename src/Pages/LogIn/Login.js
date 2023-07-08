@@ -30,7 +30,7 @@ function Login({ setIsLoggedIn }) {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [hintMsg, setHintMsg] = useState('')
-  const [userInfo] = useContext(UserContext)
+  const [userInfo, setUserInfo] = useContext(UserContext)
 
   let navigate = useNavigate()
 
@@ -39,7 +39,8 @@ function Login({ setIsLoggedIn }) {
     axios
       .post(`${API_ROOT_URL}/auth/login`, { username: userName, password: password })
       .then((res) => {
-        window.localStorage.setItem('token', res.data.access_token)
+        // window.localStorage.setItem('token', res.data.access_token)
+        setUserInfo({...userInfo, jwt: res.data.access_token})
         setIsLoggedIn(true)
         navigate('/mysentences')
       })

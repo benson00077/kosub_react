@@ -60,7 +60,7 @@ function ContentWrapperSearch({ ...rest }) {
         <div>
           <AppCards
             controller="search"
-            speechResult={searchResult}
+            speechResult={searchResult.result}
             getSelectedIds={(selectedIds) => {
               setSelectedIds(selectedIds)
             }}

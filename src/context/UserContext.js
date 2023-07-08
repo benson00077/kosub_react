@@ -5,6 +5,7 @@ export const UserContext = React.createContext()
 export const UseContextProvider = (props) => {
   const [userInfo, setUserInfo] = useState({
     user: '',
+    jwt: '',
     isLoggedin: false,
     mysentence: { id: [], ko: [], zh: [], en: [] },
     mysentence_number: 0,

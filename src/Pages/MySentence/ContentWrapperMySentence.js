@@ -1,6 +1,6 @@
-import React, { useContext, useState  } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AppCards from '../../components/AppCards'
-import { UserContext } from '../context/UserContext'
+import { UserContext } from '../../context/UserContext'
 
 import Drawer from '../../components/Drawer'
 import useFetch from '../../hooks/useFetch'
@@ -8,15 +8,21 @@ import ButtonLink from '../../components/ButtonLink'
 
 import mockSubtitles from '../../data/mockSubtitles.json'
 
-function ContentWrapperMySentence({ SentencebookDel, ...rest }) {
+function ContentWrapperMySentence({ ifUpdateMySentencePage, ...rest }) {
   const [userInfo] = useContext(UserContext)
+  const [favoriteSpeechesResult, { fetchFavoriteSpeeches }] = useFetch(null)
+  const speechesCount = favoriteSpeechesResult.post.length
 
   // pass to ApiButton & AppCards
-  const [selectedIds, setSelectedIds] = useState({})
+  const [selectedIds, setSelectedIds] = useState([])
 
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetch_drawer }] = useFetch(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
+  useEffect(() => {
+    fetchFavoriteSpeeches(userInfo.jwt)
+  }, [ifUpdateMySentencePage])
 
   // CSS for svg img for dropdownParent button
   const img_dropdownparent_style = { width: '40', fill: 'rgba(255, 255, 255, 0.582)' }
@@ -45,12 +51,13 @@ function ContentWrapperMySentence({ SentencebookDel, ...rest }) {
       <div>
         <div className="mb-8">
           <h2 className="text-xl">{rest.sectionTitle}</h2>
+          <li>{speechesCount ? `Result : ${speechesCount} sentences found` : 'Result :'}</li>
           <li>{`${rest.sectionInfo}${selectedIds}`}</li>
         </div>
         <div>
           <AppCards
             controller="mysentence"
-            speechResult={favoriteSpeechesResult}
+            speechResult={favoriteSpeechesResult.post}
             getSelectedIds={(selectedIds) => {
               setSelectedIds(selectedIds)
             }}
