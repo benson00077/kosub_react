@@ -6,7 +6,6 @@ import { UserContext } from '../context/UserContext'
 import mockSubtitles from '../data/mockSubtitles.json'
 
 function AppCards({ getSelectedIds }) {
-
   const [searchResult] = useContext(SearchContext)
   const [userInfo] = useContext(UserContext)
 
@@ -26,13 +25,28 @@ function AppCards({ getSelectedIds }) {
     }
   }
 
+  const formatBreakRow = (subtitles) => {
+    if (!subtitles) return <p className="lg:w-1/3">{'🫥'}</p>
+    return (
+      <p className="lg:w-1/3">
+        {subtitles.map((subtitle, i) => {
+          return (
+            <span key={i}>
+              {subtitle} <br />
+            </span>
+          )
+        })}
+      </p>
+    )
+  }
+
   return (
     <>
       {/* <div className={styles.appCardOne}> */}
       <div className="p-4 bg-sky-600/10 rounded-lg">
         <>
-          {mockSubtitles.map((subtitle) => {
-            const id = subtitle.timeId
+          {searchResult.result.map((entity) => {
+            const id = entity.timeId
             return (
               <div
                 onClick={(e) => lineSelectHandler(e, id)}
@@ -41,9 +55,9 @@ function AppCards({ getSelectedIds }) {
                   selected[id] ? 'bg-blue-600/40' : ''
                 }`}
               >
-                {ko && <p className="lg:w-1/3">{subtitle.sentences.join(' ')}</p>}
-                {zh && <p className="lg:w-1/3">foo</p>}
-                {en && <p className="lg:w-1/3">bar</p>}
+                {ko && formatBreakRow(entity.subtitles)}
+                {zh && formatBreakRow(entity.subtitlesZh)}
+                {en && formatBreakRow(entity.subtitlesEn)}
               </div>
             )
           })}

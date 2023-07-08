@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Route, Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import styles from './login.module.css'
-import { apiRootURL } from '../../data/constant'
+import { API_ROOT_URL } from '../../data/constant'
 
 function PrivateRoute({ children, ...rest }) {
   return (
@@ -35,7 +35,7 @@ function Login({ setIsLoggedIn }) {
   const login = (e) => {
     e.preventDefault()
     axios
-      .post(`${apiRootURL}/auth/login`, { username: userName, password: password })
+      .post(`${API_ROOT_URL}/auth/login`, { username: userName, password: password })
       .then((res) => {
         window.localStorage.setItem('token', res.data.access_token)
         setIsLoggedIn(true)

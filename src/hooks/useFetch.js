@@ -1,9 +1,8 @@
 import { useReducer } from 'react'
 import axios from 'axios'
+import { API_ROOT_URL, ERR_MESSAGES, KOREAN_POS_TAG } from '../data/constant'
 
 function useFetch() {
-  const root_url = 'https://kosub-api-pro.herokuapp.com'
-
   const initialState = {
     isLoading: true,
     error: '',
@@ -21,8 +20,8 @@ function useFetch() {
       case 'FETCH_ERROR':
         return {
           isLoading: false,
-          post: {},
-          error: 'Something went wrong',
+          post: [],
+          error: ERR_MESSAGES,
         }
       default:
         return state
@@ -33,7 +32,7 @@ function useFetch() {
 
   const fetch_mysentencebook = (user) => {
     axios
-      .get(`${root_url}/sub/sentencebook?id=${user}`)
+      .get(`${API_ROOT_URL}/sub/sentencebook?id=${user}`)
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
       })
@@ -43,23 +42,24 @@ function useFetch() {
   }
 
   const fetch_search = (queryLanguage, mainQuery) => {
+    const defaultKoPosTag = KOREAN_POS_TAG.nouns
+    const params = {
+      pos: mainQuery,
+      tag: queryLanguage === 'ko' ? defaultKoPosTag : null,
+    }
     axios
-      .get(`${root_url}/sub/query/${queryLanguage}?word=${mainQuery}`)
+      .get(`${API_ROOT_URL}/sentences/${queryLanguage}`, { params })
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
-        // console.log('fethcing response in fetch_search function')
-        // console.log(res)
-        // console.log(state)
       })
       .catch((err) => {
         dispatch({ type: 'FETCH_ERROR' })
-        // console.log(err)
       })
   }
 
   const fetch_drawer = (id) => {
     axios
-      .get(`${root_url}/sub/search/all?id=${id}&contextrange=5000`)
+      .get(`${API_ROOT_URL}/sub/search/all?id=${id}&contextrange=5000`)
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
       })
