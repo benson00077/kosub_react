@@ -12,7 +12,7 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
 
   return (
     <main className="m-5">
-      <section className="p-5 bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg">
+      <section className="p-5 lg:h-80 bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg">
         <div className="flex flex-col space-y-8 w-full sm:w-auto">
           <h2 className="text-lg">
             <IconAbout />
