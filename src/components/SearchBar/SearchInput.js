@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SearchContext } from '../../context/SearchContext'
 import useFetch from '../../hooks/useFetch'
-import { KOREAN_POS_TAG, KOREAN_POS, PLACEHOLDER } from '../../data/constant'
+import { KOREAN_POS_TAG, KOREAN_POS, PLACEHOLDER, PLACEHOLDER_FOREIGN } from '../../data/constant'
 import ModalSelection from '../ModalSelection'
 import Modal from '../Modal'
 
@@ -22,7 +22,8 @@ function SearchInput({ seteIfRerenderSearchPage }) {
     navigate('/search')
   }
 
-  // listening to axios fetching
+  //TODO: maybe should intergreated into useFetch
+  /** update SearchContext after fetch */
   useEffect(() => {
     setQuery('')
     const isNoResult = !fetchResponse.isLoading && fetchResponse.error === ''
@@ -42,14 +43,26 @@ function SearchInput({ seteIfRerenderSearchPage }) {
     return
   }, [fetchResponse])
 
+  /** auto-fucos */
+  const inputRef = useRef(null);
+   useEffect(() => {
+    inputRef.current.focus()
+   }, [searchResult])
+
   return (
     <>
       <div className="relative my-2 md:my-0">
         <form onSubmit={submitHandler}>
           <input
-            className="w-full h-full border-none pt-2 pb-2 pr-20 pl-12 bg-zinc-800 rounded-md text-amber-50 text-xl shadow-[0_0_0_2px_rgba(134,140,160,0.2)]"
+            className="w-full h-full border-none pt-2 pb-2 pl-8 pr-8 bg-zinc-800 rounded-md text-center text-amber-50 text-xl shadow-[0_0_0_2px_rgba(134,140,160,0.2)]"
             type="text"
-            placeholder={PLACEHOLDER[selectedPos.toLocaleLowerCase()]}
+            placeholder={
+              searchResult.queryLanguage === 'ko'
+                ? PLACEHOLDER[selectedPos.toLocaleLowerCase()]
+                : PLACEHOLDER_FOREIGN[searchResult.queryLanguage]
+            }
+            autoFocus
+            ref={inputRef}
             value={query}
             onChange={(e) => {
               setQuery(e.target.value)

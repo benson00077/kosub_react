@@ -22,3 +22,14 @@ export const PLACEHOLDER = {
   verb: 'e.g. 감사하다',
   adjective: 'e.g. 맛있다',
 }
+
+export const PLACEHOLDER_FOREIGN = {
+  zh: 'e.g. 好吃',
+  en: 'e.g. delicious',
+}
+
+export const LANGUAGE_LABLE = {
+  ko: '국어',
+  zh: '中文',
+  en: 'English',
+}

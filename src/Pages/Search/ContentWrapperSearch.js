@@ -7,6 +7,7 @@ import ButtonLink from '../../components/ButtonLink'
 import { SearchContext } from '../../context/SearchContext'
 
 function ContentWrapperSearch({ ...rest }) {
+  //FIXME: don't need, should passed from parent component
   const [searchResult] = useContext(SearchContext)
 
   // pass to ApiButton & AppCards
