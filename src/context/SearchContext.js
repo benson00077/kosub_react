@@ -4,7 +4,6 @@ export const SearchContext = React.createContext()
 
 export const SearchContextProvider = (props) => {
   const [searchResult, setSearchResult] = useState({
-    queryLanguage: 'ko',
     mainQuery: '',
     /** 
      *  @type {SentenceResult[]} 

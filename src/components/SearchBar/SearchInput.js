@@ -6,19 +6,22 @@ import { KOREAN_POS_TAG, KOREAN_POS, PLACEHOLDER, PLACEHOLDER_FOREIGN } from '..
 import ModalSelection from '../ModalSelection'
 import Modal from '../Modal'
 
-function SearchInput({ seteIfRerenderSearchPage }) {
-  const [searchResult, setSearchResult] = useContext(SearchContext)
+function SearchInput({ queryLanguage, seteIfRerenderSearchPage }) {
+  /** For SearchInput */
   const [query, setQuery] = useState('')
+  /** For Modal */
   const [openModal, setOpenModal] = useState(false)
   const [selectedPos, setSelectedPos] = useState(KOREAN_POS.noun)
-  let navigate = useNavigate()
+  /** For side effects */
+  const [searchResult, setSearchResult] = useContext(SearchContext)
   const [fetchResponse, { fetchSearch }] = useFetch(null)
+  let navigate = useNavigate()
 
   const submitHandler = (e) => {
     e.preventDefault()
     seteIfRerenderSearchPage(true)
     setSearchResult({ ...searchResult, isLoading: true })
-    fetchSearch(searchResult.queryLanguage, query, KOREAN_POS_TAG[selectedPos.toLowerCase()])
+    fetchSearch(queryLanguage, query, KOREAN_POS_TAG[selectedPos.toLowerCase()])
     navigate('/search')
   }
 
@@ -44,10 +47,10 @@ function SearchInput({ seteIfRerenderSearchPage }) {
   }, [fetchResponse])
 
   /** auto-fucos */
-  const inputRef = useRef(null);
-   useEffect(() => {
+  const inputRef = useRef(null)
+  useEffect(() => {
     inputRef.current.focus()
-   }, [searchResult])
+  }, [searchResult])
 
   return (
     <>
@@ -57,9 +60,7 @@ function SearchInput({ seteIfRerenderSearchPage }) {
             className="w-full h-full border-none pt-2 pb-2 pl-8 pr-8 bg-zinc-800 rounded-md text-center text-amber-50 text-xl shadow-[0_0_0_2px_rgba(134,140,160,0.2)]"
             type="text"
             placeholder={
-              searchResult.queryLanguage === 'ko'
-                ? PLACEHOLDER[selectedPos.toLocaleLowerCase()]
-                : PLACEHOLDER_FOREIGN[searchResult.queryLanguage]
+              queryLanguage === 'ko' ? PLACEHOLDER[selectedPos.toLocaleLowerCase()] : PLACEHOLDER_FOREIGN[queryLanguage]
             }
             autoFocus
             ref={inputRef}
@@ -68,7 +69,7 @@ function SearchInput({ seteIfRerenderSearchPage }) {
               setQuery(e.target.value)
             }}
           ></input>
-          {searchResult.queryLanguage === 'ko' && (
+          {queryLanguage === 'ko' && (
             <div
               className="absolute right-2 bottom-2 hover:cursor-pointer hover:bg-gray-300 hover:text-gray-700
               px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400
@@ -83,7 +84,7 @@ function SearchInput({ seteIfRerenderSearchPage }) {
         </form>
       </div>
       <>
-        {searchResult.queryLanguage === 'ko' && openModal && (
+        {queryLanguage === 'ko' && openModal && (
           <Modal
             closeCb={() => {
               setOpenModal(false)

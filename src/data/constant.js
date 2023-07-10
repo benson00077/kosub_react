@@ -19,7 +19,7 @@ export const KOREAN_POS = {
 
 export const PLACEHOLDER = {
   noun: 'e.g. 음식',
-  verb: 'e.g. 감사하다',
+  verb: 'e.g. 먹다',
   adjective: 'e.g. 맛있다',
 }
 
