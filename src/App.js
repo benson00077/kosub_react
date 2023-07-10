@@ -75,7 +75,9 @@ function App() {
                                 ifUpdateMySentencePage={ifUpdateMySentencePage}
                               ></SearchController>
                             ) : (
-                              <SearchRawPage />
+                              <SearchRawPage 
+                              seteIfRerenderSearchPage={seteIfRerenderSearchPage}
+                              />
                             )
                           }
                         />
