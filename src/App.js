@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Nav from './components/SideMenu/Nav'
+import Sidebar from './components/SideMenu/SideBar'
 import About from './Pages/About/About'
 import Home from './Pages/Home/Home'
 
@@ -10,7 +10,7 @@ import Login, { PrivateRoute } from './Pages/LogIn/Login'
 import SearchController from './Pages/Search/SearchController'
 import MySentenceController from './Pages/MySentence/MySentencesController'
 
-import SearchBar from './components/SearchBar/SearchBar'
+import WindowBar from './components/SearchBar/WindowBar'
 
 import { SearchContextProvider } from './context/SearchContext'
 import { UseContextProvider } from './context/UserContext'
@@ -49,7 +49,7 @@ function App() {
         <UseContextProvider>
           <div className="bg-dusk-pattern bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
             <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
-              <SearchBar seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
+              <WindowBar seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
               <SelectedEleProvider>
                 <ShowHideEleProvider>
                   <div className="flex h-full">
@@ -58,7 +58,7 @@ function App() {
                         showSideMenu ? 'p-5 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
                       } h-[78vh] overflow-scroll transition-all md:z-0 md:flex md:flex-col border-r-[1px] border-stone-400 border-opacity-25 no-scrollbar`}
                     >
-                      <Nav isLoggedIn={isLoggedIn} />
+                      <Sidebar isLoggedIn={isLoggedIn} />
                     </div>
 
                     <div className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">

@@ -1,14 +1,9 @@
-import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ApiButtonsToolKit from './ApiButtonsToolKit'
-import NavIcon from './NavIcon'
+import HomeIcon from './HomeIcon'
 import SentencesToolKit from './SentencesToolKit'
 
-function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
-  const navStyle = {
-    color: 'white',
-  }
-
+function Sidebar({ isLoggedIn }) {
   const location = useLocation()
   //TODO: show only when user searched before
   const showToolkit = ['/search', '/mysentences'].includes(location.pathname)
@@ -18,7 +13,7 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
   return (
     <>
       <Link to="/">
-        <NavIcon />
+        <HomeIcon />
       </Link>
 
       <div className="mt-5">
@@ -82,4 +77,4 @@ function Nav({ isLoggedIn, seteIfUpdateMySentencePage }) {
   )
 }
 
-export default Nav
+export default Sidebar

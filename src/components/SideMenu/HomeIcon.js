@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NavIcon() {
+function HomeIcon() {
   return (
     <svg
       class="fill-slate-50"
@@ -21,4 +21,4 @@ function NavIcon() {
   )
 }
 
-export default NavIcon
+export default HomeIcon

@@ -4,7 +4,7 @@ import LanguageSelector from './LanguageSelector'
 import Circles from './Circles'
 import { LANGUAGE_LABLE } from '../../data/constant'
 
-function SearchBar(props) {
+function WindowBar(props) {
   const [queryLanguage, setQueryLanguage] = useState(Object.keys(LANGUAGE_LABLE)[0])
 
   return (
@@ -18,4 +18,4 @@ function SearchBar(props) {
   )
 }
 
-export default SearchBar
+export default WindowBar
