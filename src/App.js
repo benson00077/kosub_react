@@ -1,5 +1,5 @@
 // import './App.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Sidebar from './components/SideMenu/SideBar'
@@ -31,6 +31,8 @@ function App() {
     if (!isMobile) return true
   })
 
+  const goTopRef = useRef(null)
+
   useEffect(() => {
     const grettingsStyle =
       'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) '
@@ -61,7 +63,10 @@ function App() {
                       <Sidebar isLoggedIn={isLoggedIn} />
                     </div>
 
-                    <div className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg">
+                    <div
+                      className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg"
+                      ref={goTopRef}
+                    >
                       <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
@@ -75,9 +80,7 @@ function App() {
                                 ifUpdateMySentencePage={ifUpdateMySentencePage}
                               ></SearchController>
                             ) : (
-                              <SearchRawPage 
-                              seteIfRerenderSearchPage={seteIfRerenderSearchPage}
-                              />
+                              <SearchRawPage seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
                             )
                           }
                         />
@@ -115,6 +118,7 @@ function App() {
                 </ShowHideEleProvider>
               </SelectedEleProvider>
             </div>
+            {/* Side Menu Icon */}
             <div
               className="absolute left-[7vw] md:left-[6vw] bottom-[5vh] z-20 hover:cursor-pointer"
               onClick={(e) => setShowSideMenu(!showSideMenu)}
@@ -129,6 +133,19 @@ function App() {
                 <path d="M7 3H2v14h5V3zm2 0v14h9V3H9zM0 3c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm3 1h3v2H3V4zm0 3h3v2H3V7zm0 3h3v2H3v-2z" />
               </svg>
             </div>
+            {/* Go to Top Icon */}
+            <div
+              class="hidden md:block fixed right-[5%] bottom-[5%] hover:cursor-pointer"
+              onClick={() => {
+                const option = { top: 0 - goTopRef.current.scrollHeight, behavior: 'smooth' }
+                goTopRef.current.scrollTo(option)
+              }}
+            >
+              <svg viewBox="0 0 20 20" style={{ width: '40', fill: 'white' }}>
+                <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
+              </svg>
+            </div>
+            {/* Modal */}
             <div id="modal-root" className="absolute z-30"></div>
           </div>
         </UseContextProvider>

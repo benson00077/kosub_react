@@ -20,18 +20,8 @@ function ContentWrapperSearch({ ...rest }) {
   // CSS for svg img for dropdownParent button
   const img_dropdownparent_style = { width: '4vh', fill: 'rgba(255, 255, 255, 0.582)' }
 
-  // Go-To-Top button
-  const goTop_ref = useRef(null)
-  const img_goTop_style = { width: '40', fill: 'white' }
-  function goTopHandler() {
-    goTop_ref.current.scrollTo({ top: 0 - goTop_ref.current.scrollHeight, behavior: 'smooth' })
-  }
-  // const goTopHandler = () => {
-  //   goTop_ref.current.scrollTo({top: 0 - goTop_ref.current.scrollHeight, behavior: 'smooth'})
-  // }
-
   return (
-    <main className="m-5" ref={goTop_ref}>
+    <main className="m-5 pb-24">
       <section
         className={`
           ${isDrawerOpen ? 'p-5' : 'h-0 opacity-0 p-0 -translate-y-40'}
@@ -44,7 +34,7 @@ function ContentWrapperSearch({ ...rest }) {
             {rest.headerTitle}
           </h2>
           <>
-            <Drawer sentences={mockSubtitles}/>
+            <Drawer sentences={mockSubtitles} />
             {rest.headerContent}
           </>
           <ButtonLink onClick={() => setIsDrawerOpen(false)} label={rest.headerButton} />
@@ -67,12 +57,6 @@ function ContentWrapperSearch({ ...rest }) {
             }}
           />
         </div>
-      </div>
-
-      <div class="hidden md:block fixed right-[5%] bottom-[5%] hover:cursor-pointer" onClick={() => goTopHandler()}>
-        <svg viewBox="0 0 20 20" style={img_goTop_style}>
-          <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
-        </svg>
       </div>
     </main>
   )
