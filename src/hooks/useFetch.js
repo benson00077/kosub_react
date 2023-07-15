@@ -33,9 +33,24 @@ function useFetch() {
   const fetchFavoriteSpeeches = (jwt) => {
     // axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
     axios
-      .get(`${API_ROOT_URL}/users/favorite`, { headers: {"Authorization" : `Bearer ${jwt}`} })
+      .get(`${API_ROOT_URL}/users/favorite`, { headers: { Authorization: `Bearer ${jwt}` } })
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+      })
+      .catch((err) => {
+        dispatch({ type: 'FETCH_ERROR' })
+      })
+  }
+
+  const postFavoriteSpeeches = (jwt, selectedIds) => {
+    const data = { ids: selectedIds }
+    console.log(22, data)
+    const config = { headers: { Authorization: `Bearer ${jwt}` } }
+    axios
+      .post(`${API_ROOT_URL}/users/favorite`, data, config)
+      .then((res) => {
+        console.log(11, res)
+        dispatch({ TYPE: 'FETCH_SUCCESS', payload: res.data })
       })
       .catch((err) => {
         dispatch({ type: 'FETCH_ERROR' })
@@ -68,7 +83,7 @@ function useFetch() {
       })
   }
 
-  return [state, { fetchFavoriteSpeeches, fetchSearch, fetchDrawer }]
+  return [state, { fetchFavoriteSpeeches, postFavoriteSpeeches, fetchSearch, fetchDrawer }]
 }
 
 export default useFetch
