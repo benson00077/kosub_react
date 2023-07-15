@@ -21,7 +21,7 @@ function useFetch() {
         return {
           isLoading: false,
           post: [],
-          error: ERR_MESSAGES,
+          error: ERR_MESSAGES[action.statusCode],
         }
       default:
         return state
@@ -44,16 +44,19 @@ function useFetch() {
 
   const postFavoriteSpeeches = (jwt, selectedIds) => {
     const data = { ids: selectedIds }
-    console.log(22, data)
     const config = { headers: { Authorization: `Bearer ${jwt}` } }
     axios
       .post(`${API_ROOT_URL}/users/favorite`, data, config)
       .then((res) => {
-        console.log(11, res)
-        dispatch({ TYPE: 'FETCH_SUCCESS', payload: res.data })
+        dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
       })
       .catch((err) => {
-        dispatch({ type: 'FETCH_ERROR' })
+        if (!err.response) {
+          return dispatch({ type: 'FETCH_ERROR', statusCode: 503 })
+        }
+        const isUnauthorized = err.response.status === 401
+        if (isUnauthorized) dispatch({ type: 'FETCH_ERROR', statusCode: 401 })
+        else throw new Error('...Fix me')
       })
   }
 
@@ -68,7 +71,7 @@ function useFetch() {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
       })
       .catch((err) => {
-        dispatch({ type: 'FETCH_ERROR' })
+        dispatch({ type: 'FETCH_ERROR', statusCode: 503 })
       })
   }
 

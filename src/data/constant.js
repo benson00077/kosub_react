@@ -1,10 +1,14 @@
 export const API_ROOT_URL = process.env.REACT_APP_API_URL
 
-export const ERR_MESSAGES = `
-  Oops🤯! Our servers are taking a coffee break at the moment. 
+export const ERR_MESSAGES = {
+  401: `Oops 🔐 ! Access Denied. Please log in to continue.`,
+  503: `
+  Oops 🤯 ! Our servers are taking a coffee break at the moment. 
   We're working hard to get them back online and serving data as soon as possible. 
   Please bear with us!
-`
+`,
+}
+
 export const KOREAN_POS_TAG = {
   noun: 'NNG',
   verb: 'VV',
