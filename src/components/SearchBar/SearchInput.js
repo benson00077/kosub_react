@@ -90,7 +90,7 @@ function SearchInput({ queryLanguage, seteIfRerenderSearchPage }) {
               setOpenModal(false)
             }}
           >
-            <ModalSelection selected={selectedPos} setSelected={setSelectedPos} />
+            <ModalSelection selected={selectedPos} setSelected={setSelectedPos} closeCb={() => setOpenModal(false)} />
           </Modal>
         )}
       </>

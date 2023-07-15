@@ -7,14 +7,23 @@ function Modal({ closeCb, children }) {
   useEffect(() => {
     const modalRoot = document.getElementById('modal-root')
     modalRoot.classList.add('bg-gray-800', 'bg-opacity-80', 'w-11/12', 'h-[93vh]', 'rounded-2xl', 'overflow-y-hidden')
+    modalRoot.appendChild(el.current)
     const closeModal = () => {
       closeCb()
-      modalRoot.classList.remove('bg-gray-800', 'bg-opacity-80', 'w-11/12', 'h-[93vh]', 'rounded-2xl', 'overflow-y-hidden')
+      modalRoot.classList.remove(
+        'bg-gray-800',
+        'bg-opacity-80',
+        'w-11/12',
+        'h-[93vh]',
+        'rounded-2xl',
+        'overflow-y-hidden',
+      )
     }
-    modalRoot.appendChild(el.current)
     document.addEventListener('click', closeModal)
+
     return () => {
       modalRoot.removeChild(el.current)
+      closeModal()
       document.removeEventListener('click', closeModal)
     }
   }, [])
