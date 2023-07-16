@@ -6,7 +6,7 @@ export const UseContextProvider = (props) => {
   const [userInfo, setUserInfo] = useState({
     user: '',
     jwt: '',
-    isLoggedin: false,
+    isLoggedIn: false,
     mysentence: { id: [], ko: [], zh: [], en: [] },
     mysentence_number: 0,
   })

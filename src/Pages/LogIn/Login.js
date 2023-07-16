@@ -40,7 +40,7 @@ function Login({ setIsLoggedIn }) {
       .post(`${API_ROOT_URL}/auth/login`, { username: userName, password: password })
       .then((res) => {
         // window.localStorage.setItem('token', res.data.access_token)
-        setUserInfo({...userInfo, jwt: res.data.access_token})
+        setUserInfo({...userInfo, isLoggedIn: true, jwt: res.data.access_token})
         setIsLoggedIn(true)
         navigate('/mysentences')
       })

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useSelectContext } from '../../hooks/SelectedEleProvider'
 import { UserContext } from '../../context/UserContext'
 import useFetch from '../../hooks/useFetch'
@@ -9,11 +9,19 @@ function ApiButtonsToolKit() {
   const [postFavoriteState, { postFavoriteSpeeches }] = useFetch(null)
 
   const isActive = {
-    favoriteBtn: Object.keys(selected).length > 0,
-    contextBtn: Object.keys(selected).length === 1,
+    favoriteBtn: userInfo.isLoggedIn && Object.keys(selected).length > 0,
+    contextBtn: userInfo.isLoggedIn && Object.keys(selected).length === 1,
   }
 
   const linkClassName = `flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded hover:bg-slate-500 opacity-80`
+
+  useEffect(() => {
+    if (postFavoriteState.error) {
+      //TODO: Toast to tell server is down after logged in  
+      // consider having this logic in useFetch catch block or this useEffect block
+    }
+
+  }, [postFavoriteState])
 
   return (
     <>
@@ -21,9 +29,10 @@ function ApiButtonsToolKit() {
         class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded 
           ${isActive.favoriteBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
         onClick={() => {
+          //TODO: Toast guide to log in 
           if (!isActive.favoriteBtn) return
+          if (!userInfo.isLoggedIn) return
           postFavoriteSpeeches(userInfo.jwt, Object.keys(selected))
-          //SentencebookPush(sentencesID_SelectedList)
         }}
       >
         <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-red-500' : 'fill-slate-50'}`} viewBox="0 0 20 20">
