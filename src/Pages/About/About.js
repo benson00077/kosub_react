@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import img_content_wrapper from '../../asset/vector-creator.png'
+import { ReactComponent as ImgCoder } from './ImgCoder.svg'
 import IconAbout from './IconAbout'
 import ButtonLink from '../../components/ButtonLink'
 import Card from '../../components/Card'
@@ -24,7 +25,10 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
           </p>
           <ButtonLink onClick={() => navigate('/search')} label={'Try it on Search Page!'} />
         </div>
-        <img className="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img>
+        {/* <img className="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img> */}
+        <div class="hidden md:block">
+          <ImgCoder class="w-[17vw]" />
+        </div>
       </section>
 
       <section className="p-5">

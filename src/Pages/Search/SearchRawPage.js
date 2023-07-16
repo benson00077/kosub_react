@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import img_content_wrapper from '../../asset/vector-creator2.png'
+import { ReactComponent as ImgCoffee } from './ImgCoffee.svg'
 import ButtonLink from '../../components/ButtonLink'
 import Card from '../../components/Card'
 import IconFlags from './IconFlags'
@@ -57,7 +58,10 @@ function SearchRawPage({ seteIfRerenderSearchPage }) {
             label={`👉 ${query}`}
           />
         </div>
-        <img className="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img>
+        {/* <img className="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img> */}
+        <div class="hidden md:block">
+          <ImgCoffee class="w-[17vw]" />
+        </div>
       </section>
 
       <section className="p-5">
