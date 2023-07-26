@@ -57,8 +57,8 @@ function App() {
                   <div className="flex h-full">
                     <div
                       className={`${
-                        showSideMenu ? 'p-5 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
-                      } h-[78vh] overflow-scroll transition-all md:z-0 md:flex md:flex-col border-r-[1px] border-stone-400 border-opacity-25 no-scrollbar`}
+                        showSideMenu ? 'px-2 md:px-5 pt-4 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
+                      } h-[78vh] overflow-scroll transition-all md:z-0 border-r-[1px] border-stone-400 border-opacity-25 no-scrollbar`}
                     >
                       <Sidebar isLoggedIn={isLoggedIn} />
                     </div>

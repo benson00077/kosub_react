@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import ApiButtonsToolKit from './ApiButtonsToolKit'
-import HomeIcon from './HomeIcon'
+import { ReactComponent as IconHome } from './IconHome.svg'
 import SentencesToolKit from './SentencesToolKit'
 
 function Sidebar({ isLoggedIn }) {
@@ -13,7 +13,7 @@ function Sidebar({ isLoggedIn }) {
   return (
     <>
       <Link to="/">
-        <HomeIcon />
+        <IconHome className="w-18 md:w-24 fill-slate-50"/>
       </Link>
 
       <div className="mt-5">

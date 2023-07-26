@@ -41,14 +41,14 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
                 DataBase pre-process
               </>
               <>
-                <p>K-Drama subtitles processed with:</p>
+                <p class="pb-6">K-Drama subtitles processed with:</p>
                 <ul>
-                  <li>- Python</li>
+                  <li class="pb-3">- Python</li>
                   <li>- KoNLPy Module</li>
                 </ul>
               </>
               <>
-                <ButtonLink label={'Waht is KoNLPy ?'} link={'https://konlpy.org/en/latest/'} />
+                <ButtonLink label={'KoNLPy ?'} link={'https://konlpy.org/en/latest/'} />
               </>
             </Card>
           </div>
@@ -60,14 +60,14 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
                 Back-end
               </>
               <>
-                <p>RESTful api built with:</p>
+                <p class="pb-6">RESTful api built with:</p>
                 <ul>
-                  <li>- Nest.js + MySQL</li>
+                  <li class="pb-3">- Nest.js + MySQL</li>
                   <li>- Deployed on VPS</li>
                 </ul>
               </>
               <>
-                <IconGitHubLink repoLink={'https://github.com/benson00077/kosub_api_heroku'} />
+                {/* <IconGitHubLink repoLink={'https://github.com/benson00077/kosub_api_heroku'} /> */}
               </>
             </Card>
           </div>
@@ -79,9 +79,9 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
                 Front-end
               </>
               <>
-                <p>SPA built with</p>
+                <p class="pb-6">SPA built with</p>
                 <ul>
-                  <li>- React.js</li>
+                  <li class="pb-3">- React.js</li>
                   <li>- Tailwind CSS</li>
                 </ul>
               </>

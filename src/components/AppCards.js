@@ -21,7 +21,7 @@ function AppCards({ speechResult, getSelectedIds }) {
   const formatBreakRow = (subtitles) => {
     if (!subtitles) return <p className="lg:w-1/3">{'🫥'}</p>
     return (
-      <p className="lg:w-1/3">
+      <p className="lg:w-1/3 py-2">
         {subtitles.map((subtitle, i) => {
           return (
             <span key={i}>
@@ -44,7 +44,7 @@ function AppCards({ speechResult, getSelectedIds }) {
               <div
                 onClick={(e) => lineSelectHandler(e, id)}
                 key={id}
-                className={`lg:flex space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer ${
+                className={`lg:flex lg:space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer ${
                   selected[id] ? 'bg-blue-600/40' : ''
                 }`}
               >
