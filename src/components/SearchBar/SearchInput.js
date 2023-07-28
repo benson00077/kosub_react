@@ -19,31 +19,22 @@ function SearchInput({ queryLanguage }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
+    if (query.length === 0) return
     setSearchResult({ ...searchResult, isLoading: true })
     fetchSearch(queryLanguage, query, KOREAN_POS_TAG[selectedPos.toLowerCase()])
-    navigate('/search')
+      .then((res) => {
+        const result = {
+          ...searchResult,
+          mainQuery: query,
+          result: res,
+          result_number: res.length,
+          isLoading: false,
+          noResult: false,
+        }
+        setSearchResult(result)
+        navigate('/search')
+      })
   }
-
-  //TODO: maybe should intergreated into useFetch
-  /** update SearchContext after fetch */
-  useEffect(() => {
-    setQuery('')
-    const isNoResult = !fetchResponse.isLoading && fetchResponse.error === ''
-    const isErr = !fetchResponse.isLoading && fetchResponse.error !== ''
-    const errMsgs = fetchResponse.error.split('.')
-    const result = {
-      ...searchResult,
-      mainQuery: query,
-      result: isErr
-        ? [{ timeId: -1, subtitles: [errMsgs[0]], subtitlesZh: [errMsgs[1]], subtitlesEn: [errMsgs[2]] }]
-        : fetchResponse.post,
-      result_number: fetchResponse.post.length,
-      isLoading: false,
-      noResult: isNoResult || isErr,
-    }
-    setSearchResult(result)
-    return
-  }, [fetchResponse])
 
   /** auto-fucos */
   const inputRef = useRef(null)

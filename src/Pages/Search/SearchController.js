@@ -11,9 +11,10 @@ function SearchController() {
   const [fetchResponse, { fetchSearch }] = useFetch(null)
   const query = '마시다'
 
+  const isNotSearched = searchResult.result.length === 0 && searchResult.mainQuery === ''
   return (
     <>
-      {searchResult.result.length === 0 ? (
+      {isNotSearched ? (
         <main class="m-5">
           <section className="p-5 lg:h-80 content-wrapper-header flex items-center justify-center rounded-lg">
             <div className="flex flex-col space-y-8 w-full sm:w-auto items-center">

@@ -76,7 +76,7 @@ function useFetch() {
       })
   }
 
-  const fetchSearch = (queryLanguage, mainQuery, posTag) => {
+  const fetchSearch = async (queryLanguage, mainQuery, posTag) => {
     const params = {
       pos: mainQuery,
       tag: queryLanguage === 'ko' ? posTag : null,
