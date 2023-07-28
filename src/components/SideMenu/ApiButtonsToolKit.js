@@ -3,10 +3,12 @@ import { useSelectContext } from '../../hooks/SelectedEleProvider'
 import { UserContext } from '../../context/UserContext'
 import useFetch from '../../hooks/useFetch'
 
-function ApiButtonsToolKit() {
+function ApiButtonsToolKit({ withRemoveFavorite }) {
   const [selected, _] = useSelectContext()
   const [userInfo] = useContext(UserContext)
-  const [postFavoriteState, { postFavoriteSpeeches }] = useFetch(null)
+  const [postFavoriteState, { postFavoriteSpeeches, delFavoriteSpeeches }] = useFetch(null)
+
+  const selectedInt = Object.keys(selected).map(id => +id)
 
   const isActive = {
     favoriteBtn: userInfo.isLoggedIn && Object.keys(selected).length > 0,
@@ -17,31 +19,47 @@ function ApiButtonsToolKit() {
 
   useEffect(() => {
     if (postFavoriteState.error) {
-      //TODO: Toast to tell server is down after logged in  
+      //TODO: Toast to tell server is down after logged in
       // consider having this logic in useFetch catch block or this useEffect block
     }
-
   }, [postFavoriteState])
 
   return (
     <>
-      <div
-        class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded 
-          ${isActive.favoriteBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
-        onClick={() => {
-          //TODO: Toast guide to log in 
-          if (!isActive.favoriteBtn) return
-          if (!userInfo.isLoggedIn) return
-          postFavoriteSpeeches(userInfo.jwt, Object.keys(selected))
-        }}
-      >
-        <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-red-500' : 'fill-slate-50'}`} viewBox="0 0 20 20">
-          <path d="M10 3.22l-.61-.6a5.5 5.5 0 00-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 00-7.78-7.77l-.61.61z" />
-        </svg>
-        <h4 class="text-gray-300">
-          Favorite
-        </h4>
-      </div>
+      {withRemoveFavorite ? (
+        <div
+          class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded 
+                ${isActive.favoriteBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
+          onClick={() => {
+            //FIXME: to reload my sentence page
+            if (!isActive.favoriteBtn) return
+            if (!userInfo.isLoggedIn) return
+            delFavoriteSpeeches(userInfo.jwt, selectedInt)
+          }}
+        >
+          <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-red-500' : 'fill-slate-50'}`} viewBox="0 0 24 24">
+            <path d="M19 13H5a1 1 0 000 2h14a1 1 0 000-2z" />
+          </svg>
+          <h4 class="text-gray-300">Remove</h4>
+        </div>
+      ) : (
+        <div
+          class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded 
+            ${isActive.favoriteBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
+          onClick={() => {
+            //TODO: Toast guide to log in
+            if (!isActive.favoriteBtn) return
+            if (!userInfo.isLoggedIn) return
+            postFavoriteSpeeches(userInfo.jwt, selectedInt)
+          }}
+        >
+          <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-green-500' : 'fill-slate-50'}`} viewBox="0 0 24 24">
+            <path d="M19 11H13V5a1 1 0 00-2 0v6H5a1 1 0 000 2h6v6a1 1 0 002 0v-6h6a1 1 0 000-2z" />
+          </svg>
+          <h4 class="text-gray-300">Collect</h4>
+        </div>
+      )}
+
       <div
         class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded
           ${isActive.contextBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}

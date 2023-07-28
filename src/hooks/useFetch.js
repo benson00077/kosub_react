@@ -56,7 +56,23 @@ function useFetch() {
         }
         const isUnauthorized = err.response.status === 401
         if (isUnauthorized) dispatch({ type: 'FETCH_ERROR', statusCode: 401 })
-        else throw new Error('...Fix me')
+        else console.error(err.response.data)
+      })
+  }
+
+  const delFavoriteSpeeches = (jwt, selectedIds) => {
+    const data = { ids: selectedIds }
+    const config = { headers: { Authorization: `Bearer ${jwt}` } }
+    axios
+      .delete(`${API_ROOT_URL}/users/favorite`, { data: data, ...config })
+      .then((res) => {
+        dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+      })
+      .catch((err) => {
+        if (!err.response) {
+          return dispatch({ type: 'FETCH_ERROR', statusCode: 503 })
+        }
+        console.error(err.response.data)
       })
   }
 
@@ -86,7 +102,7 @@ function useFetch() {
       })
   }
 
-  return [state, { fetchFavoriteSpeeches, postFavoriteSpeeches, fetchSearch, fetchDrawer }]
+  return [state, { fetchFavoriteSpeeches, postFavoriteSpeeches, delFavoriteSpeeches, fetchSearch, fetchDrawer }]
 }
 
 export default useFetch

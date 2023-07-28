@@ -7,15 +7,15 @@ import { NAV } from '../../data/navigations'
 function Sidebar({ isLoggedIn }) {
   const location = useLocation()
   //TODO: show only when user searched before
-  const showToolkit = ['/search', '/mysentences'].includes(location.pathname)
+  const showToolkit = [NAV.SEARCH.path, NAV.FAVORITE.path].includes(location.pathname)
 
   const linkClassName = `flex flex-row justify-between my-2 pt-3 pb-3 pr-2 pl-2 rounded hover:bg-slate-500 opacity-80`
-  const activeNavClassName = (path) => location.pathname === path ? ' bg-slate-600' : ''
+  const activeNavClassName = (path) => (location.pathname === path ? ' bg-slate-600' : '')
 
   return (
     <>
       <Link to={NAV.HOME.path}>
-        <IconHome className={`w-18 md:w-24 fill-slate-50 ${linkClassName + activeNavClassName(NAV.HOME.path)}`}/>
+        <IconHome className={`w-18 md:w-24 fill-slate-50 ${linkClassName + activeNavClassName(NAV.HOME.path)}`} />
       </Link>
 
       <div className="mt-5">
@@ -68,7 +68,7 @@ function Sidebar({ isLoggedIn }) {
 
       <div class={`mt-5 transition-opacity ${showToolkit ? 'opacity-100' : '-translate-x-52 opacity-0'}`}>
         <div className="text-zinc-400 mb-4">Interaction</div>
-        <ApiButtonsToolKit />
+        <ApiButtonsToolKit withRemoveFavorite={location.pathname === NAV.FAVORITE.path} />
       </div>
 
       <div class={`mt-5 transition-opacity ${showToolkit ? 'opacity-100' : '-translate-x-52 opacity-0'}`}>
