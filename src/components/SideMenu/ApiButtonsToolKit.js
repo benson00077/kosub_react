@@ -2,17 +2,19 @@ import React, { useContext, useEffect } from 'react'
 import { useSelectContext } from '../../hooks/SelectedEleProvider'
 import { UserContext } from '../../context/UserContext'
 import useFetch from '../../hooks/useFetch'
+import { useNavigate } from 'react-router-dom'
 
 function ApiButtonsToolKit({ withRemoveFavorite }) {
-  const [selected, _] = useSelectContext()
-  const [userInfo] = useContext(UserContext)
+  const [select, setSelect] = useSelectContext()
+  const [userInfo, setUserInfo] = useContext(UserContext)
   const [postFavoriteState, { postFavoriteSpeeches, delFavoriteSpeeches }] = useFetch(null)
+  const navigate = useNavigate();
 
-  const selectedInt = Object.keys(selected).map(id => +id)
+  const selectedInt = Object.keys(select).map((id) => +id)
 
   const isActive = {
-    favoriteBtn: userInfo.isLoggedIn && Object.keys(selected).length > 0,
-    contextBtn: userInfo.isLoggedIn && Object.keys(selected).length === 1,
+    favoriteBtn: userInfo.isLoggedIn && Object.keys(select).length > 0,
+    contextBtn: userInfo.isLoggedIn && Object.keys(select).length === 1,
   }
 
   const linkClassName = `flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded hover:bg-slate-500 opacity-80`
@@ -34,7 +36,10 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
             //FIXME: to reload my sentence page
             if (!isActive.favoriteBtn) return
             if (!userInfo.isLoggedIn) return
-            delFavoriteSpeeches(userInfo.jwt, selectedInt)
+            delFavoriteSpeeches(userInfo.jwt, selectedInt).then((res) => {
+              setSelect({})
+              setUserInfo({...userInfo, toggleUpdateMysentence: !userInfo.toggleUpdateMysentence})
+            })
           }}
         >
           <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-red-500' : 'fill-slate-50'}`} viewBox="0 0 24 24">
@@ -51,6 +56,9 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
             if (!isActive.favoriteBtn) return
             if (!userInfo.isLoggedIn) return
             postFavoriteSpeeches(userInfo.jwt, selectedInt)
+            .then((res) => {
+              setSelect({})
+            })
           }}
         >
           <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-green-500' : 'fill-slate-50'}`} viewBox="0 0 24 24">

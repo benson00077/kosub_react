@@ -22,7 +22,7 @@ function ContentWrapperMySentence({ ...rest }) {
 
   useEffect(() => {
     fetchFavoriteSpeeches(userInfo.jwt)
-  }, [])
+  }, [userInfo.toggleUpdateMysentence])
 
   // CSS for svg img for dropdownParent button
   const img_dropdownparent_style = { width: '40', fill: 'rgba(255, 255, 255, 0.582)' }

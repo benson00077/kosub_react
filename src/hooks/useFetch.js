@@ -42,13 +42,14 @@ function useFetch() {
       })
   }
 
-  const postFavoriteSpeeches = (jwt, selectedIds) => {
+  const postFavoriteSpeeches = async (jwt, selectedIds) => {
     const data = { ids: selectedIds }
     const config = { headers: { Authorization: `Bearer ${jwt}` } }
-    axios
+    return axios
       .post(`${API_ROOT_URL}/users/favorite`, data, config)
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+        return res.data
       })
       .catch((err) => {
         if (!err.response) {
@@ -60,13 +61,14 @@ function useFetch() {
       })
   }
 
-  const delFavoriteSpeeches = (jwt, selectedIds) => {
+  const delFavoriteSpeeches = async (jwt, selectedIds) => {
     const data = { ids: selectedIds }
     const config = { headers: { Authorization: `Bearer ${jwt}` } }
-    axios
+    return axios
       .delete(`${API_ROOT_URL}/users/favorite`, { data: data, ...config })
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+        return res.data
       })
       .catch((err) => {
         if (!err.response) {

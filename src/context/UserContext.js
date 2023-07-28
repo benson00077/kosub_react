@@ -7,8 +7,7 @@ export const UseContextProvider = (props) => {
     user: '',
     jwt: '',
     isLoggedIn: false,
-    mysentence: { id: [], ko: [], zh: [], en: [] },
-    mysentence_number: 0,
+    toggleUpdateMysentence: false,
   })
 
   return <UserContext.Provider value={[userInfo, setUserInfo]}>{props.children}</UserContext.Provider>
