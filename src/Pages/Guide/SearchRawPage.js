@@ -3,14 +3,14 @@ import img_content_wrapper from '../../asset/vector-creator2.png'
 import { ReactComponent as ImgCoffee } from './ImgCoffee.svg'
 import ButtonLink from '../../components/ButtonLink'
 import Card from '../../components/Card'
-import IconFlags from './IconFlags'
-import IconSearchRaw from './IconSearchRaw'
+import IconFlags from '../Search/IconFlags'
+import IconSearchRaw from '../Search/IconSearchRaw'
 import useFetch from '../../hooks/useFetch'
 import { KOREAN_POS_TAG } from '../../data/constant'
 import { SearchContext } from '../../context/SearchContext'
 import { useNavigate } from 'react-router-dom'
 
-function SearchRawPage() {
+function Guide() {
   /** For side effects */
   const [searchResult, setSearchResult] = useContext(SearchContext)
   const [fetchResponse, { fetchSearch }] = useFetch(null)
@@ -126,4 +126,4 @@ function SearchRawPage() {
   )
 }
 
-export default SearchRawPage
+export default Guide

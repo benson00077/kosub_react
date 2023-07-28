@@ -14,7 +14,7 @@ import WindowBar from './components/SearchBar/WindowBar'
 
 import { SearchContextProvider } from './context/SearchContext'
 import { UseContextProvider } from './context/UserContext'
-import SearchRawPage from './Pages/Search/SearchRawPage'
+import Guide from './Pages/Guide/SearchRawPage'
 import Register from './Pages/Register/Register'
 import { SelectedEleProvider } from './hooks/SelectedEleProvider'
 import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
@@ -67,7 +67,7 @@ function App() {
                       <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/guide" element={<SearchRawPage />} />
+                        <Route path="/guide" element={<Guide />} />
                         <Route path="/search" element={<SearchController />} />
                         <Route
                           path="/login"
