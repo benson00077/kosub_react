@@ -4,35 +4,8 @@ import ContentWrapperSearch from './ContentWrapperSearch'
 import { SearchContext } from '../../context/SearchContext'
 import Spinning from '../../components/Spinning'
 
-function SearchController({ user }) {
+function SearchController() {
   const [searchResult] = useContext(SearchContext)
-
-  const sentencebookpush_root_url = 'https://kosub-api-pro.herokuapp.com'
-
-  const SentencebookPush = (myList) => {
-    if (user) {
-      let pushData = myList.map((eachSentenceID) => ({
-        id: user,
-        sentence_id: eachSentenceID,
-        query: searchResult['mainQuery'],
-      }))
-      axios
-        .post(`${sentencebookpush_root_url}/sub/sentencebook`, pushData)
-        .then((res) => {
-          if (res.data.isAddedToSentencebook) {
-            window.alert('Added to Sentence Book!')
-          } else {
-            window.alert('Oops! some error occur.') // BackEnd error
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-    if (!user) {
-      window.alert('Please Log in !')
-    }
-  }
 
   return (
     <React.Fragment>
@@ -45,7 +18,6 @@ function SearchController({ user }) {
           sectionInfo={`Query : ${searchResult['mainQuery']}`}
           sectionInfo2={`Result : ${searchResult['result_number']} sentences found`}
           sectionInfo3={`Selected : `}
-          SentencebookPush={SentencebookPush}
           headerButton={'Close'}
         />
       )}

@@ -6,7 +6,7 @@ import { KOREAN_POS_TAG, KOREAN_POS, PLACEHOLDER, PLACEHOLDER_FOREIGN } from '..
 import ModalSelection from '../ModalSelection'
 import Modal from '../Modal'
 
-function SearchInput({ queryLanguage, seteIfRerenderSearchPage }) {
+function SearchInput({ queryLanguage }) {
   /** For SearchInput */
   const [query, setQuery] = useState('')
   /** For Modal */
@@ -19,7 +19,6 @@ function SearchInput({ queryLanguage, seteIfRerenderSearchPage }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    seteIfRerenderSearchPage(true)
     setSearchResult({ ...searchResult, isLoading: true })
     fetchSearch(queryLanguage, query, KOREAN_POS_TAG[selectedPos.toLowerCase()])
     navigate('/search')

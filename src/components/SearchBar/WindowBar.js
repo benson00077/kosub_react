@@ -13,7 +13,7 @@ function WindowBar(props) {
         <Circles />
       </div>
       <LanguageSelector setQueryLanguage={setQueryLanguage} />
-      <SearchInput queryLanguage={queryLanguage} seteIfRerenderSearchPage={props.seteIfRerenderSearchPage} />
+      <SearchInput queryLanguage={queryLanguage} />
     </div>
   )
 }

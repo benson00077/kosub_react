@@ -22,7 +22,6 @@ import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
 function App() {
   const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [user, setUser] = useState('')
 
   const [showSideMenu, setShowSideMenu] = useState(() => {
     const isMobile = window.innerWidth <= 768 // iPad Mini
@@ -50,7 +49,7 @@ function App() {
         <UseContextProvider>
           <div className="bg-dusk-pattern bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
             <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
-              <WindowBar seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
+              <WindowBar />
               <SelectedEleProvider>
                 <ShowHideEleProvider>
                   <div className="flex h-full">
@@ -73,7 +72,7 @@ function App() {
                           path="/search"
                           element={
                             ifRerenderSearchPage ? (
-                              <SearchController user={user}></SearchController>
+                              <SearchController />
                             ) : (
                               <SearchRawPage seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
                             )
@@ -83,11 +82,7 @@ function App() {
                         <Route
                           path="/login"
                           element={
-                            isLoggedIn ? (
-                              <h3>Logged In Successfully</h3>
-                            ) : (
-                              <Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
-                            )
+                            isLoggedIn ? <h3>Logged In Successfully</h3> : <Login setIsLoggedIn={setIsLoggedIn} />
                           }
                         />
                         <Route path="/register" element={<Register />} />
