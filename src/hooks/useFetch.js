@@ -6,7 +6,7 @@ function useFetch() {
   const initialState = {
     isLoading: true,
     error: '',
-    post: [{}],
+    post: [], //[{}]
   }
 
   const reducer = (state, action) => {
@@ -81,10 +81,11 @@ function useFetch() {
       pos: mainQuery,
       tag: queryLanguage === 'ko' ? posTag : null,
     }
-    axios
+    return axios
       .get(`${API_ROOT_URL}/sentences/${queryLanguage}`, { params })
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+        return res.data
       })
       .catch((err) => {
         dispatch({ type: 'FETCH_ERROR', statusCode: 503 })

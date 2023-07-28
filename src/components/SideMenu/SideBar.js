@@ -27,6 +27,25 @@ function Sidebar({ isLoggedIn }) {
             </svg>
             <h4 class="text-gray-300">{NAV.ABOUT.title}</h4>
           </Link>
+          <Link to={NAV.GUIDE.path} className={linkClassName + activeNavClassName(NAV.GUIDE.path)}>
+            <svg
+              class="fill-slate-50 w-5 h-5"
+              viewBox="0 0 20 20"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            >
+              <g id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd">
+                <g id="icon-shape">
+                  <path
+                    d="M10,20 C15.5228475,20 20,15.5228475 20,10 C20,4.4771525 15.5228475,0 10,0 C4.4771525,0 0,4.4771525 0,10 C0,15.5228475 4.4771525,20 10,20 Z M7.87867966,7.87867966 L15.6568542,4.34314575 L12.1213203,12.1213203 L4.34314575,15.6568542 L7.87867966,7.87867966 Z M10,11 C10.5522847,11 11,10.5522847 11,10 C11,9.44771525 10.5522847,9 10,9 C9.44771525,9 9,9.44771525 9,10 C9,10.5522847 9.44771525,11 10,11 Z"
+                    id="Combined-Shape"
+                  />
+                </g>
+              </g>
+            </svg>
+            <h4 class="text-gray-300">{NAV.GUIDE.title}</h4>
+          </Link>
           <Link to={NAV.SEARCH.path} className={linkClassName + activeNavClassName(NAV.SEARCH.path)}>
             <svg class="fill-slate-50 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <path d="M12.9 14.32a8 8 0 111.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 108 2a6 6 0 000 12z" />

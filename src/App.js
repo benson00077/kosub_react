@@ -20,7 +20,6 @@ import { SelectedEleProvider } from './hooks/SelectedEleProvider'
 import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
 
 function App() {
-  const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const [showSideMenu, setShowSideMenu] = useState(() => {
@@ -68,17 +67,8 @@ function App() {
                       <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
-                        <Route
-                          path="/search"
-                          element={
-                            ifRerenderSearchPage ? (
-                              <SearchController />
-                            ) : (
-                              <SearchRawPage seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
-                            )
-                          }
-                        />
-
+                        <Route path="/guide" element={<SearchRawPage />} />
+                        <Route path="/search" element={<SearchController />} />
                         <Route
                           path="/login"
                           element={

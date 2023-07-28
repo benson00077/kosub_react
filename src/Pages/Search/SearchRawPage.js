@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext } from 'react'
 import img_content_wrapper from '../../asset/vector-creator2.png'
 import { ReactComponent as ImgCoffee } from './ImgCoffee.svg'
 import ButtonLink from '../../components/ButtonLink'
@@ -8,39 +8,15 @@ import IconSearchRaw from './IconSearchRaw'
 import useFetch from '../../hooks/useFetch'
 import { KOREAN_POS_TAG } from '../../data/constant'
 import { SearchContext } from '../../context/SearchContext'
+import { useNavigate } from 'react-router-dom'
 
-function SearchRawPage({ seteIfRerenderSearchPage }) {
+function SearchRawPage() {
   /** For side effects */
   const [searchResult, setSearchResult] = useContext(SearchContext)
   const [fetchResponse, { fetchSearch }] = useFetch(null)
-  const initialRender = useRef(true)
+  const navigate = useNavigate();
 
   const query = '마시다'
-
-  //TODO: maybe should intergreated into useFetch
-  /** update SearchContext after fetch */
-  useEffect(() => {
-    const isNoResult = !fetchResponse.isLoading && fetchResponse.error === ''
-    const isErr = !fetchResponse.isLoading && fetchResponse.error !== ''
-    const errMsgs = fetchResponse.error.split('.')
-    const result = {
-      ...searchResult,
-      mainQuery: query,
-      result: isErr
-        ? [{ timeId: -1, subtitles: [errMsgs[0]], subtitlesZh: [errMsgs[1]], subtitlesEn: [errMsgs[2]] }]
-        : fetchResponse.post,
-      result_number: fetchResponse.post.length,
-      isLoading: false,
-      noResult: isNoResult || isErr,
-    }
-    setSearchResult(result)
-
-    if (initialRender.current) {
-      initialRender.current = false
-    } else {
-      seteIfRerenderSearchPage(true)
-    }
-  }, [fetchResponse])
 
   return (
     <main className="m-5">
@@ -53,7 +29,19 @@ function SearchRawPage({ seteIfRerenderSearchPage }) {
           <p className="sm:w-96 text-indigo-100">Try clicking the button below ↓ and see the magic !</p>
           <ButtonLink
             onClick={() => {
-              fetchSearch('ko', '마시다', KOREAN_POS_TAG['verb'])
+              fetchSearch('ko', query, KOREAN_POS_TAG['verb'])
+                .then(res => {
+                  const result = {
+                    ...searchResult,
+                    mainQuery: query,
+                    result: res,
+                    result_number: res.length,
+                    isLoading: false,
+                    noResult: false,
+                  }
+                  setSearchResult(result)
+                  navigate('/search')
+                })
             }}
             label={`👉 ${query}`}
           />

@@ -7,6 +7,10 @@ export const NAV = {
     path: '/about',
     title: 'About',
   },
+  GUIDE: {
+    path: '/guide',
+    title: 'Guide',
+  },
   SEARCH: {
     path: '/search',
     title: 'Search',
