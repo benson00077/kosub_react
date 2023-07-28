@@ -4,7 +4,7 @@ import ContentWrapperSearch from './ContentWrapperSearch'
 import { SearchContext } from '../../context/SearchContext'
 import Spinning from '../../components/Spinning'
 
-function SearchController({ user, seteIfUpdateMySentencePage, ifUpdateMySentencePage }) {
+function SearchController({ user }) {
   const [searchResult] = useContext(SearchContext)
 
   const sentencebookpush_root_url = 'https://kosub-api-pro.herokuapp.com'
@@ -21,7 +21,6 @@ function SearchController({ user, seteIfUpdateMySentencePage, ifUpdateMySentence
         .then((res) => {
           if (res.data.isAddedToSentencebook) {
             window.alert('Added to Sentence Book!')
-            seteIfUpdateMySentencePage(!ifUpdateMySentencePage)
           } else {
             window.alert('Oops! some error occur.') // BackEnd error
           }

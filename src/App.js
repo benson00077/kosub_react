@@ -21,7 +21,6 @@ import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
 
 function App() {
   const [ifRerenderSearchPage, seteIfRerenderSearchPage] = useState(false)
-  const [ifUpdateMySentencePage, seteIfUpdateMySentencePage] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState('')
 
@@ -74,11 +73,7 @@ function App() {
                           path="/search"
                           element={
                             ifRerenderSearchPage ? (
-                              <SearchController
-                                user={user}
-                                seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
-                                ifUpdateMySentencePage={ifUpdateMySentencePage}
-                              ></SearchController>
+                              <SearchController user={user}></SearchController>
                             ) : (
                               <SearchRawPage seteIfRerenderSearchPage={seteIfRerenderSearchPage} />
                             )
@@ -101,12 +96,7 @@ function App() {
                           path="/mysentences"
                           element={
                             isLoggedIn ? (
-                              <MySentenceController
-                                isLoggedIn={isLoggedIn}
-                                user={user}
-                                seteIfUpdateMySentencePage={seteIfUpdateMySentencePage}
-                                ifUpdateMySentencePage={ifUpdateMySentencePage}
-                              />
+                              <MySentenceController />
                             ) : (
                               <h3>Please log in to get your sentence book page !</h3>
                             )

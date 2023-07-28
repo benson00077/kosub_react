@@ -8,7 +8,7 @@ import ButtonLink from '../../components/ButtonLink'
 
 import mockSubtitles from '../../data/mockSubtitles.json'
 
-function ContentWrapperMySentence({ ifUpdateMySentencePage, ...rest }) {
+function ContentWrapperMySentence({ ...rest }) {
   const [userInfo] = useContext(UserContext)
   const [favoriteSpeechesResult, { fetchFavoriteSpeeches }] = useFetch(null)
   const speechesCount = favoriteSpeechesResult.post.length
@@ -22,7 +22,7 @@ function ContentWrapperMySentence({ ifUpdateMySentencePage, ...rest }) {
 
   useEffect(() => {
     fetchFavoriteSpeeches(userInfo.jwt)
-  }, [ifUpdateMySentencePage])
+  }, [])
 
   // CSS for svg img for dropdownParent button
   const img_dropdownparent_style = { width: '40', fill: 'rgba(255, 255, 255, 0.582)' }
