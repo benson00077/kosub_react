@@ -46,7 +46,7 @@ function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <SearchContextProvider>
         <UseContextProvider>
-          <div className="bg-dusk-pattern bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
+          <div className="bg-dusk-gradient bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
             <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
               <WindowBar />
               <SelectedEleProvider>

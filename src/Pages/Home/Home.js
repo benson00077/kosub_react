@@ -22,8 +22,9 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
         </div>
         <img
           className="w-[17vw] h-[17vw] object-cover object-center hidden md:block"
+          loading="lazy"
           src={img_content_wrapper}
-          alt=""
+          alt="Korean Drama Logo Picture"
         ></img>
       </section>
 
