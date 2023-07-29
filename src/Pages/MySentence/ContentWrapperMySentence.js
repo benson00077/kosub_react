@@ -4,8 +4,8 @@ import { UserContext } from '../../context/UserContext'
 
 import Drawer from '../../components/Drawer'
 import useFetch from '../../hooks/useFetch'
+import { useSelectContext } from '../../hooks/SelectedEleProvider'
 import ButtonLink from '../../components/ButtonLink'
-
 import mockSubtitles from '../../data/mockSubtitles.json'
 
 function ContentWrapperMySentence({ ...rest }) {
@@ -14,7 +14,7 @@ function ContentWrapperMySentence({ ...rest }) {
   const speechesCount = favoriteSpeechesResult.post.length
 
   // pass to ApiButton & AppCards
-  const [selectedIds, setSelectedIds] = useState([])
+  const [select, setSelect] = useSelectContext()
 
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetchDrawer }] = useFetch(null)
@@ -52,14 +52,15 @@ function ContentWrapperMySentence({ ...rest }) {
         <div className="mb-8">
           <h2 className="text-xl">{rest.sectionTitle}</h2>
           <li>{speechesCount ? `Result : ${speechesCount} sentences found` : 'Result :'}</li>
-          <li>{`${rest.sectionInfo}${selectedIds}`}</li>
+          <li>{`${rest.sectionInfo}${Object.keys(select)}`}</li>
         </div>
         <div>
           <AppCards
             controller="mysentence"
             speechResult={favoriteSpeechesResult.post}
+            selectedIds={select}
             getSelectedIds={(selectedIds) => {
-              setSelectedIds(selectedIds)
+              setSelect(selectedIds)
             }}
           />
         </div>

@@ -2,6 +2,7 @@ import React, { useState, useRef, useContext } from 'react'
 import Drawer from '../../components/Drawer'
 import AppCards from '../../components/AppCards'
 import useFetch from '../../hooks/useFetch'
+import { useSelectContext } from '../../hooks/SelectedEleProvider'
 import mockSubtitles from '../../data/mockSubtitles.json'
 import ButtonLink from '../../components/ButtonLink'
 import { SearchContext } from '../../context/SearchContext'
@@ -11,7 +12,7 @@ function ContentWrapperSearch({ ...rest }) {
   const [searchResult] = useContext(SearchContext)
 
   // pass to ApiButton & AppCards
-  const [selectedIds, setSelectedIds] = useState([])
+  const [select, setSelect] = useSelectContext()
 
   // pass to Drawer & ApiButton
   const [fetchResponse, { fetchDrawer }] = useFetch(null)
@@ -46,14 +47,15 @@ function ContentWrapperSearch({ ...rest }) {
           <h2 className="text-xl">{rest.sectionTitle}</h2>
           <li>{rest.sectionInfo}</li>
           <li>{rest.sectionInfo2}</li>
-          <li>{`${rest.sectionInfo3}${selectedIds}`}</li>
+          <li>{`${rest.sectionInfo3}${Object.keys(select)}`}</li>
         </div>
         <div>
           <AppCards
             controller="search"
             speechResult={searchResult.result}
+            selectedIds={select}
             getSelectedIds={(selectedIds) => {
-              setSelectedIds(selectedIds)
+              setSelect(selectedIds)
             }}
           />
         </div>

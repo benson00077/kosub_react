@@ -1,20 +1,16 @@
-import { useSelectContext } from '../hooks/SelectedEleProvider'
 import { useShowHideContext } from '../hooks/ShowHideEleProvider'
 
-function AppCards({ speechResult, getSelectedIds }) {
+function AppCards({ speechResult, selectedIds, getSelectedIds }) {
   const [showLang, _] = useShowHideContext()
   const { ko, zh, en } = showLang
 
-  const [selected, setSelected] = useSelectContext()
   const lineSelectHandler = (e, id) => {
-    if (selected[id]) {
-      const copied = { ...selected }
+    if (selectedIds[id]) {
+      const copied = { ...selectedIds }
       delete copied[id]
-      setSelected(copied)
-      getSelectedIds(Object.keys(copied))
+      getSelectedIds(copied)
     } else {
-      setSelected({ [id]: true, ...selected })
-      getSelectedIds(Object.keys({ [id]: true, ...selected }))
+      getSelectedIds({ [id]: true, ...selectedIds })
     }
   }
 
@@ -45,7 +41,7 @@ function AppCards({ speechResult, getSelectedIds }) {
                 onClick={(e) => lineSelectHandler(e, id)}
                 key={id}
                 className={`lg:flex lg:space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer ${
-                  selected[id] ? 'bg-blue-600/40' : ''
+                  selectedIds[id] ? 'bg-blue-600/40' : ''
                 }`}
               >
                 {ko && formatBreakRow(entity.subtitles)}
