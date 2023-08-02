@@ -5,18 +5,6 @@ function IconTechStack({ flag }) {
     throw new Error('IconsBattery flag format is wrong')
   }
 
-  // deprecated
-  // svg styling for konlpy part
-  const img_konlpy_style = { fill: 'url(#konlpy)' }
-  const img_konlpy_style_ref = (
-    <defs>
-      <linearGradient id="konlpy" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="5%" stopColor="#FF2D00" />
-        <stop offset="95%" stopColor="#0036FF" />
-      </linearGradient>
-    </defs>
-  )
-
   return (
     <>
       {flag === 'React.js' ? (

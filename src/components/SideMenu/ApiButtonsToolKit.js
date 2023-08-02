@@ -33,11 +33,11 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
           class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded 
                 ${isActive.favoriteBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
           onClick={() => {
-            //FIXME: to reload my sentence page
             if (!isActive.favoriteBtn) return
             if (!userInfo.isLoggedIn) return
             delFavoriteSpeeches(userInfo.jwt, selectedInt).then((res) => {
               setSelect({})
+              //FIXME: below logic is to reload my sentence page
               setUserInfo({...userInfo, toggleUpdateMysentence: !userInfo.toggleUpdateMysentence})
             })
           }}

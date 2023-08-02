@@ -35,60 +35,54 @@ function About({ headerImg, headerTitle, headerContent, headerButton }) {
         <h2 class="pb-4 text-lg">This app is built with ...</h2>
         <section class="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
           <div class="sm:w-1/3">
-            <Card>
-              <>
-                <IconTechStack flag="KoNLPy" />
-                DataBase pre-process
-              </>
-              <>
-                <p class="pb-6">K-Drama subtitles processed with:</p>
-                <ul>
-                  <li class="pb-3">- Python</li>
-                  <li>- KoNLPy Module</li>
-                </ul>
-              </>
-              <>
-                <ButtonLink label={'KoNLPy ?'} link={'https://konlpy.org/en/latest/'} />
-              </>
-            </Card>
+            <Card
+              icon={<IconTechStack flag="KoNLPy" />}
+              header="Pre-process w/ NLP"
+              main={
+                <>
+                  <p class="pb-6">K-Drama subtitles processed with:</p>
+                  <ul>
+                    <li class="pb-3">- Python</li>
+                    <li>- KoNLPy Module</li>
+                  </ul>
+                </>
+              }
+              footer={<ButtonLink label={'KoNLPy ?'} link={'https://konlpy.org/en/latest/'} />}
+            />
           </div>
 
           <div class="sm:w-1/3">
-            <Card>
-              <>
-                <IconTechStack flag="Nest.js" />
-                Back-end
-              </>
-              <>
-                <p class="pb-6">RESTful api built with:</p>
-                <ul>
-                  <li class="pb-3">- Nest.js + MySQL</li>
-                  <li>- Deployed on VPS</li>
-                </ul>
-              </>
-              <>
-                {/* <IconGitHubLink repoLink={'https://github.com/benson00077/kosub_api_heroku'} /> */}
-              </>
-            </Card>
+            <Card
+              icon={<IconTechStack flag="Nest.js" />}
+              header="Back-end"
+              main={
+                <>
+                  <p class="pb-6">RESTful api built with:</p>
+                  <ul>
+                    <li class="pb-3">- Nest.js + MySQL</li>
+                    <li>- Deployed on VPS</li>
+                  </ul>
+                </>
+              }
+              footer={<>{/* <IconGitHubLink repoLink={'https://github.com/benson00077/kosub_api_heroku'} /> */}</>}
+            />
           </div>
 
           <div class="pb-24 sm:w-1/3">
-            <Card>
-              <>
-                <IconTechStack flag="React.js" />
-                Front-end
-              </>
-              <>
-                <p class="pb-6">SPA built with</p>
-                <ul>
-                  <li class="pb-3">- React.js</li>
-                  <li>- Tailwind CSS</li>
-                </ul>
-              </>
-              <>
-                <IconGitHubLink repoLink={'https://github.com/benson00077/kosub_react'} />
-              </>
-            </Card>
+            <Card
+              icon={<IconTechStack flag="React.js" />}
+              header="Front-end"
+              main={
+                <>
+                  <p class="pb-6">SPA built with</p>
+                  <ul>
+                    <li class="pb-3">- React.js</li>
+                    <li>- Tailwind CSS</li>
+                  </ul>
+                </>
+              }
+              footer={<IconGitHubLink repoLink={'https://github.com/benson00077/kosub_react'} />}
+            />
           </div>
         </section>
       </section>
