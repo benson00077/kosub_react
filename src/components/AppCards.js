@@ -1,4 +1,4 @@
-import { useShowHideContext } from '../hooks/ShowHideEleProvider'
+import { useShowHideContext } from '../context/ShowHideLanContext'
 
 function AppCards({ speechResult, selectedIds, getSelectedIds }) {
   const [showLang, _] = useShowHideContext()

@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react'
 
 export const ShowHideContext = createContext()
 
-export const ShowHideEleProvider = ({ children }) => {
+export const ShowHideLanContextProvider = ({ children }) => {
   const [showLang, setShowLang] = useState({
     ko: true,
     zh: true,

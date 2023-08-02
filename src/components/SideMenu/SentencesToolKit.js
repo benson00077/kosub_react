@@ -1,4 +1,4 @@
-import { useShowHideContext } from '../../hooks/ShowHideEleProvider'
+import { useShowHideContext } from '../../context/ShowHideLanContext'
 import TogglerButton from '../ToggleButton'
 
 function SentencesToolKit() {

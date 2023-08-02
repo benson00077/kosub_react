@@ -4,7 +4,7 @@ import { UserContext } from '../../context/UserContext'
 
 import Drawer from '../../components/Drawer'
 import useFetch from '../../hooks/useFetch'
-import { useSelectContext } from '../../hooks/SelectedEleProvider'
+import { useSelectContext } from '../../context/SelectedSpeechesContext'
 import ButtonLink from '../../components/ButtonLink'
 import mockSubtitles from '../../data/mockSubtitles.json'
 

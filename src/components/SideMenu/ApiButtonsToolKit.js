@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { useSelectContext } from '../../hooks/SelectedEleProvider'
+import { useSelectContext } from '../../context/SelectedSpeechesContext'
 import { UserContext } from '../../context/UserContext'
 import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'

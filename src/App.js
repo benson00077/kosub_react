@@ -1,23 +1,20 @@
 // import './App.css'
 import React, { useState, useEffect, useRef } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import ProtectedRoute from './components/ProtectedRoute'
+import WindowBar from './components/SearchBar/WindowBar'
 import Sidebar from './components/SideMenu/SideBar'
 import About from './Pages/About/About'
 import Home from './Pages/Home/Home'
-
-import Login, { PrivateRoute } from './Pages/LogIn/Login'
-import SearchController from './Pages/Search/SearchController'
-import MySentenceController from './Pages/MySentence/MySentencesController'
-
-import WindowBar from './components/SearchBar/WindowBar'
-
-import { SearchContextProvider } from './context/SearchContext'
-import { UserContextProvider } from './context/UserContext'
+import Login from './Pages/LogIn/Login'
 import Guide from './Pages/Guide/Guide'
 import Register from './Pages/Register/Register'
-import { SelectedEleProvider } from './hooks/SelectedEleProvider'
-import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
+import SearchController from './Pages/Search/SearchController'
+import MySentenceController from './Pages/MySentence/MySentencesController'
+import { SearchContextProvider } from './context/SearchContext'
+import { UserContextProvider } from './context/UserContext'
+import { SelectedSpeechesContextProvider } from './context/SelectedSpeechesContext'
+import { ShowHideLanContextProvider } from './context/ShowHideLanContext'
 import GoToTopButton from './components/GoToTopButton'
 import SideMenuIconButton from './components/SideMenu/SideMenuIconButton'
 
@@ -47,8 +44,8 @@ function App() {
             <div class="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
               <WindowBar />
               <div class="flex h-full">
-                <SelectedEleProvider>
-                  <ShowHideEleProvider>
+                <SelectedSpeechesContextProvider>
+                  <ShowHideLanContextProvider>
                     <div
                       class={`${
                         showSideMenu ? 'px-2 md:px-5 pt-4 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
@@ -73,21 +70,14 @@ function App() {
                           }
                         />
                         <Route path="/register" element={<Register />} />
-
-                        <Route
-                          path="/mysentences"
-                          element={
-                            isLoggedIn ? (
-                              <MySentenceController />
-                            ) : (
-                              <h3>Please log in to get your sentence book page !</h3>
-                            )
-                          }
-                        />
+                        <Route element={<ProtectedRoute isAllowed={isLoggedIn} />}>
+                          <Route path="/mysentences" element={<MySentenceController />} />
+                        </Route>
+                        <Route path="*" element={<Navigate to="/" replace />} />
                       </Routes>
                     </div>
-                  </ShowHideEleProvider>
-                </SelectedEleProvider>
+                  </ShowHideLanContextProvider>
+                </SelectedSpeechesContextProvider>
               </div>
             </div>
             <SideMenuIconButton onClickCb={(e) => setShowSideMenu(!showSideMenu)} isActive={showSideMenu} />

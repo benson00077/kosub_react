@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react'
 
 export const SelectContex = createContext()
 
-export const SelectedEleProvider = ({ children }) => {
+export const SelectedSpeechesContextProvider = ({ children }) => {
   //FIXME: search result and mysentence should NOT share this state.
   //e.g. {1000051718: true, 2000057849: true}
   const [select, setSelect] = useState({})

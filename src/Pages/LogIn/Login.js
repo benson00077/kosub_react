@@ -5,26 +5,6 @@ import styles from './login.module.css'
 import { API_ROOT_URL, ERR_MESSAGES } from '../../data/constant'
 import { UserContext } from '../../context/UserContext'
 
-function PrivateRoute({ children, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) => {
-        return rest.isLoggedIn === true ? (
-          children
-        ) : (
-          <Navigate
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          />
-        )
-      }}
-    />
-  )
-}
-
 function Login({ setIsLoggedIn }) {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
@@ -56,8 +36,7 @@ function Login({ setIsLoggedIn }) {
         <input type="text" onChange={(e) => setUserName(e.target.value)} autoFocus />
         <input type="password" onChange={(e) => setPassword(e.target.value)} />
         <button type="submit" onClick={login}>
-          {' '}
-          Let me in{' '}
+          Let me in
         </button>
       </form>
       <h2 class="text-center text-red-400">{hintMsg}</h2>
@@ -65,11 +44,4 @@ function Login({ setIsLoggedIn }) {
   )
 }
 
-// function Logout( {setIsLoggedIn} ) {
-//     <from>
-
-//     </from>
-// }
-
 export default Login
-export { PrivateRoute }
