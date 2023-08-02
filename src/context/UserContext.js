@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const UserContext = React.createContext()
 
-export const UseContextProvider = (props) => {
+export const UserContextProvider = (props) => {
   const [userInfo, setUserInfo] = useState({
     user: '',
     jwt: '',

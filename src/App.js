@@ -13,11 +13,13 @@ import MySentenceController from './Pages/MySentence/MySentencesController'
 import WindowBar from './components/SearchBar/WindowBar'
 
 import { SearchContextProvider } from './context/SearchContext'
-import { UseContextProvider } from './context/UserContext'
+import { UserContextProvider } from './context/UserContext'
 import Guide from './Pages/Guide/Guide'
 import Register from './Pages/Register/Register'
 import { SelectedEleProvider } from './hooks/SelectedEleProvider'
 import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
+import GoToTopButton from './components/GoToTopButton'
+import SideMenuIconButton from './components/SideMenu/SideMenuIconButton'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -40,7 +42,7 @@ function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <SearchContextProvider>
-        <UseContextProvider>
+        <UserContextProvider>
           <div class="flex flex-col items-center justify-center w-screen h-screen bg-center bg-cover bg-dusk-gradient">
             <div class="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
               <WindowBar />
@@ -88,37 +90,17 @@ function App() {
                 </SelectedEleProvider>
               </div>
             </div>
-            {/* Side Menu Icon */}
-            <div
-              class="absolute left-[7vw] md:left-[6vw] bottom-[5vh] z-20 hover:cursor-pointer"
-              onClick={(e) => setShowSideMenu(!showSideMenu)}
-            >
-              <svg
-                class={`w-4 md:w-7 ${
-                  showSideMenu ? 'fill-neutral-50/80' : 'fill-slate-300/80'
-                } transition-all hover:scale-110 hover:opacity-50`}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M7 3H2v14h5V3zm2 0v14h9V3H9zM0 3c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm3 1h3v2H3V4zm0 3h3v2H3V7zm0 3h3v2H3v-2z" />
-              </svg>
-            </div>
-            {/* Go to Top Icon */}
-            <div
-              class="hidden md:block fixed right-[5%] bottom-[5%] hover:cursor-pointer"
-              onClick={() => {
+            <SideMenuIconButton onClickCb={(e) => setShowSideMenu(!showSideMenu)} isActive={showSideMenu} />
+            <GoToTopButton
+              onClickCb={() => {
                 const option = { top: 0 - goTopRef.current.scrollHeight, behavior: 'smooth' }
                 goTopRef.current.scrollTo(option)
               }}
-            >
-              <svg viewBox="0 0 20 20" style={{ width: '40', fill: 'white' }}>
-                <path d="M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z" />
-              </svg>
-            </div>
+            />
             {/* Modal */}
             <div id="modal-root" class="absolute z-30"></div>
           </div>
-        </UseContextProvider>
+        </UserContextProvider>
       </SearchContextProvider>
     </BrowserRouter>
   )
