@@ -16,8 +16,8 @@ function SearchController() {
     <>
       {isNotSearched ? (
         <main class="m-5">
-          <section className="p-5 lg:h-80 content-wrapper-header flex items-center justify-center rounded-lg">
-            <div className="flex flex-col space-y-8 w-full sm:w-auto items-center">
+          <section class="flex items-center justify-center p-5 rounded-lg lg:h-80 content-wrapper-header">
+            <div class="flex flex-col items-center w-full space-y-8 sm:w-auto">
               {/* <p>Don't know how to start ? the button below ↓ and see the magic ! </p> */}
               <div>Don't know how to start ? </div>
               <div class="w-1/2">

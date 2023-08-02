@@ -28,15 +28,15 @@ function ContentWrapperMySentence({ ...rest }) {
   const img_dropdownparent_style = { width: '40', fill: 'rgba(255, 255, 255, 0.582)' }
 
   return (
-    <main className="m-5">
+    <main class="m-5">
       <section
-        className={`
+        class={`
         ${isDrawerOpen ? 'p-5' : 'h-0 opacity-0 p-0 -translate-y-40'}
           bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg
       `}
       >
-        <div className="flex flex-col space-y-8 w-full">
-          <h2 className="text-lg">
+        <div class="flex flex-col w-full space-y-8">
+          <h2 class="text-lg">
             {rest.headerImg}
             {rest.headerTitle}
           </h2>
@@ -49,8 +49,8 @@ function ContentWrapperMySentence({ ...rest }) {
       </section>
 
       <div>
-        <div className="mb-8">
-          <h2 className="text-xl">{rest.sectionTitle}</h2>
+        <div class="mb-8">
+          <h2 class="text-xl">{rest.sectionTitle}</h2>
           <li>{speechesCount ? `Result : ${speechesCount} sentences found` : 'Result :'}</li>
           <li>{`${rest.sectionInfo}${Object.keys(select)}`}</li>
         </div>

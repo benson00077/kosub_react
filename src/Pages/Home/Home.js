@@ -10,28 +10,28 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
   let navigate = useNavigate()
 
   return (
-    <main className="m-5">
-      <section className="p-5 lg:h-80 bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg">
-        <div className="flex flex-col space-y-8 w-full sm:w-auto">
-          <h2 className="text-lg">
+    <main class="m-5">
+      <section class="flex items-center justify-between p-5 rounded-lg lg:h-80 bg-texture-pattern content-wrapper-header">
+        <div class="flex flex-col w-full space-y-8 sm:w-auto">
+          <h2 class="text-lg">
             <IconHome />
             這個網站可以？
           </h2>
-          <p className="sm:w-96 text-indigo-100">給定關鍵字，搜尋韓劇台詞。藉此幫助韓文學習者</p>
+          <p class="text-indigo-100 sm:w-96">給定關鍵字，搜尋韓劇台詞。藉此幫助韓文學習者</p>
           <ButtonLink onClick={() => navigate('/search')} label={'前往 Search page，了解更多'} />
         </div>
         <img
-          className="w-[17vw] h-[17vw] object-cover object-center hidden md:block"
+          class="w-[17vw] h-[17vw] object-cover object-center hidden md:block"
           loading="lazy"
           src={img_content_wrapper}
           alt="Korean Drama Logo Picture"
         ></img>
       </section>
 
-      <section className="p-5">
-        <h2 className="text-lg pb-4">為什麼要用韓劇臺詞學韓文...? 為了解決以下難處！</h2>
-        <section className="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
-          <div className="sm:w-1/3">
+      <section class="p-5">
+        <h2 class="pb-4 text-lg">為什麼要用韓劇臺詞學韓文...? 為了解決以下難處！</h2>
+        <section class="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
+          <div class="sm:w-1/3">
             <Card>
               <>
                 <IconsBattery flag={'highPower'} />
@@ -47,7 +47,7 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
             </Card>
           </div>
 
-          <div className="sm:w-1/3">
+          <div class="sm:w-1/3">
             <Card>
               <>
                 <IconsBattery flag={'middlePower'} />
@@ -61,7 +61,7 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
             </Card>
           </div>
 
-          <div className="pb-24 sm:w-1/3">
+          <div class="pb-24 sm:w-1/3">
             <Card>
               <>
                 <IconsBattery flag={'lowPower'} />

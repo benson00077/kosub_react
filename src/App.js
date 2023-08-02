@@ -46,14 +46,14 @@ function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <SearchContextProvider>
         <UseContextProvider>
-          <div className="bg-dusk-gradient bg-cover bg-center w-screen h-screen flex flex-col justify-center items-center">
-            <div className="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
+          <div class="flex flex-col items-center justify-center w-screen h-screen bg-center bg-cover bg-dusk-gradient">
+            <div class="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
               <WindowBar />
               <SelectedEleProvider>
                 <ShowHideEleProvider>
-                  <div className="flex h-full">
+                  <div class="flex h-full">
                     <div
-                      className={`${
+                      class={`${
                         showSideMenu ? 'px-2 md:px-5 pt-4 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
                       } h-[78vh] overflow-scroll transition-all md:z-0 border-r-[1px] border-stone-400 border-opacity-25 no-scrollbar`}
                     >
@@ -61,7 +61,7 @@ function App() {
                     </div>
 
                     <div
-                      className="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg"
+                      class="w-full text-zinc-50 bg-[#10121b66] no-scrollbar overflow-y-auto rounded-b-lg"
                       ref={goTopRef}
                     >
                       <Routes>
@@ -95,7 +95,7 @@ function App() {
             </div>
             {/* Side Menu Icon */}
             <div
-              className="absolute left-[7vw] md:left-[6vw] bottom-[5vh] z-20 hover:cursor-pointer"
+              class="absolute left-[7vw] md:left-[6vw] bottom-[5vh] z-20 hover:cursor-pointer"
               onClick={(e) => setShowSideMenu(!showSideMenu)}
             >
               <svg
@@ -121,7 +121,7 @@ function App() {
               </svg>
             </div>
             {/* Modal */}
-            <div id="modal-root" className="absolute z-30"></div>
+            <div id="modal-root" class="absolute z-30"></div>
           </div>
         </UseContextProvider>
       </SearchContextProvider>

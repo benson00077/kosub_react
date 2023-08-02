@@ -44,10 +44,10 @@ function SearchInput({ queryLanguage }) {
 
   return (
     <>
-      <div className="relative my-2 md:my-0">
+      <div class="relative my-2 md:my-0">
         <form onSubmit={submitHandler}>
           <input
-            className="w-full h-full border-none pt-2 pb-2 pl-8 pr-8 bg-zinc-800 rounded-md text-center text-amber-50 text-xl shadow-[0_0_0_2px_rgba(134,140,160,0.2)]"
+            class="w-full h-full border-none pt-2 pb-2 pl-8 pr-8 bg-zinc-800 rounded-md text-center text-amber-50 text-xl shadow-[0_0_0_2px_rgba(134,140,160,0.2)]"
             type="text"
             placeholder={
               queryLanguage === 'ko' ? PLACEHOLDER[selectedPos.toLocaleLowerCase()] : PLACEHOLDER_FOREIGN[queryLanguage]
@@ -61,7 +61,7 @@ function SearchInput({ queryLanguage }) {
           ></input>
           {queryLanguage === 'ko' && (
             <div
-              className="absolute right-2 bottom-2 hover:cursor-pointer hover:bg-gray-300 hover:text-gray-700
+              class="absolute right-2 bottom-2 hover:cursor-pointer hover:bg-gray-300 hover:text-gray-700
               px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded dark:bg-gray-700 dark:text-gray-400
               "
               onClick={(e) => {

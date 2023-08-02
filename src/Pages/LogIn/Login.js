@@ -61,7 +61,7 @@ function Login({ setIsLoggedIn }) {
           Let me in{' '}
         </button>
       </form>
-      <h2 className='text-center text-red-400'>{hintMsg}</h2>
+      <h2 class='text-center text-red-400'>{hintMsg}</h2>
     </div>
   )
 }

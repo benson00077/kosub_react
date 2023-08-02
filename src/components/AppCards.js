@@ -15,9 +15,9 @@ function AppCards({ speechResult, selectedIds, getSelectedIds }) {
   }
 
   const formatBreakRow = (subtitles) => {
-    if (!subtitles) return <p className="lg:w-1/3">{'🫥'}</p>
+    if (!subtitles) return <p class="lg:w-1/3">{'🫥'}</p>
     return (
-      <p className="lg:w-1/3 py-2">
+      <p class="py-2 lg:w-1/3">
         {subtitles.map((subtitle, i) => {
           return (
             <span key={i}>
@@ -31,8 +31,7 @@ function AppCards({ speechResult, selectedIds, getSelectedIds }) {
 
   return (
     <>
-      {/* <div className={styles.appCardOne}> */}
-      <div className="p-4 bg-sky-600/10 rounded-lg">
+      <div class="p-4 rounded-lg bg-sky-600/10">
         <>
           {speechResult.map((entity) => {
             const id = entity.timeId
@@ -40,7 +39,7 @@ function AppCards({ speechResult, selectedIds, getSelectedIds }) {
               <div
                 onClick={(e) => lineSelectHandler(e, id)}
                 key={id}
-                className={`lg:flex lg:space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer ${
+                class={`lg:flex lg:space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer ${
                   selectedIds[id] ? 'bg-blue-600/40' : ''
                 }`}
               >
@@ -51,9 +50,6 @@ function AppCards({ speechResult, selectedIds, getSelectedIds }) {
             )
           })}
         </>
-        {/* <div className="app-card-buttons" >
-                    <button className="content-button status-button"> ^ </button>
-                </div> */}
       </div>
     </>
   )

@@ -16,11 +16,11 @@ function Drawer({ sentences }) {
         sentences.map((sentence, i) => (
           <div
             key={sentence.timeId}
-            className="lg:flex space-x-8 py-2 px-4 hover:bg-blue-600/75 rounded-2xl cursor-pointer"
+            class="px-4 py-2 space-x-8 cursor-pointer lg:flex hover:bg-blue-600/75 rounded-2xl"
           >
-            {ko && <p className="lg:w-1/3">{sentence.sentences}</p>}
-            {zh && <p className="lg:w-1/3">foo.zh</p>}
-            {en && <p className="lg:w-1/3">foo.en</p>}
+            {ko && <p class="lg:w-1/3">{sentence.sentences}</p>}
+            {zh && <p class="lg:w-1/3">foo.zh</p>}
+            {en && <p class="lg:w-1/3">foo.en</p>}
           </div>
         ))}
     </div>

@@ -19,14 +19,14 @@ function Guide() {
   const query = '마시다'
 
   return (
-    <main className="m-5">
-      <section className="p-5 lg:h-80 bg-texture-pattern content-wrapper-header flex items-center justify-between rounded-lg">
-        <div className="flex flex-col space-y-8 w-full sm:w-auto">
-          <h2 className="text-lg">
+    <main class="m-5">
+      <section class="flex items-center justify-between p-5 rounded-lg lg:h-80 bg-texture-pattern content-wrapper-header">
+        <div class="flex flex-col w-full space-y-8 sm:w-auto">
+          <h2 class="text-lg">
             <IconSearchRaw />
             If your'e new to Korean...
           </h2>
-          <p className="sm:w-96 text-indigo-100">Try clicking the button below ↓ and see the magic !</p>
+          <p class="text-indigo-100 sm:w-96">Try clicking the button below ↓ and see the magic !</p>
           <ButtonLink
             onClick={() => {
               fetchSearch('ko', query, KOREAN_POS_TAG['verb'])
@@ -46,16 +46,16 @@ function Guide() {
             label={`👉 ${query}`}
           />
         </div>
-        {/* <img className="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img> */}
+        {/* <img class="w-[17vw] object-cover object-center hidden md:block" src={img_content_wrapper} alt=""></img> */}
         <div class="hidden md:block">
           <ImgCoffee class="w-[17vw]" />
         </div>
       </section>
 
-      <section className="p-5">
-        <h2 className="text-lg pb-4">or try searching something else !</h2>
-        <section className="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
-          <div className="sm:w-1/3">
+      <section class="p-5">
+        <h2 class="pb-4 text-lg">or try searching something else !</h2>
+        <section class="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
+          <div class="sm:w-1/3">
             <Card>
               <>
                 <IconFlags flag="Korean" />
@@ -74,11 +74,11 @@ function Guide() {
                 </ul>
                 可搜尋出動詞與形容詞的不同詞性變化例句
               </>
-              <>{/* <button className="content-button status-button">了解更多</button> */}</>
+              <>{/* <button class="content-button status-button">了解更多</button> */}</>
             </Card>
           </div>
 
-          <div className="sm:w-1/3">
+          <div class="sm:w-1/3">
             <Card>
               <>
                 <IconFlags flag="Chinese" />
@@ -94,12 +94,12 @@ function Guide() {
               </>
               <>
                 {/* <button class="content-button status-button">了解更多</button> */}
-                {/* <div className="menu"></div> */}
+                {/* <div class="menu"></div> */}
               </>
             </Card>
           </div>
 
-          <div className="pb-24 sm:w-1/3">
+          <div class="pb-24 sm:w-1/3">
             <Card>
               <>
                 <IconFlags flag="English" />
@@ -115,8 +115,8 @@ function Guide() {
                 <div>Remember to select Search in English</div>
               </>
               <>
-                {/* <button className="content-button status-button">了解更多</button> */}
-                {/* <div className="menu"></div> */}
+                {/* <button class="content-button status-button">了解更多</button> */}
+                {/* <div class="menu"></div> */}
               </>
             </Card>
           </div>
