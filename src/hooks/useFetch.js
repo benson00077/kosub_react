@@ -72,7 +72,8 @@ function useFetch() {
       })
       .catch((err) => {
         if (!err.response) {
-          return dispatch({ type: 'FETCH_ERROR', statusCode: 503 })
+          dispatch({ type: 'FETCH_ERROR', statusCode: 503 })
+          console.error(err.message)
         }
         console.error(err.response.data)
       })
@@ -91,6 +92,9 @@ function useFetch() {
       })
       .catch((err) => {
         dispatch({ type: 'FETCH_ERROR', statusCode: 503 })
+        console.error(err.message)
+        const errMsg = ERR_MESSAGES[503].split('\n')
+        return [{ timeId: -1, subtitles: [errMsg[0]], subtitlesZh: [errMsg[1]], subtitlesEn: [errMsg[2]] }]
       })
   }
 
