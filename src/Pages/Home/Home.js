@@ -32,57 +32,57 @@ function Home({ headerImg, headerTitle, headerContent, headerButton }) {
         <h2 class="pb-4 text-lg">為什麼要用韓劇臺詞學韓文...? 為了解決以下難處！</h2>
         <section class="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
           <div class="sm:w-1/3">
-            <Card>
-              <>
-                <IconsBattery flag={'highPower'} />
-                韓國為 high-context culture
-              </>
-              <>
-                <p class="pb-6">這導致同一句話有非常多種表達方式</p>
-                <p>學習過程會覺得越「背」會越不知道怎麼用</p>
-              </>
-              <>
+            <Card
+              icon={<IconsBattery flag="highPower" />}
+              header="韓國為 high-context culture"
+              main={
+                <>
+                  <p class="pb-6">這導致同一句話有非常多種表達方式</p>
+                  <p>學習過程會覺得越「背」會越不知道怎麼用</p>
+                </>
+              }
+              footer={
                 <ButtonLink label={'why?'} link={'https://www.quora.com/Why-is-South-Korea-high-context'}></ButtonLink>
-              </>
-            </Card>
+              }
+            />
           </div>
 
           <div class="sm:w-1/3">
-            <Card>
-              <>
-                <IconsBattery flag={'middlePower'} />
-                韓文的相近文法、規則太多
-              </>
-              <>
-                <p class="pb-6">但坊間教科書上只給「單一例句」導致說明不清楚，只能淪為死背。</p>
-                <p>其實多變相近的文法，可以精準傳達細膩卻不同的心情。要一探究竟只能依賴上下文 (context)</p>
-              </>
-              <>{null}</>
-            </Card>
+            <Card
+              icon={<IconsBattery flag="middlePower" />}
+              header="韓文的相近文法、規則太多"
+              main={
+                <>
+                  <p class="pb-6">但坊間教科書上只給「單一例句」導致說明不清楚，只能淪為死背。</p>
+                  <p>其實多變相近的文法，可以精準傳達細膩卻不同的心情。要一探究竟只能依賴上下文 (context)</p>
+                </>
+              }
+              footer=""
+            />
           </div>
 
           <div class="pb-24 sm:w-1/3">
-            <Card>
-              <>
-                <IconsBattery flag={'lowPower'} />
-                同一句話太多表達，舉例而言...
-              </>
-              <>
-                <p class="pb-6">當我們問：要去哪？</p>
-                <p class="pb-6">僅列舉直譯後的說法，韓文卻可以說</p>
-                <ul class="pb-6">
-                  <li class="pb-3">👉 어디 가</li>
-                  <li class="pb-3">👉 어디 가요</li>
-                  <li class="pb-3">👉 어디 갑니까</li>
-                  <li class="pb-3">👉 어디 가세요</li>
-                  <li class="pb-3">👉 어디 가십니까</li>
-                  <li class="pb-3">👉 어디 갈까요</li>
-                  <li class="pb-3">...等等</li>
-                </ul>
-                <p>有這麼多說法，就算死背下來也無法視情況好好使用。所以透過上下文學習是更有效的。</p>
-              </>
-              <>{null}</>
-            </Card>
+            <Card
+              icon={<IconsBattery flag="lowPower" />}
+              header="同一句話太多表達，舉例而言..."
+              main={
+                <>
+                  <p class="pb-6">當我們問：要去哪？</p>
+                  <p class="pb-6">僅列舉直譯後的說法，韓文卻可以說</p>
+                  <ul class="pb-6">
+                    <li class="pb-3">👉 어디 가</li>
+                    <li class="pb-3">👉 어디 가요</li>
+                    <li class="pb-3">👉 어디 갑니까</li>
+                    <li class="pb-3">👉 어디 가세요</li>
+                    <li class="pb-3">👉 어디 가십니까</li>
+                    <li class="pb-3">👉 어디 갈까요</li>
+                    <li class="pb-3">...等等</li>
+                  </ul>
+                  <p>有這麼多說法，就算死背下來也無法視情況好好使用。所以透過上下文學習是更有效的。</p>
+                </>
+              }
+              footer=""
+            />
           </div>
         </section>
       </section>

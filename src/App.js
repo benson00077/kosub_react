@@ -14,7 +14,7 @@ import WindowBar from './components/SearchBar/WindowBar'
 
 import { SearchContextProvider } from './context/SearchContext'
 import { UseContextProvider } from './context/UserContext'
-import Guide from './Pages/Guide/SearchRawPage'
+import Guide from './Pages/Guide/Guide'
 import Register from './Pages/Register/Register'
 import { SelectedEleProvider } from './hooks/SelectedEleProvider'
 import { ShowHideEleProvider } from './hooks/ShowHideEleProvider'
@@ -35,11 +35,6 @@ function App() {
       'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) '
     const grettings = '😆 thanks for review '
     console.log('%c %s', grettingsStyle, grettings)
-    const postscriptStyle = 'font-weight: bold; font-size: 16px'
-    const postscript = 'ps. You might want to use w/ Safari to enjoy a better styling and UI 😂'
-    const postscript2 = 'This is a old project, I might fix this sometime latter. 🥺'
-    console.log('%c %s', postscriptStyle, postscript)
-    console.log('%c %s', postscriptStyle, postscript2)
   }, [])
 
   return (
@@ -49,9 +44,9 @@ function App() {
           <div class="flex flex-col items-center justify-center w-screen h-screen bg-center bg-cover bg-dusk-gradient">
             <div class="bg-gray-800 bg-opacity-40 w-11/12 h-[93vh] rounded-2xl overflow-y-hidden">
               <WindowBar />
-              <SelectedEleProvider>
-                <ShowHideEleProvider>
-                  <div class="flex h-full">
+              <div class="flex h-full">
+                <SelectedEleProvider>
+                  <ShowHideEleProvider>
                     <div
                       class={`${
                         showSideMenu ? 'px-2 md:px-5 pt-4 w-36' : 'w-0 py-5 -translate-x-24 opacity-0'
@@ -89,9 +84,9 @@ function App() {
                         />
                       </Routes>
                     </div>
-                  </div>
-                </ShowHideEleProvider>
-              </SelectedEleProvider>
+                  </ShowHideEleProvider>
+                </SelectedEleProvider>
+              </div>
             </div>
             {/* Side Menu Icon */}
             <div
