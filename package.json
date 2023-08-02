@@ -1,8 +1,8 @@
 {
-  "name": "kosub_react",
+  "name": "korean-learner-front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://benson00077.github.io/kosub_react",
+  "homepage": "https://bstuan07.com/korean-learner-front",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
