@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { useSelectContext } from '../../context/SelectedSpeechesContext'
 import { UserContext } from '../../context/UserContext'
 import useFetch from '../../hooks/useFetch'
@@ -20,8 +20,9 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
   const selectedInts = Object.keys(select).map((id) => +id)
 
   const isActive = {
-    favoriteBtn: userInfo.isLoggedIn && Object.keys(select).length > 0,
-    contextBtn: userInfo.isLoggedIn && Object.keys(select).length === 1,
+    collectFavoriteBtn: Object.keys(select).length > 0,
+    removeFavoriteBtn: Object.keys(select).length > 0,
+    contextBtn: Object.keys(select).length === 1,
   }
 
   const linkClassName = `flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded hover:bg-slate-500 opacity-80`
@@ -31,10 +32,9 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
       {withRemoveFavorite && (
         <ApiButtonsMySentences
           action="Remove"
-          isActive={isActive.favoriteBtn}
+          isActive={isActive.removeFavoriteBtn}
           onClickCb={() => {
-            if (!isActive.favoriteBtn) return
-            if (!userInfo.isLoggedIn) return
+            if (!isActive.removeFavoriteBtn) return
             delFavoriteSpeeches(userInfo.jwt, selectedInts).then((res) => {
               setSelect({})
               //FIXME: below logic is to reload my sentence page
@@ -46,11 +46,14 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
       {!withRemoveFavorite && (
         <ApiButtonsMySentences
           action="Collect"
-          isActive={isActive.favoriteBtn}
+          isActive={isActive.collectFavoriteBtn}
           onClickCb={() => {
+            if (!isActive.collectFavoriteBtn) return
             //TODO: Toast guide to log in
-            if (!isActive.favoriteBtn) return
-            if (!userInfo.isLoggedIn) return
+            if (!userInfo.isLoggedIn) {
+              navigate('/login')
+              return
+            }
             postFavoriteSpeeches(userInfo.jwt, selectedInts).then((res) => {
               setSelect({})
               navigate('/mysentences')
@@ -64,7 +67,10 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
           ${isActive.contextBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
         onClick={() => {
           if (!isActive.contextBtn) return
-          if (!userInfo.isLoggedIn) return
+          if (!userInfo.isLoggedIn) {
+            navigate('/login')
+            return
+          }
           setOpenModal(true)
           fetchCtxOfSpeach(userInfo.jwt, selectedInts[0])
         }}
