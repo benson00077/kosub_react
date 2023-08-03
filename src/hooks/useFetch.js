@@ -32,8 +32,9 @@ function useFetch() {
 
   const fetchFavoriteSpeeches = (jwt) => {
     // axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
+    const config = { headers: { Authorization: `Bearer ${jwt}` } }
     axios
-      .get(`${API_ROOT_URL}/users/favorite`, { headers: { Authorization: `Bearer ${jwt}` } })
+      .get(`${API_ROOT_URL}/users/favorite`, config)
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
       })
@@ -98,18 +99,21 @@ function useFetch() {
       })
   }
 
-  const fetchDrawer = (id) => {
-    axios
-      .get(`${API_ROOT_URL}/sub/search/all?id=${id}&contextrange=5000`)
+  const fetchCtxOfSpeach = async (jwt, timeId) => {
+    const timeRange = 3
+    const config = { headers: { Authorization: `Bearer ${jwt}` } }
+    return axios
+      .get(`${API_ROOT_URL}/sentences/context?timeId=${timeId}&timeRange=${timeRange}`, config)
       .then((res) => {
         dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
+        return res.data
       })
       .catch((err) => {
         dispatch({ type: 'FETCH_ERROR' })
       })
   }
 
-  return [state, { fetchFavoriteSpeeches, postFavoriteSpeeches, delFavoriteSpeeches, fetchSearch, fetchDrawer }]
+  return [state, { fetchFavoriteSpeeches, postFavoriteSpeeches, delFavoriteSpeeches, fetchSearch, fetchCtxOfSpeach }]
 }
 
 export default useFetch

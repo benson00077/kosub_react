@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { SearchContext } from '../../context/SearchContext'
 import useFetch from '../../hooks/useFetch'
 import { KOREAN_POS_TAG, KOREAN_POS, PLACEHOLDER, PLACEHOLDER_FOREIGN } from '../../data/constant'
-import ModalSelection from '../ModalSelection'
-import Modal from '../Modal'
+import ModalSelection from '../Modal/ModalSelection'
+import Modal from '../Modal/Modal'
 
 function SearchInput({ queryLanguage }) {
   /** For SearchInput */

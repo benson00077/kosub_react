@@ -1,16 +1,22 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useSelectContext } from '../../context/SelectedSpeechesContext'
 import { UserContext } from '../../context/UserContext'
 import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
+import Modal from '../Modal/Modal'
+import ModalBoard from '../Modal/ModalBoard'
 
 function ApiButtonsToolKit({ withRemoveFavorite }) {
+  /** For Modal */
+  const [openModal, setOpenModal] = useState(false)
+  const [ctxOfSpeach, { fetchCtxOfSpeach }] = useFetch()
+
   const [select, setSelect] = useSelectContext()
   const [userInfo, setUserInfo] = useContext(UserContext)
-  const [postFavoriteState, { postFavoriteSpeeches, delFavoriteSpeeches }] = useFetch(null)
-  const navigate = useNavigate();
+  const [_, { postFavoriteSpeeches, delFavoriteSpeeches }] = useFetch(null)
+  const navigate = useNavigate()
 
-  const selectedInt = Object.keys(select).map((id) => +id)
+  const selectedInts = Object.keys(select).map((id) => +id)
 
   const isActive = {
     favoriteBtn: userInfo.isLoggedIn && Object.keys(select).length > 0,
@@ -18,13 +24,6 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
   }
 
   const linkClassName = `flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded hover:bg-slate-500 opacity-80`
-
-  useEffect(() => {
-    if (postFavoriteState.error) {
-      //TODO: Toast to tell server is down after logged in
-      // consider having this logic in useFetch catch block or this useEffect block
-    }
-  }, [postFavoriteState])
 
   return (
     <>
@@ -35,10 +34,10 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
           onClick={() => {
             if (!isActive.favoriteBtn) return
             if (!userInfo.isLoggedIn) return
-            delFavoriteSpeeches(userInfo.jwt, selectedInt).then((res) => {
+            delFavoriteSpeeches(userInfo.jwt, selectedInts).then((res) => {
               setSelect({})
               //FIXME: below logic is to reload my sentence page
-              setUserInfo({...userInfo, toggleUpdateMysentence: !userInfo.toggleUpdateMysentence})
+              setUserInfo({ ...userInfo, toggleUpdateMysentence: !userInfo.toggleUpdateMysentence })
             })
           }}
         >
@@ -55,8 +54,7 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
             //TODO: Toast guide to log in
             if (!isActive.favoriteBtn) return
             if (!userInfo.isLoggedIn) return
-            postFavoriteSpeeches(userInfo.jwt, selectedInt)
-            .then((res) => {
+            postFavoriteSpeeches(userInfo.jwt, selectedInts).then((res) => {
               setSelect({})
             })
           }}
@@ -73,8 +71,9 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
           ${isActive.contextBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
         onClick={() => {
           if (!isActive.contextBtn) return
-          //fetchDrawer(seletedSentences[0])
-          //setIsDrawerOpen(!isDrawerOpen)
+          if (!userInfo.isLoggedIn) return
+          setOpenModal(true)
+          fetchCtxOfSpeach(userInfo.jwt, selectedInts[0])
         }}
       >
         <svg class={`w-5 h-5 ${isActive.contextBtn ? 'fill-teal-400' : 'fill-slate-50'}`} viewBox="0 0 20 20">
@@ -82,6 +81,28 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
         </svg>
         <h4 class="text-gray-300">Context</h4>
       </div>
+      {openModal && (
+        <Modal
+          closeCb={() => {
+            setOpenModal(false)
+          }}
+        >
+          <ModalBoard
+            closeCb={() => setOpenModal(false)}
+            title="Context of the sentence"
+            speechesKo={ctxOfSpeach.post.map((entity) => (
+              <>
+                {entity.subtitles} <br />
+              </>
+            ))}
+            speechesZh={ctxOfSpeach.post.map((entity) => (
+              <>
+                {entity.subtitlesZh} <br />
+              </>
+            ))}
+          />
+        </Modal>
+      )}
     </>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { KOREAN_POS } from '../data/constant'
+import { KOREAN_POS } from '../../data/constant'
 
 function ModalSelection({ selected, setSelected, closeCb }) {
   return (
