@@ -5,6 +5,7 @@ import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../Modal/Modal'
 import ModalBoard from '../Modal/ModalBoard'
+import ApiButtonsMySentences from './ApiButtonsMySentences'
 
 function ApiButtonsToolKit({ withRemoveFavorite }) {
   /** For Modal */
@@ -27,11 +28,11 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
 
   return (
     <>
-      {withRemoveFavorite ? (
-        <div
-          class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded 
-                ${isActive.favoriteBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
-          onClick={() => {
+      {withRemoveFavorite && (
+        <ApiButtonsMySentences
+          action="Remove"
+          isActive={isActive.favoriteBtn}
+          onClickCb={() => {
             if (!isActive.favoriteBtn) return
             if (!userInfo.isLoggedIn) return
             delFavoriteSpeeches(userInfo.jwt, selectedInts).then((res) => {
@@ -40,30 +41,22 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
               setUserInfo({ ...userInfo, toggleUpdateMysentence: !userInfo.toggleUpdateMysentence })
             })
           }}
-        >
-          <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-red-500' : 'fill-slate-50'}`} viewBox="0 0 24 24">
-            <path d="M19 13H5a1 1 0 000 2h14a1 1 0 000-2z" />
-          </svg>
-          <h4 class="text-gray-300">Remove</h4>
-        </div>
-      ) : (
-        <div
-          class={`flex flex-row justify-between pt-3 pb-3 pr-2 pl-2 rounded 
-            ${isActive.favoriteBtn ? 'hover:bg-slate-500 opacity-80 cursor-pointer' : 'opacity-30'}`}
-          onClick={() => {
+        />
+      )}
+      {!withRemoveFavorite && (
+        <ApiButtonsMySentences
+          action="Collect"
+          isActive={isActive.favoriteBtn}
+          onClickCb={() => {
             //TODO: Toast guide to log in
             if (!isActive.favoriteBtn) return
             if (!userInfo.isLoggedIn) return
             postFavoriteSpeeches(userInfo.jwt, selectedInts).then((res) => {
               setSelect({})
+              navigate('/mysentences')
             })
           }}
-        >
-          <svg class={`w-5 h-5 ${isActive.favoriteBtn ? 'fill-green-500' : 'fill-slate-50'}`} viewBox="0 0 24 24">
-            <path d="M19 11H13V5a1 1 0 00-2 0v6H5a1 1 0 000 2h6v6a1 1 0 002 0v-6h6a1 1 0 000-2z" />
-          </svg>
-          <h4 class="text-gray-300">Collect</h4>
-        </div>
+        />
       )}
 
       <div
@@ -81,6 +74,7 @@ function ApiButtonsToolKit({ withRemoveFavorite }) {
         </svg>
         <h4 class="text-gray-300">Context</h4>
       </div>
+
       {openModal && (
         <Modal
           closeCb={() => {
